@@ -55,5 +55,14 @@ public class MenuItem {
         this.is_bestseller = is_bestseller;
     }
 
+    public String toString() {
+        return "MenuItem{" +
+                "ID=" + ID +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", is_bestseller=" + is_bestseller +
+                '}';
+    }
 }
 

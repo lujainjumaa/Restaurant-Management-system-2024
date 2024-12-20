@@ -53,7 +53,7 @@ public class Menu {
         String filePath = FilePath.getMenu_items_file_path();
         try {
             int type_ID = get_type_ID_of_menu_item(item);
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) { // 'true' for append mode
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
                 String line = String.format(
                         "%d,%s,%d,%s,%.2f,%d",
                         item.getID(),
@@ -123,9 +123,8 @@ public class Menu {
     }
 
     public void edit_menu_item(MenuItem item){
-
         delete_menu_item_from_file(item.getID());
-        add_menu_item_to_file(item);
+        EditMenuItemFrame Item=new EditMenuItemFrame(item);
     }
     public int get_type_ID_of_menu_item(MenuItem item) throws ItemNotFoundException {
         for(Map.Entry<Integer,List<MenuItem>> entry: this.getMenuItems().entrySet()){
