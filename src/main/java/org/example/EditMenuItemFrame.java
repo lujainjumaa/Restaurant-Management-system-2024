@@ -11,11 +11,12 @@ public class EditMenuItemFrame extends JFrame {
     private JTextField descriptionField;
     private JTextField priceField;
     private JCheckBox bestsellerCheckBox;
-
+    private int Type_id;
     private MenuItem menuItem;
     private MenuItem editMenuItem;
-    public EditMenuItemFrame(MenuItem item) {
+    public EditMenuItemFrame(MenuItem item,int Type_id) {
         this.menuItem = item;
+        this.Type_id=Type_id;
         openEditFrame(menuItem);
         System.out.println(editMenuItem);
 
@@ -71,6 +72,8 @@ public class EditMenuItemFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 saveChanges();
+                Menu.add_menu_item_to_file(menuItem,Type_id);
+                Menu.loadMenu();
             }
         });
 

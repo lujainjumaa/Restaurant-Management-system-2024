@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Menu {
     static int menu_items_counter = 0;
-    Map<Integer, List<MenuItem>> menu_items = new HashMap<>();
+    static Map<Integer, List<MenuItem>> menu_items = new HashMap<>();
 
     public Menu(Map<Integer, List<MenuItem>> menuItems) {
         menu_items = menuItems;
@@ -24,7 +24,7 @@ public class Menu {
     }
 
 
-    public void loadMenu() {
+    static void loadMenu() {
         String filePath = FilePath.getMenu_items_file_path();
         try (BufferedReader read = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -49,35 +49,30 @@ public class Menu {
             e.printStackTrace();
         }
     }
-    public void add_menu_item_to_file(MenuItem item) {
+    public static void add_menu_item_to_file(MenuItem item, int type_ID) {
         String filePath = FilePath.getMenu_items_file_path();
-        try {
-            int type_ID = get_type_ID_of_menu_item(item);
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
-                String line = String.format(
-                        "%d,%s,%d,%s,%.2f,%d",
-                        item.getID(),
-                        item.getName(),
-                        type_ID,
-                        item.getDescription(),
-                        item.getPrice(),
-                        item.isIs_bestseller() ? 1 : 0
-                );
-                writer.write(line);
-                writer.newLine();
-                if (!menu_items.containsKey(type_ID)) {
-                    menu_items.put(type_ID, new ArrayList<>());
-                }
-                menu_items.get(type_ID).add(item);
-
-                System.out.println("Menu item added successfully: " + item.getName());
-
-            }catch (IOException e){
-                System.out.println("Error With The File....");
-                e.printStackTrace();
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) { // 'true' for append mode
+            String line = String.format(
+                    "%d,%s,%d,%s,%.2f,%d",
+                    item.getID(),
+                    item.getName(),
+                    type_ID,
+                    item.getDescription(),
+                    item.getPrice(),
+                    item.isIs_bestseller() ? 1 : 0
+            );
+            writer.write(line);
+            writer.newLine();
+            if (!menu_items.containsKey(type_ID)) {
+                menu_items.put(type_ID, new ArrayList<>());
             }
-        } catch (ItemNotFoundException e) {
-            System.out.println("Item not found....");
+            menu_items.get(type_ID).add(item);
+
+            System.out.println("Menu item added successfully: " + item.getName());
+
+        }catch (IOException e){
+            System.out.println("Error With The File....");
+            e.printStackTrace();
         }
 
     }
@@ -124,7 +119,7 @@ public class Menu {
 
     public void edit_menu_item(MenuItem item){
         delete_menu_item_from_file(item.getID());
-        EditMenuItemFrame Item=new EditMenuItemFrame(item);
+        EditMenuItemFrame Item=new EditMenuItemFrame(item,1);
     }
     public int get_type_ID_of_menu_item(MenuItem item) throws ItemNotFoundException {
         for(Map.Entry<Integer,List<MenuItem>> entry: this.getMenuItems().entrySet()){
