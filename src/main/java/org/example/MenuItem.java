@@ -2,13 +2,15 @@ package org.example;
 
 public class MenuItem {
     int ID;
+    int typeID;
     String name;
     String description;
     double price;
     boolean is_bestseller;
 
-    public MenuItem(int ID, String name, String description, double price, boolean is_bestseller) {
+    public MenuItem(int ID, int typeID, String name, String description, double price, boolean is_bestseller) {
         this.ID = ID;
+        this.typeID = typeID;
         this.name = name;
         this.description = description;
         this.price = price;

@@ -1,18 +1,21 @@
 package org.example;
 
+import javax.swing.*;
 import java.io.*;
 import java.util.*;
 import java.util.List;
 
 public class Menu {
     static int menu_items_counter = 0;
+    static int highest_id = 0;
+
     static Map<Integer, List<MenuItem>> menu_items = new HashMap<>();
 
     public Menu(Map<Integer, List<MenuItem>> menuItems) {
         menu_items = menuItems;
     }
 
-    public Map<Integer, List<MenuItem>> getMenuItems() {
+    public static Map<Integer, List<MenuItem>> getMenuItems() {
         return menu_items;
     }
 
@@ -23,8 +26,10 @@ public class Menu {
     public Menu() {
     }
 
-
     static void loadMenu() {
+
+        menu_items.clear();
+
         String filePath = FilePath.getMenu_items_file_path();
         try (BufferedReader read = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -32,12 +37,14 @@ public class Menu {
                 String[] parts = line.split(",");
 
                 int id = Integer.parseInt(parts[0]);
+                highest_id = Math.max(highest_id, id);
+
                 String name = parts[1];
                 int type_ID = Integer.parseInt(parts[2]);
                 String description = parts[3];
                 double price = Double.parseDouble(parts[4]);
                 boolean is_bestseller = Integer.parseInt(parts[5]) != 0;
-                MenuItem item = new MenuItem(id, name, description, price, is_bestseller);
+                MenuItem item = new MenuItem(id,type_ID, name, description, price, is_bestseller);
 
                 if (!menu_items.containsKey(type_ID)) {
                     menu_items.put(type_ID, new ArrayList<>());
@@ -45,39 +52,51 @@ public class Menu {
                 menu_items.get(type_ID).add(item);
                 menu_items_counter++;
             }
+
+            read.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     public static void add_menu_item_to_file(MenuItem item, int type_ID) {
         String filePath = FilePath.getMenu_items_file_path();
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) { // 'true' for append mode
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
             String line = String.format(
                     "%d,%s,%d,%s,%.2f,%d",
                     item.getID(),
                     item.getName(),
-                    type_ID,
+                    item.typeID,
                     item.getDescription(),
                     item.getPrice(),
                     item.isIs_bestseller() ? 1 : 0
             );
             writer.write(line);
             writer.newLine();
-            if (!menu_items.containsKey(type_ID)) {
-                menu_items.put(type_ID, new ArrayList<>());
-            }
-            menu_items.get(type_ID).add(item);
+            writer.close();
 
+//            if (!menu_items.containsKey(type_ID)) {
+//                menu_items.put(type_ID, new ArrayList<>());
+//            }
+//            menu_items.get(type_ID).add(item);
             System.out.println("Menu item added successfully: " + item.getName());
 
-        }catch (IOException e){
+            MenuView.getInstance().reload();
+
+
+        } catch (IOException e) {
             System.out.println("Error With The File....");
             e.printStackTrace();
         }
-
     }
-    // بحس لازم تابع ال delete ياخد MenuItem متل ال add بس هاد كلو ببين وقت نجرب ال swing
-    public void delete_menu_item_from_file(int idToDelete) {
+
+    public static void edit_menu_item(MenuItem item) {
+        EditMenuItemFrame editFrame = new EditMenuItemFrame(item, 1);
+
+        MenuView.getInstance().reload();
+    }
+
+    public static void delete_menu_item_from_file(int idToDelete) {
         String filePath = FilePath.getMenu_items_file_path();
         File inputFile = new File(filePath);
         File tempFile = new File("tempFile.txt");
@@ -94,6 +113,7 @@ public class Menu {
                 writer.write(currentLine);
                 writer.newLine();
             }
+            writer.close();
 
         } catch (IOException e) {
             System.err.println("An error occurred while processing the file: " + e.getMessage());
@@ -106,6 +126,7 @@ public class Menu {
         } else {
             System.err.println("Failed to delete the original file.");
         }
+        MenuView.getInstance().reload();
     }
     public void delete_menu_item_from_file(MenuItem item){
 
@@ -117,10 +138,6 @@ public class Menu {
 
     }
 
-    public void edit_menu_item(MenuItem item){
-        delete_menu_item_from_file(item.getID());
-        EditMenuItemFrame Item=new EditMenuItemFrame(item,1);
-    }
     public int get_type_ID_of_menu_item(MenuItem item) throws ItemNotFoundException {
         for(Map.Entry<Integer,List<MenuItem>> entry: this.getMenuItems().entrySet()){
             int type_ID = entry.getKey();
