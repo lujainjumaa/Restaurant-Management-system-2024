@@ -1,6 +1,5 @@
 package org.example;
 
-import javax.swing.*;
 import java.io.*;
 import java.util.*;
 import java.util.List;
@@ -81,7 +80,7 @@ public class Menu {
 //            menu_items.get(type_ID).add(item);
             System.out.println("Menu item added successfully: " + item.getName());
 
-            MenuView.getInstance().reload();
+            MenuView.getInstance("Admin").reload();
 
 
         } catch (IOException e) {
@@ -93,7 +92,7 @@ public class Menu {
     public static void edit_menu_item(MenuItem item) {
         EditMenuItemFrame editFrame = new EditMenuItemFrame(item, 1);
 
-        MenuView.getInstance().reload();
+        MenuView.getInstance("Admin").reload();
     }
 
     public static void delete_menu_item_from_file(int idToDelete) {
@@ -126,7 +125,7 @@ public class Menu {
         } else {
             System.err.println("Failed to delete the original file.");
         }
-        MenuView.getInstance().reload();
+        MenuView.getInstance("Admin").reload();
     }
     public void delete_menu_item_from_file(MenuItem item){
 

@@ -8,13 +8,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import static org.example.Type.get_type_name_from_typeID;
 
 public class MenuView extends JFrame {
-    private static MenuView instance;
 
-    public MenuView() {
+    private static MenuView instance;
+    private String userRole;
+
+    public MenuView(String userRole) {
+        this.userRole=userRole;
         setTitle("Restaurant Menu");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 600);
@@ -22,8 +26,8 @@ public class MenuView extends JFrame {
         reload();
     }
 
-    public static MenuView getInstance() {
-        if (instance == null) instance = new MenuView();
+    public static MenuView getInstance(String user) {
+        if (instance == null) instance = new MenuView(user);
         return instance;
     }
 
@@ -32,25 +36,27 @@ public class MenuView extends JFrame {
 
         getContentPane().removeAll();
         try {
-            setLayout(new BorderLayout());
+            if(Objects.equals(userRole, "Admin")){
+                setLayout(new BorderLayout());
 
-            JPanel buttonPanel = new JPanel();
-            JButton AddNewItem = new JButton("Add New Menu Item");
-            buttonPanel.add(AddNewItem);
-            buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-            add(buttonPanel, BorderLayout.NORTH);
+                JPanel buttonPanel = new JPanel();
+                JButton AddNewItem = new JButton("Add New Menu Item");
+                buttonPanel.add(AddNewItem);
+                buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+                add(buttonPanel, BorderLayout.NORTH);
+                AddNewItem.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        AddMenuItemFrame newItem = new AddMenuItemFrame();
+                    }
+                });
+            }
 
             JScrollPane scrollPane = new JScrollPane(createMenuPanel());
             scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
             setSize(800, 700);
             add(scrollPane, BorderLayout.CENTER);
 
-            AddNewItem.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    AddMenuItemFrame newItem = new AddMenuItemFrame();
-                }
-            });
 
             setVisible(true);
         } catch (TypeNotFoundException tnfe) {
@@ -121,26 +127,34 @@ public class MenuView extends JFrame {
         buttonsPanel.setMinimumSize(new Dimension(75, 100));
         buttonsPanel.setMaximumSize(new Dimension(75, 100));
         buttonsPanel.setBackground(new Color(0xF9F9F9));
-        JButton editButton = new JButton("Edit");
-        JButton deleteButton = new JButton("Delete");
+        if(Objects.equals(userRole, "Admin")){
+            JButton editButton = new JButton("Edit");
+            JButton deleteButton = new JButton("Delete");
 
-        buttonsPanel.add(editButton);
-        buttonsPanel.add(deleteButton);
-        panel.add(buttonsPanel, gdb);
+            buttonsPanel.add(editButton);
+            buttonsPanel.add(deleteButton);
+            panel.add(buttonsPanel, gdb);
 
-        editButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Menu.edit_menu_item(item);
-            }
-        });
+            editButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Menu.edit_menu_item(item);
+                }
+            });
 
-        deleteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Menu.delete_menu_item_from_file(item.getID());
-            }
-        });
+            deleteButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Menu.delete_menu_item_from_file(item.getID());
+                }
+            });
+        }
+        if(Objects.equals(userRole, "Client")){
+            JButton addToOrder = new JButton("Add");
+            buttonsPanel.add(addToOrder);
+            panel.add(buttonsPanel, gdb);
+
+        }
 
         return panel;
     }
