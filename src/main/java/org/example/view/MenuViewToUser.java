@@ -160,6 +160,7 @@ public class MenuViewToUser extends JPanel {
         gdb.weighty = 1;
         gdb.fill = GridBagConstraints.BOTH;
         gdb.anchor = GridBagConstraints.LINE_START;
+
         JPanel detailsPanel = new JPanel(new GridLayout(4, 1, 5, 5));
         detailsPanel.setPreferredSize(new Dimension(370, 100));
         detailsPanel.setMinimumSize(new Dimension(370, 100));
@@ -170,24 +171,31 @@ public class MenuViewToUser extends JPanel {
         detailsPanel.add(new JLabel("Price: $" + item.getPrice()));
         detailsPanel.add(new JLabel(item.isIs_bestseller() ? "Bestseller" : "Regular Item"));
         panel.add(detailsPanel, gdb);
-        gdb.gridx = 1; // Move to the next column
+
+        gdb.gridx = 1;
         gdb.gridy = 0;
-        gdb.weightx = 0; // No extra width
+        gdb.weightx = 0;
         gdb.weighty = 0;
         gdb.fill = GridBagConstraints.NONE;
-        gdb.anchor = GridBagConstraints.CENTER; // Center alignment
+        gdb.anchor = GridBagConstraints.CENTER;
+
+        JPanel actionPanel = new JPanel(new GridLayout(2, 1, 5, 5));
+        actionPanel.setBackground(new Color(0xF9F9F9));
+
+        JTextField quantityField = new JTextField("1");
+        quantityField.setPreferredSize(new Dimension(100, 30));
+        actionPanel.add(new JLabel("Quantity:"));
+        actionPanel.add(quantityField);
+
         JButton addButton = new JButton("Add to Order");
         addButton.setPreferredSize(new Dimension(120, 30));
-        panel.add(addButton, gdb);
+        actionPanel.add(addButton);
 
-        // Add button functionality
-        addButton.addActionListener(e -> {
-            // Logic to handle adding the item to the order
-            System.out.println("Item added to order: " + item.getName());
-        });
+        panel.add(actionPanel, gdb);
 
         return panel;
     }
+
 
     private JPanel createGuestMenuPanel() throws TypeNotFoundException {
         JPanel mainPanel = new JPanel();
