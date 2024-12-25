@@ -179,19 +179,20 @@ public class MenuViewToUser extends JPanel {
         gdb.fill = GridBagConstraints.NONE;
         gdb.anchor = GridBagConstraints.CENTER;
 
-        JPanel actionPanel = new JPanel(new GridLayout(2, 1, 5, 5));
-        actionPanel.setBackground(new Color(0xF9F9F9));
+        JPanel addToOrderPanel = new JPanel(new GridLayout(2, 1, 5, 5));
+        addToOrderPanel.setBackground(new Color(0xF9F9F9));
 
         JTextField quantityField = new JTextField("1");
         quantityField.setPreferredSize(new Dimension(100, 30));
-        actionPanel.add(new JLabel("Quantity:"));
-        actionPanel.add(quantityField);
+        addToOrderPanel.add(new JLabel("Quantity:"));
+        addToOrderPanel.add(quantityField);
 
         JButton addButton = new JButton("Add to Order");
         addButton.setPreferredSize(new Dimension(120, 30));
-        actionPanel.add(addButton);
+        addToOrderPanel.add(addButton);
 
-        panel.add(actionPanel, gdb);
+        panel.add(addToOrderPanel, gdb);
+
 
         return panel;
     }
