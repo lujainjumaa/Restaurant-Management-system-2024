@@ -1,10 +1,15 @@
-package org.example;
+package org.example.model;
 
 public class MenuItem {
     int ID;
     int typeID;
     String name;
     String description;
+
+    public int getTypeID() {
+        return typeID;
+    }
+
     double price;
     boolean is_bestseller;
 

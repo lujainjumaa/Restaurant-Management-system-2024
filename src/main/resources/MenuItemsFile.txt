@@ -1,5 +1,6 @@
-3,Medium Cola,3,,1.99,0
-5,Spring Rolls,2,Crispy vegetarian spring rolls,5.99,0
-7,French Fries,2,,2.50,0
 4,Large Orange Juice,3,,2.49,0
-2,Pasta,1,Classic Italian pasta with tomato sauce and pesto,12.50,1
+3,French Fries,3,,2.50,0
+2,Spring Rolls,2,Crispy vegetarian spring rolls,10.00,0
+1,Medium Cola,4,wowow,1.99,0
+6,Bishr,1,Wow,100.00,1
+5,Pasta,2,Classic Italian pasta with tomato sauce and pesto,12.50,1

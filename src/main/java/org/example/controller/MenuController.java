@@ -1,42 +1,47 @@
-package org.example;
+package org.example.controller;
+
+import org.example.model.FilePath;
+import org.example.model.ItemNotFoundException;
+import org.example.model.MenuItem;
+import org.example.view.MenuFrame;
 
 import java.io.*;
 import java.util.*;
 import java.util.List;
 
-public class Menu {
-    static int menu_items_counter = 0;
-    static int highest_id = 0;
+public class MenuController {
+    public static int menuItemsCounter = 0;
+    public static int highestId = 0;
 
-    static Map<Integer, List<MenuItem>> menu_items = new HashMap<>();
+    static Map<Integer, List<MenuItem>> menuItems = new HashMap<>();
 
-    public Menu(Map<Integer, List<MenuItem>> menuItems) {
-        menu_items = menuItems;
+    public MenuController(Map<Integer, List<MenuItem>> menuItems) {
+        MenuController.menuItems = menuItems;
     }
 
     public static Map<Integer, List<MenuItem>> getMenuItems() {
-        return menu_items;
+        return menuItems;
     }
 
     public void setMenuItems(Map<Integer, List<MenuItem>> menuItems) {
-        menu_items = menuItems;
+        MenuController.menuItems = menuItems;
     }
 
-    public Menu() {
+    public MenuController() {
     }
 
-    static void loadMenu() {
+    public static void loadMenu() {
 
-        menu_items.clear();
+        menuItems.clear();
 
-        String filePath = FilePath.getMenu_items_file_path();
+        String filePath = FilePath.getMenuItems();
         try (BufferedReader read = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = read.readLine()) != null) {
                 String[] parts = line.split(",");
 
                 int id = Integer.parseInt(parts[0]);
-                highest_id = Math.max(highest_id, id);
+                highestId = Math.max(highestId, id);
 
                 String name = parts[1];
                 int type_ID = Integer.parseInt(parts[2]);
@@ -45,27 +50,26 @@ public class Menu {
                 boolean is_bestseller = Integer.parseInt(parts[5]) != 0;
                 MenuItem item = new MenuItem(id,type_ID, name, description, price, is_bestseller);
 
-                if (!menu_items.containsKey(type_ID)) {
-                    menu_items.put(type_ID, new ArrayList<>());
+                if (!menuItems.containsKey(type_ID)) {
+                    menuItems.put(type_ID, new ArrayList<>());
                 }
-                menu_items.get(type_ID).add(item);
-                menu_items_counter++;
+                menuItems.get(type_ID).add(item);
+                menuItemsCounter++;
             }
 
-            read.close();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public static void add_menu_item_to_file(MenuItem item, int type_ID) {
-        String filePath = FilePath.getMenu_items_file_path();
+    public static void addMenuItemToFile(MenuItem item) {
+        String filePath = FilePath.getMenuItems();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
             String line = String.format(
                     "%d,%s,%d,%s,%.2f,%d",
                     item.getID(),
                     item.getName(),
-                    item.typeID,
+                    item.getTypeID(),
                     item.getDescription(),
                     item.getPrice(),
                     item.isIs_bestseller() ? 1 : 0
@@ -74,13 +78,13 @@ public class Menu {
             writer.newLine();
             writer.close();
 
-//            if (!menu_items.containsKey(type_ID)) {
-//                menu_items.put(type_ID, new ArrayList<>());
+//            if (!menu_items.containsKey(typeID)) {
+//                menu_items.put(typeID, new ArrayList<>());
 //            }
-//            menu_items.get(type_ID).add(item);
+//            menu_items.get(typeID).add(item);
             System.out.println("Menu item added successfully: " + item.getName());
 
-            MenuView.getInstance("Admin").reload();
+            MenuFrame.getInstance().reload();
 
 
         } catch (IOException e) {
@@ -89,14 +93,8 @@ public class Menu {
         }
     }
 
-    public static void edit_menu_item(MenuItem item) {
-        EditMenuItemFrame editFrame = new EditMenuItemFrame(item, 1);
-
-        MenuView.getInstance("Admin").reload();
-    }
-
-    public static void delete_menu_item_from_file(int idToDelete) {
-        String filePath = FilePath.getMenu_items_file_path();
+    public static void deleteMenuItemFromFile(int idToDelete) {
+        String filePath = FilePath.getMenuItems();
         File inputFile = new File(filePath);
         File tempFile = new File("tempFile.txt");
 
@@ -125,19 +123,10 @@ public class Menu {
         } else {
             System.err.println("Failed to delete the original file.");
         }
-        MenuView.getInstance("Admin").reload();
-    }
-    public void delete_menu_item_from_file(MenuItem item){
-
-    }
-    public void delete_menu_item_from_map(MenuItem item){
-
-    }
-    public void delete_menu_item_from_map(int id){
-
+        MenuFrame.getInstance().reload();
     }
 
-    public int get_type_ID_of_menu_item(MenuItem item) throws ItemNotFoundException {
+    public int getTypeIDOfMenuItem(MenuItem item) throws ItemNotFoundException {
         for(Map.Entry<Integer,List<MenuItem>> entry: this.getMenuItems().entrySet()){
             int type_ID = entry.getKey();
             List<MenuItem> items = entry.getValue();
@@ -149,8 +138,8 @@ public class Menu {
         throw new ItemNotFoundException();
     }
 
-    public MenuItem get_menu_item_from_ID(int id) throws ItemNotFoundException {
-        for (List<MenuItem> itemList : menu_items.values()) {
+    public MenuItem getMenuItemFromID(int id) throws ItemNotFoundException {
+        for (List<MenuItem> itemList : menuItems.values()) {
             for (MenuItem menuItem : itemList) {
                 if (menuItem.getID() == id) {
                     return menuItem;
