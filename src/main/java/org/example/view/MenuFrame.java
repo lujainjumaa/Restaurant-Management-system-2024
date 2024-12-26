@@ -1,10 +1,8 @@
 package org.example.view;
 
 import org.example.controller.MenuController;
+import org.example.model.*;
 import org.example.model.MenuItem;
-import org.example.model.TypeNotFoundException;
-import org.example.model.User;
-import org.example.model.UserType;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -15,6 +13,8 @@ import java.awt.event.ActionListener;
 public class MenuFrame extends JFrame {
     private static MenuFrame instance;
     public static User user;
+    private MenuPanelToUser menuPanelToUser;
+
 
     public MenuFrame() {
         initializeFrame();
@@ -96,24 +96,34 @@ public class MenuFrame extends JFrame {
         JButton goToCartButton = new JButton("Go To Cart");
         buttonPanel.add(name, BorderLayout.WEST);
         buttonPanel.add(goToCartButton, BorderLayout.EAST);
-
-        goToCartButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Placeholder for cart functionality
-            }
-        });
+//        goToCartButton.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                if (menuFrameToUser != null && MenuFrameToUser.newOrder) {
+//                    try {
+//                        new CartFrame(menuFrameToUser.getOrder());
+//                    } catch (ItemNotFoundException ex) {
+//                        throw new RuntimeException(ex);
+//                    }
+//                } else {
+//                    JOptionPane.showMessageDialog(null, "Your cart is empty :(", "Cart", JOptionPane.INFORMATION_MESSAGE);
+//                }           }
+//        });
     }
 
     private void setupMenuContent() throws TypeNotFoundException {
-        JScrollPane scrollPane = new JScrollPane(new MenuViewToUser(user));
+        menuPanelToUser = new MenuPanelToUser(user);
+        JScrollPane scrollPane = new JScrollPane(menuPanelToUser);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        setSize(800, 700);
+        setSize(900, 700);
         add(scrollPane, BorderLayout.CENTER);
+        setSize(1100, 700);
     }
+
 
     public static void setUser(User user) {
         MenuFrame.user = user;
         if (instance != null) instance.reload();
     }
+
 }

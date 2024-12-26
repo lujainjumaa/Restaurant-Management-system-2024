@@ -9,6 +9,14 @@ public class OrderItem {
         this.quantity = quantity;
     }
 
+    public int getItemID() {
+        return itemID;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
     @Override
     public String toString() {
         return "OrderItem{" +

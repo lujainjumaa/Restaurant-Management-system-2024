@@ -138,7 +138,7 @@ public class MenuController {
         throw new ItemNotFoundException();
     }
 
-    public MenuItem getMenuItemFromID(int id) throws ItemNotFoundException {
+    public static MenuItem getMenuItemFromID(int id) throws ItemNotFoundException {
         for (List<MenuItem> itemList : menuItems.values()) {
             for (MenuItem menuItem : itemList) {
                 if (menuItem.getID() == id) {
