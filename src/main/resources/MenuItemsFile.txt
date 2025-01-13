@@ -12,3 +12,4 @@
 19,Latte,4,Steamed milk and espresso with a hint of foam,3.75,0
 20,Buffalo Wings,3,Spicy chicken wings served with ranch dressing,10.99,1
 7,Cheeseburger,1,Juicy beef patty with melted cheese,8.98,1
+21,Tabboleh Salad,2,Salad with cilantro tomatoes and onions,4.00,1

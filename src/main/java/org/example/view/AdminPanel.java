@@ -27,9 +27,11 @@ public class AdminPanel extends JPanel{
             List<org.example.model.MenuItem> items = entry.getValue();
             String typeName = TypeController.getTypeNameFromTypeID(typeID);
             JLabel header = new JLabel(typeName + "s", SwingConstants.CENTER);
+            JPanel headerPanel = new JPanel();
+            headerPanel.add(header);
             header.setFont(new Font("Arial", Font.BOLD, 16));
             header.setForeground(new Color(0x2E3B4E));
-            mainPanel.add(header);
+            mainPanel.add(headerPanel);
             mainPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
             for (org.example.model.MenuItem item : items) {
