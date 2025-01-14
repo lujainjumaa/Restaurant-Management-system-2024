@@ -15,8 +15,10 @@ import java.util.List;
 import java.util.Map;
 
 public class AdminPanel extends JPanel{
+    MenuFrame mf;
 
-    public JPanel createAdminMenuPanel() throws TypeNotFoundException {
+    public JPanel createAdminMenuPanel(MenuFrame mf) throws TypeNotFoundException {
+        this.mf = mf;
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         mainPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -89,7 +91,7 @@ public class AdminPanel extends JPanel{
         editButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new AddMenuItemFrame(item, true);
+                new AddMenuItemFrame(item, true, mf);
 
             }
         });
@@ -97,7 +99,7 @@ public class AdminPanel extends JPanel{
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MenuController.deleteMenuItemFromFile(item.getID());
+                MenuController.deleteMenuItemFromFile(item.getID(), mf);
             }
         });
 

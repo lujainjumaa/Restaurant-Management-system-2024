@@ -6,14 +6,14 @@ import javax.swing.*;
 
 public class MenuPanelToUser extends JPanel {
 
-    public MenuPanelToUser(User user)throws TypeNotFoundException {
+    public MenuPanelToUser(User user, MenuFrame mf)throws TypeNotFoundException {
         JPanel panel;
 
         if (user.getUserType() == UserType.ADMIN) {
-            panel = new AdminPanel().createAdminMenuPanel();
+            panel = new AdminPanel().createAdminMenuPanel(mf);
         }
         else if(user.getUserType()==UserType.CLIENT){
-            panel = new ClientPanel().createClientMenuPanel();
+            panel = new ClientPanel(mf).createClientMenuPanel();
         }
         else {
             panel = new GuestPanel().createGuestMenuPanel();

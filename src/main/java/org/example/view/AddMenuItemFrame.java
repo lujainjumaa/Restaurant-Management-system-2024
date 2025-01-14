@@ -11,15 +11,17 @@ import org.example.model.TypeNotFoundException;
 public class AddMenuItemFrame extends JFrame {
     private MenuItem item;
     private boolean edit;
+    MenuFrame mf;
     private JTextField nameField;
     private JTextField descriptionField;
     private JTextField priceField;
     private JCheckBox bestsellerCheckBox;
     private JComboBox<String> typeComboBox;
 
-    public AddMenuItemFrame(MenuItem item, Boolean edit) {
+    public AddMenuItemFrame(MenuItem item, Boolean edit, MenuFrame mf) {
         this.item = item;
         this.edit = edit;
+        this.mf = mf;
         initializeFrame();
         JPanel mainPanel = createMainPanel();
         add(mainPanel);
@@ -152,7 +154,7 @@ public class AddMenuItemFrame extends JFrame {
     private void handleSave() {
         try {
             if (edit) {
-                MenuController.deleteMenuItemFromFile(item.getID());
+                MenuController.deleteMenuItemFromFile(item.getID(), mf);
             }
             saveMenuItem();
         } catch (Exception e) {
@@ -188,7 +190,7 @@ public class AddMenuItemFrame extends JFrame {
 
             int newID = edit ? item.getID() : ++MenuController.highestId;
             MenuItem newItem = new MenuItem(newID, typeId, name, description, price, isBestseller);
-            MenuController.addMenuItemToFile(newItem);
+            MenuController.addMenuItemToFile(newItem, mf);
             JOptionPane.showMessageDialog(this, "Menu item added successfully!");
             dispose();
         } catch (NumberFormatException e) {

@@ -12,7 +12,7 @@ import java.util.List;
 public class MenuController {
     public static int menuItemsCounter = 0;
     public static int highestId = 0;
-
+    MenuFrame mf;
     static Map<Integer, List<MenuItem>> menuItems = new HashMap<>();
 
     public MenuController(Map<Integer, List<MenuItem>> menuItems) {
@@ -62,7 +62,7 @@ public class MenuController {
             e.printStackTrace();
         }
     }
-    public static void addMenuItemToFile(MenuItem item) {
+    public static void addMenuItemToFile(MenuItem item, MenuFrame mf) {
         String filePath = FilePath.getMenuItems();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
             String line = String.format(
@@ -84,7 +84,7 @@ public class MenuController {
 //            menu_items.get(typeID).add(item);
             System.out.println("Menu item added successfully: " + item.getName());
 
-            MenuFrame.getInstance().reload();
+            mf.reload();
 
 
         } catch (IOException e) {
@@ -93,7 +93,7 @@ public class MenuController {
         }
     }
 
-    public static void deleteMenuItemFromFile(int idToDelete) {
+    public static void deleteMenuItemFromFile(int idToDelete, MenuFrame mf) {
         String filePath = FilePath.getMenuItems();
         File inputFile = new File(filePath);
         File tempFile = new File("tempFile.txt");
@@ -123,7 +123,7 @@ public class MenuController {
         } else {
             System.err.println("Failed to delete the original file.");
         }
-        MenuFrame.getInstance().reload();
+        mf.reload();
     }
 
     public int getTypeIDOfMenuItem(MenuItem item) throws ItemNotFoundException {

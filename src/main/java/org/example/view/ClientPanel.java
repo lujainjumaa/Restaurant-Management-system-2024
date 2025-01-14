@@ -17,8 +17,13 @@ import java.util.Map;
 public class ClientPanel {
 
     static boolean newOrder=false;
+    MenuFrame mf;
     Order order;
     CartPanel cartPanel;
+
+    ClientPanel(MenuFrame mf) {
+        this.mf = mf;
+    }
 
     public JPanel createClientMenuPanel() throws TypeNotFoundException {
         JPanel mainPanel = new JPanel();
@@ -98,14 +103,14 @@ public class ClientPanel {
                     if (!newOrder) {
                         order = new Order();
                         cartPanel = new CartPanel(order.getOrderItems());
-                        MenuFrame.getInstance().add(cartPanel, BorderLayout.EAST);
+                        mf.add(cartPanel, BorderLayout.EAST);
                         newOrder = true;
                     }
 
                     OrderItem orderItem = new OrderItem(item.getID(), quantity);
                     order.addToOrderItems(orderItem);
-                    MenuFrame.getInstance().revalidate();
-                    MenuFrame.getInstance().repaint();
+                    mf.revalidate();
+                    mf.repaint();
                     cartPanel.refreshCart();
                 } catch (NumberFormatException | ItemNotFoundException ex) {
                     JOptionPane.showMessageDialog(panel, "Please enter a valid quantity.", "Error", JOptionPane.ERROR_MESSAGE);

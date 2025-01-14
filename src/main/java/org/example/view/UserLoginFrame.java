@@ -17,9 +17,11 @@ public class UserLoginFrame extends JFrame {
     private JTextField passwordField;
     private JLabel errorLabel;
     private JCheckBox isAdmin;
+    private MenuFrame mf;
 
-    public UserLoginFrame() {
+    public UserLoginFrame(MenuFrame mf) {
         initializeFrame();
+        this.mf = mf;
         JPanel mainPanel = createMainPanel();
         add(mainPanel);
         setVisible(true);
@@ -149,7 +151,7 @@ public class UserLoginFrame extends JFrame {
 
         for (User user : User.getUsers()) {
             if (Objects.equals(user.getUserName(), username) && Objects.equals(user.getPassword(), password)) {
-                MenuFrame.setUser(user);
+                mf.setUser(user);
                 dispose();
                 return true;
             }
@@ -169,7 +171,7 @@ public class UserLoginFrame extends JFrame {
 
         User newUser = new User(username, password, UserType.CLIENT);
         UserController.addUserToFile(newUser);
-        MenuFrame.setUser(newUser);
+        mf.setUser(newUser);
         return false;
     }
 

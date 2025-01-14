@@ -11,28 +11,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MenuFrame extends JFrame {
-    private static MenuFrame instance;
-    public static User user;
+    public User user;
     private MenuPanelToUser menuPanelToUser;
 
 
-    public MenuFrame() {
+    public MenuFrame(User user) {
+        this.user = user;
         initializeFrame();
     }
 
     private void initializeFrame() {
         setTitle("Restaurant Menu");
         setSize(600, 600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
         reload();
     }
 
-    public static MenuFrame getInstance() {
-        if (instance == null) instance = new MenuFrame();
-        return instance;
-    }
 
     public void reload() {
         MenuController.loadMenu();
@@ -72,11 +68,8 @@ public class MenuFrame extends JFrame {
         buttonPanel.add(name, BorderLayout.WEST);
         buttonPanel.add(addNewItemButton, BorderLayout.EAST);
 
-        addNewItemButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AddMenuItemFrame newItem = new AddMenuItemFrame(new MenuItem(-1, -1, "", "", 0, false), false);
-            }
+        addNewItemButton.addActionListener(e -> {
+            AddMenuItemFrame newItem = new AddMenuItemFrame(new MenuItem(-1, -1, "", "", 0, false), false, this);
         });
     }
 
@@ -84,11 +77,9 @@ public class MenuFrame extends JFrame {
         JButton loginButton = new JButton("Login");
         buttonPanel.add(loginButton, BorderLayout.EAST);
 
-        loginButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new UserLoginFrame();
-            }
+        loginButton.addActionListener(e -> {
+            System.out.println(" => " + (e.getSource() instanceof JButton));
+            new UserLoginFrame(this);
         });
     }
 
@@ -112,7 +103,7 @@ public class MenuFrame extends JFrame {
     }
 
     private void setupMenuContent() throws TypeNotFoundException {
-        menuPanelToUser = new MenuPanelToUser(user);
+        menuPanelToUser = new MenuPanelToUser(user, this);
         JScrollPane scrollPane = new JScrollPane(menuPanelToUser);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         setSize(900, 700);
@@ -121,9 +112,9 @@ public class MenuFrame extends JFrame {
     }
 
 
-    public static void setUser(User user) {
-        MenuFrame.user = user;
-        if (instance != null) instance.reload();
+    public void setUser(User user) {
+        this.user = user;
+        this.reload();
     }
 
 }
