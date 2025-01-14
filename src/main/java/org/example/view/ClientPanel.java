@@ -20,12 +20,14 @@ public class ClientPanel {
     MenuFrame mf;
     Order order;
     CartPanel cartPanel;
+    User user;
 
     ClientPanel(MenuFrame mf) {
         this.mf = mf;
     }
 
-    public JPanel createClientMenuPanel() throws TypeNotFoundException {
+    public JPanel createClientMenuPanel(User user) throws TypeNotFoundException {
+        this.user=user;
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         mainPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -102,13 +104,26 @@ public class ClientPanel {
 
                     if (!newOrder) {
                         order = new Order();
-                        cartPanel = new CartPanel(order.getOrderItems());
+                        order.setUser(user);
+                        if (cartPanel != null) {
+                            mf.remove(cartPanel);
+                        }
+                        cartPanel = new CartPanel(order);
                         mf.add(cartPanel, BorderLayout.EAST);
+
                         newOrder = true;
                     }
-
-                    OrderItem orderItem = new OrderItem(item.getID(), quantity);
-                    order.addToOrderItems(orderItem);
+                    int j=0;
+                    for (OrderItem orderItem : order.getOrderItems()) {
+                        if(orderItem.getItemID()==item.getID()){
+                            orderItem.setQuantity(orderItem.getQuantity()+quantity);
+                            j++;
+                        }
+                    }
+                    if(j==0){
+                        OrderItem orderItem = new OrderItem(item.getID(), quantity);
+                        order.addToOrderItems(orderItem);
+                    }
                     mf.revalidate();
                     mf.repaint();
                     cartPanel.refreshCart();
@@ -123,6 +138,9 @@ public class ClientPanel {
 
 
         return panel;
+    }
+    public static void setNewOrder(boolean newOrder) {
+        ClientPanel.newOrder = newOrder;
     }
 
 }

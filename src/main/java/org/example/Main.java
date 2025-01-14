@@ -14,20 +14,6 @@ import javax.swing.*;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-//        Thread t1 = new Thread(()->{
-//            MenuController.loadMenu();
-//            TypeController.loadTypes();
-//            UserController.loadUsers();
-//            MenuFrame mf = new MenuFrame(new User("","", UserType.GUEST));
-//        });
-//        Thread t2 = new Thread(()->{
-//            MenuController.loadMenu();
-//            TypeController.loadTypes();
-//            UserController.loadUsers();
-//            MenuFrame mf = new MenuFrame(new User("","", UserType.GUEST));
-//        });
-//        t1.start();
-//        t2.start();
         new RestaurantGreetingFrame();
     }
 }

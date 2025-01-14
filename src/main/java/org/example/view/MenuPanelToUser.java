@@ -13,7 +13,7 @@ public class MenuPanelToUser extends JPanel {
             panel = new AdminPanel().createAdminMenuPanel(mf);
         }
         else if(user.getUserType()==UserType.CLIENT){
-            panel = new ClientPanel(mf).createClientMenuPanel();
+            panel = new ClientPanel(mf).createClientMenuPanel(user);
         }
         else {
             panel = new GuestPanel().createGuestMenuPanel();

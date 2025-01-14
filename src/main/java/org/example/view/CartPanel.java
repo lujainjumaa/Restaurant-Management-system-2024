@@ -1,6 +1,7 @@
 package org.example.view;
 
 import org.example.model.ItemNotFoundException;
+import org.example.model.Order;
 import org.example.model.OrderItem;
 import org.example.model.MenuItem;
 import org.example.controller.MenuController;
@@ -16,13 +17,15 @@ public class CartPanel extends JPanel {
     private JPanel itemsPanel;
     private JLabel totalLabel;
     private double totalAmount;
+    private Order order;
 
     public JPanel getItemsPanel() {
         return itemsPanel;
     }
 
-    public CartPanel(List<OrderItem> orderItems) {
-        this.orderItems = orderItems;
+    public CartPanel(Order order) {
+        this.order = order;
+        this.orderItems = order.getOrderItems();
         setupLayout();
         try {
             refreshCart();
@@ -68,7 +71,7 @@ public class CartPanel extends JPanel {
             MenuItem menuItem = MenuController.getMenuItemFromID(orderItem.getItemID());
             totalAmount += menuItem.getPrice() * orderItem.getQuantity();
         }
-
+        order.setPrice(totalAmount);
         totalLabel.setText("Total: $" + String.format("%.2f", totalAmount));
         itemsPanel.revalidate();
         itemsPanel.repaint();
@@ -118,8 +121,10 @@ public class CartPanel extends JPanel {
             if (orderItems.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Your cart is empty.", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Checkout successful! Total: $" + String.format("%.2f", totalAmount), "Success", JOptionPane.INFORMATION_MESSAGE);
-                orderItems.clear();
+                OrderDetailsFrame orderDetails=new OrderDetailsFrame(order);
+                orderDetails.setVisible(true);
+//                JOptionPane.showMessageDialog(this, "Checkout successful! Total: $" + String.format("%.2f", totalAmount), "Success", JOptionPane.INFORMATION_MESSAGE);
+//                orderItems.clear();
                 try {
                     refreshCart();
                 } catch (ItemNotFoundException ex) {

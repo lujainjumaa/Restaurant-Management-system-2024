@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
+    int ID;
     List<OrderItem> orderItems = new ArrayList<>();
     OrderType orderType;
     String address;
@@ -11,6 +12,13 @@ public class Order {
     double tip;
     OrderStatus orderStatus;
     User user;
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+    public int getID() {
+        return ID;
+    }
 
     public void addToOrderItems(OrderItem item){
         orderItems.add(item);
@@ -21,6 +29,7 @@ public class Order {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Order Details:\n");
+        sb.append("Order ID: ").append(ID).append("\n");
         sb.append("Order Type: ").append(orderType).append("\n");
         sb.append("Address: ").append(address == null ? "N/A" : address).append("\n");
         sb.append("Total Price: $").append(price).append("\n");

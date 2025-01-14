@@ -12,6 +12,12 @@ public class OrderItem {
     public int getItemID() {
         return itemID;
     }
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    public void setItemID(int itemID) {
+        this.itemID = itemID;
+    }
 
     public int getQuantity() {
         return quantity;
