@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class Order {
     static int highestID;
@@ -44,17 +45,21 @@ public Order(){
         return orderItems;
     }
 
-    public Date getOrderDate() {
-        return orderDate;
+    public String getOrderDate() {
+        return formatToLocalDate(orderDate);
     }
 
+    public static String formatToLocalDate(Date date) {
+        SimpleDateFormat localDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        return localDateFormat.format(date);
+    }
     public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
     }
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH,mm,ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         sb.append("Order Details:\n");
         sb.append("Order ID: ").append(getID()).append("\n");

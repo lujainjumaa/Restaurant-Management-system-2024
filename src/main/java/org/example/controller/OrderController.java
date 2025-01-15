@@ -2,6 +2,7 @@ package org.example.controller;
 
 import org.example.model.*;
 
+import javax.sound.sampled.Line;
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 public class OrderController {
-    static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH,mm,ss");
+    static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 
     public static void addOrderToFile(Order order,String filePath) {
@@ -86,20 +87,20 @@ public class OrderController {
         StringBuilder sb = new StringBuilder();
         Date dayDate=new Date();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FilePath.getDailyOrders(), true))) {
-            writer.write(String.valueOf(sb.append("Day Date: ").append(dateFormat.format(dayDate)).append("\n")));
+            writer.write(String.valueOf(sb.append(dateFormat.format(dayDate)).append("\n")));
         } catch (IOException e) {
             System.err.println("Failed to write the Date to file: " + e.getMessage());
         }
     }
-    public static void getDateDailyOrder(){
+    public static String getDateDailyOrder(){
+        String line = "";
         try(BufferedReader reader=new BufferedReader(new FileReader(FilePath.getDailyOrders()))){
-            String line;
             line=reader.readLine();
-            System.out.println(line);
         }
         catch (IOException e){
-            System.out.println("failed");
+            System.out.println("failed to return daily date");
         }
+        return line;
     }
     public static void clearFileContent(String filePath) {
         File file = new File(filePath);

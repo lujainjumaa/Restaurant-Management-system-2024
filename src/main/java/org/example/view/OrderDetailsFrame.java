@@ -5,6 +5,7 @@ import org.example.model.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Date;
 import java.util.List;
 
 public class OrderDetailsFrame extends JFrame {
@@ -117,7 +118,14 @@ public class OrderDetailsFrame extends JFrame {
             order.setOrderType((OrderType) typeComboBox.getSelectedItem());
             order.setOrderItems(orderItems);
             OrderController.addOrderToFile(order, FilePath.getOrders());
-            OrderController.addOrderToFile(order,FilePath.getDailyOrders());
+            if(OrderController.getDateDailyOrder().equals(Order.formatToLocalDate(new Date()))){
+                OrderController.addOrderToFile(order,FilePath.getDailyOrders());
+            }
+            else {
+                OrderController.clearFileContent(FilePath.getDailyOrders());
+                OrderController.addDateToDailyOrder();
+                OrderController.addOrderToFile(order,FilePath.getDailyOrders());
+            }
             order.getOrderItems().clear();
             mf.reload();
 
