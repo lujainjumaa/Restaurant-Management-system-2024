@@ -18,14 +18,15 @@ public class CartPanel extends JPanel {
     private JLabel totalLabel;
     private double totalAmount;
     private Order order;
-
+    private MenuFrame mf;
     public JPanel getItemsPanel() {
         return itemsPanel;
     }
 
-    public CartPanel(Order order) {
+    public CartPanel(Order order,MenuFrame mf) {
         this.order = order;
         this.orderItems = order.getOrderItems();
+        this.mf=mf;
         setupLayout();
         try {
             refreshCart();
@@ -121,7 +122,7 @@ public class CartPanel extends JPanel {
             if (orderItems.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Your cart is empty.", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                OrderDetailsFrame orderDetails=new OrderDetailsFrame(order);
+                OrderDetailsFrame orderDetails=new OrderDetailsFrame(order,mf);
                 orderDetails.setVisible(true);
 //                JOptionPane.showMessageDialog(this, "Checkout successful! Total: $" + String.format("%.2f", totalAmount), "Success", JOptionPane.INFORMATION_MESSAGE);
 //                orderItems.clear();
