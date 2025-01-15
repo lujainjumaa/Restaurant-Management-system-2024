@@ -1,6 +1,7 @@
 package org.example.model;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class User {
@@ -8,11 +9,21 @@ public class User {
     String userName;
     String password;
     UserType userType;
+    int NumOfOrders;
 
     public User(String userName, String password, UserType userType) {
         this.userName = userName;
         this.password = password;
         this.userType = userType;
+        this.NumOfOrders = 0;
+    }
+
+    public int getNumOfOrders() {
+        return NumOfOrders;
+    }
+
+    public void setNumOfOrders(int numOfOrders) {
+        NumOfOrders = numOfOrders;
     }
 
     public static List<User> getUsers() {
@@ -45,6 +56,11 @@ public class User {
 
     public void setUserType(UserType userType) {
         this.userType = userType;
+    }
+    public static List<User> sortedUsersList(){
+        List<User> users = User.getUsers();
+        users.sort(Comparator.comparingInt(User::getNumOfOrders).reversed());
+        return users;
     }
     public String toString() {
         return "User{" +

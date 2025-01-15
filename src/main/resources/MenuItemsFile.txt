@@ -1,15 +1,15 @@
-8,Grilled Chicken Salad,2,Fresh lettuce grilled chicken and a tangy vinaigrette,9.50,0
-9,Mozzarella Sticks,3,Crispy fried mozzarella cheese sticks served with marinara sauce,5.99,1
-10,Chocolate Milkshake,4,Rich and creamy chocolate shake topped with whipped cream,3.99,0
-11,Garlic Bread,2,Toasted bread topped with garlic butter,3.49,1
-12,Large Cappuccino,4,Foamy and aromatic coffee,4.50,0
-13,Chicken Alfredo,1,Pasta in creamy Alfredo sauce with grilled chicken,14.99,1
-14,Vegetable Soup,2,Hearty and healthy soup with mixed vegetables,7.00,0
-15,Ice Cream Sundae,4,Vanilla ice cream topped with chocolate syrup and nuts,6.50,1
-16,Spaghetti Bolognese,1,Classic Italian pasta with a rich meat sauce,13.50,0
-17,Greek Salad,2,Fresh tomatoes cucumbers olives and feta cheese,8.25,0
-18,Fish Tacos,3,Grilled fish with fresh toppings in soft tortillas,9.99,1
-19,Latte,4,Steamed milk and espresso with a hint of foam,3.75,0
-20,Buffalo Wings,3,Spicy chicken wings served with ranch dressing,10.99,1
-7,Cheeseburger,1,Juicy beef patty with melted cheese,8.98,1
-21,Tabboleh Salad,2,Salad with cilantro tomatoes and onions,4.00,1
+8,0,Grilled Chicken Salad,2,Fresh lettuce grilled chicken and a tangy vinaigrette,9.50,0
+9,0,Mozzarella Sticks,3,Crispy fried mozzarella cheese sticks served with marinara sauce,5.99,1
+10,0,Chocolate Milkshake,4,Rich and creamy chocolate shake topped with whipped cream,3.99,0
+11,0,Garlic Bread,2,Toasted bread topped with garlic butter,3.49,1
+12,0,Large Cappuccino,4,Foamy and aromatic coffee,4.50,0
+13,41,Chicken Alfredo,1,Pasta in creamy Alfredo sauce with grilled chicken,14.99,1
+14,0,Vegetable Soup,2,Hearty and healthy soup with mixed vegetables,7.00,0
+15,0,Ice Cream Sundae,4,Vanilla ice cream topped with chocolate syrup and nuts,6.50,1
+16,9,Spaghetti Bolognese,1,Classic Italian pasta with a rich meat sauce,13.50,0
+17,0,Greek Salad,2,Fresh tomatoes cucumbers olives and feta cheese,8.25,0
+18,0,Fish Tacos,3,Grilled fish with fresh toppings in soft tortillas,9.99,1
+19,0,Latte,4,Steamed milk and espresso with a hint of foam,3.75,0
+20,0,Buffalo Wings,3,Spicy chicken wings served with ranch dressing,10.99,1
+7,0,Cheeseburger,1,Juicy beef patty with melted cheese,8.98,1
+21,0,Tabboleh Salad,2,Salad with cilantro tomatoes and onions,4.00,1

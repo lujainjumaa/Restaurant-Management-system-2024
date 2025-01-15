@@ -189,7 +189,7 @@ public class AddMenuItemFrame extends JFrame {
             }
 
             int newID = edit ? item.getID() : ++MenuController.highestId;
-            MenuItem newItem = new MenuItem(newID, typeId, name, description, price, isBestseller);
+            MenuItem newItem = new MenuItem(newID, 0, typeId, name, description, price, isBestseller);
             MenuController.addMenuItemToFile(newItem, mf);
             JOptionPane.showMessageDialog(this, "Menu item added successfully!");
             dispose();

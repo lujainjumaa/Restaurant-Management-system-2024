@@ -1,6 +1,8 @@
 package org.example.view;
 
+import org.example.controller.MenuController;
 import org.example.controller.OrderController;
+import org.example.model.MenuItem;
 import org.example.model.Order;
 import org.example.model.OrderItem;
 import org.example.model.OrderStatus;
@@ -119,6 +121,11 @@ public class OrderDetailsFrame extends JFrame {
             order.setOrderType((OrderType) typeComboBox.getSelectedItem());
             order.setOrderItems(orderItems);
             OrderController.addOrderToFile(order);
+            order.getUser().setNumOfOrders(order.getUser().getNumOfOrders()+1);
+            for(OrderItem OI : order.getOrderItems()){
+                MenuItem MI = MenuController.getMenuItemFromID(OI.getItemID());
+                MI.setNumOfOrders(MI.getNumOfOrders()+OI.getQuantity());
+            }
             order.getOrderItems().clear();
             JOptionPane.showMessageDialog(this, "Order updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
             dispose();

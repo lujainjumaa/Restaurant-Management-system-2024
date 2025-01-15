@@ -1,7 +1,7 @@
-Dana,P@ssw0rd,1
-Lujain,He||0,1
-Bishr,bishr2008,0
-Raghad,raghad1999,0
-Hasan,hasannn,0
-Fatema,fatemaaa,0
-Ziad,ziaddoooo,0
+Dana,P@ssw0rd,1,0
+Lujain,He||0,1,0
+Bishr,bishr2008,0,0
+Raghad,raghad1999,0,1
+Hasan,hasannn,0,2
+Fatema,fatemaaa,0,0
+Ziad,ziaddoooo,0,0

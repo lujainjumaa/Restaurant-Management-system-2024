@@ -15,6 +15,7 @@ public class UserController {
             while((line = reader.readLine())!=null){
                 String[] parts = line.split(",");
                 User user = new User(parts[0],parts[1],(Integer.parseInt(parts[2])==0)? UserType.CLIENT : UserType.ADMIN);
+                user.setNumOfOrders(Integer.parseInt(parts[3]));
                 User.getUsers().add(user);
             }
         }catch(IOException e){
@@ -25,9 +26,10 @@ public class UserController {
         String filePath = FilePath.getAccounts();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
             String line = String.format(
-                    "%s,%s,%d",
+                    "%s,%s,%d,%d",
                     user.getUserName(),
                     user.getPassword(),
+                    0,
                     0
             );
             writer.write(line);
