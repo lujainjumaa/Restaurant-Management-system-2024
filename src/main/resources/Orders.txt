@@ -245,3 +245,265 @@ Order Items:
  - OrderItem{itemID=13, quantity=2}
 
 --------------------------------------------------
+Order Details:
+Order ID: 0
+Order Date: 2025-01-15
+Order Type: delivery
+Address: fdrgdfv
+Total Price: $44.97
+Tip: $0.0
+Order Status: null
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=3}
+
+--------------------------------------------------
+Order Details:
+Order ID: 0
+Order Date: 2025-01-15
+Order Type: delivery
+Address: fdrgdfv
+Total Price: $44.97
+Tip: $0.0
+Order Status: null
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=3}
+
+--------------------------------------------------
+Order Details:
+Order ID: 0
+Order Date: 2025-01-15
+Order Type: dineIn
+Address: hhhh
+Total Price: $59.96
+Tip: $0.0
+Order Status: null
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=4}
+
+--------------------------------------------------
+Order Details:
+Order ID: 0
+Order Date: 2025-01-15
+Order Type: dineIn
+Address: hhhh
+Total Price: $59.96
+Tip: $0.0
+Order Status: null
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=4}
+
+--------------------------------------------------
+Order Details:
+Order ID: 0
+Order Date: 2025-01-15
+Order Type: delivery
+Address: bgbgb
+Total Price: $29.98
+Tip: $0.0
+Order Status: null
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=2}
+
+--------------------------------------------------
+Order Details:
+Order ID: 0
+Order Date: 2025-01-15
+Order Type: delivery
+Address: bgbgb
+Total Price: $29.98
+Tip: $0.0
+Order Status: null
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=2}
+
+--------------------------------------------------
+Order Details:
+Order ID: 0
+Order Date: 2025-01-15
+Order Type: delivery
+Address: fdrg
+Total Price: $44.97
+Tip: $0.0
+Order Status: null
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=3}
+
+--------------------------------------------------
+Order Details:
+Order ID: 0
+Order Date: 2025-01-15
+Order Type: delivery
+Address: fdrg
+Total Price: $44.97
+Tip: $0.0
+Order Status: null
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=3}
+
+--------------------------------------------------
+Order Details:
+Order ID: 0
+Order Date: 2025-01-15
+Order Type: dineIn
+Address: dfgfdf
+Total Price: $44.97
+Tip: $0.0
+Order Status: null
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=3}
+
+--------------------------------------------------
+Order Details:
+Order ID: 0
+Order Date: 2025-01-15
+Order Type: dineIn
+Address: dfgfdf
+Total Price: $44.97
+Tip: $0.0
+Order Status: null
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=3}
+
+--------------------------------------------------
+Order Details:
+Order ID: 0
+Order Date: 2025-01-15
+Order Type: null
+Address: gtrgrtg
+Total Price: $44.97
+Tip: $0.0
+Order Status: null
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=3}
+
+--------------------------------------------------
+Order Details:
+Order ID: 0
+Order Date: 2025-01-15
+Order Type: null
+Address: gtrgrtg
+Total Price: $44.97
+Tip: $0.0
+Order Status: null
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=3}
+
+--------------------------------------------------
+Order Details:
+Order ID: 0
+Order Date: 2025-01-15
+Order Type: delivery
+Address: xerg
+Total Price: $29.98
+Tip: $0.0
+Order Status: null
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=2}
+
+--------------------------------------------------
+Order Details:
+Order ID: 0
+Order Date: 2025-01-15
+Order Type: delivery
+Address: xerg
+Total Price: $29.98
+Tip: $0.0
+Order Status: null
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=2}
+
+--------------------------------------------------
+Order Details:
+Order ID: 0
+Order Date: 2025-01-15
+Order Type: delivery
+Address: aeda
+Total Price: $29.98
+Tip: $0.0
+Order Status: null
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=2}
+
+--------------------------------------------------
+Order Details:
+Order ID: 0
+Order Date: 2025-01-15
+Order Type: delivery
+Address: aeda
+Total Price: $29.98
+Tip: $0.0
+Order Status: null
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=2}
+
+--------------------------------------------------
+Order Details:
+Order ID: 0
+Order Date: 2025-01-15
+Order Type: delivery
+Address: adsd
+Total Price: $44.97
+Tip: $0.0
+Order Status: BEING_PREPARED
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=3}
+
+--------------------------------------------------
+Order Details:
+Order ID: 0
+Order Date: 2025-01-15
+Order Type: delivery
+Address: adsd
+Total Price: $44.97
+Tip: $0.0
+Order Status: BEING_PREPARED
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=3}
+
+--------------------------------------------------
+Order Details:
+Order ID: 0
+Order Date: 2025-01-15
+Order Type: dineIn
+Address: gbgbfgb
+Total Price: $28.490000000000002
+Tip: $0.0
+Order Status: BEING_PREPARED
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+ - OrderItem{itemID=16, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 0
+Order Date: 2025-01-15
+Order Type: dineIn
+Address: gbgbfgb
+Total Price: $28.490000000000002
+Tip: $0.0
+Order Status: BEING_PREPARED
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+ - OrderItem{itemID=16, quantity=1}
+
+--------------------------------------------------

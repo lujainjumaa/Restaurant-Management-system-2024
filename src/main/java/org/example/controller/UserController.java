@@ -14,8 +14,23 @@ public class UserController {
             String line;
             while((line = reader.readLine())!=null){
                 String[] parts = line.split(",");
-                User user = new User(parts[0],parts[1],(Integer.parseInt(parts[2])==0)? UserType.CLIENT : UserType.ADMIN);
-                user.setNumOfOrders(Integer.parseInt(parts[3]));
+                UserType userType;
+                switch(parts[2]){
+                    case "0" :
+                        userType = UserType.CLIENT;
+                        break;
+                    case "1" :
+                        userType = UserType.ADMIN;
+                        break;
+                    case "2" :
+                        userType = UserType.EMPLOYEE;
+                        break;
+                    default:
+                        System.out.println("wrong input");
+                        userType = UserType.GUEST;
+                        break;
+                }
+                User user = new User(parts[0],parts[1],userType,Integer.parseInt(parts[3]));
                 User.getUsers().add(user);
             }
         }catch(IOException e){

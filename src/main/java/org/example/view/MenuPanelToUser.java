@@ -15,8 +15,11 @@ public class MenuPanelToUser extends JPanel {
         else if(user.getUserType()==UserType.CLIENT){
             panel = new ClientPanel(mf).createClientMenuPanel(user);
         }
-        else {
+        else if(user.getUserType()==UserType.GUEST){
             panel = new GuestPanel().createGuestMenuPanel();
+        }else{
+            panel = new EmployeePanel();
+//            هون ممكن يا نشيل التوابع اللي جوا الكلاسات ونضل عال  constructors او العكس
         }
         add(panel);
     }

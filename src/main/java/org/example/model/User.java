@@ -11,10 +11,11 @@ public class User {
     UserType userType;
     int NumOfOrders;
 
-    public User(String userName, String password, UserType userType) {
+    public User(String userName, String password, UserType userType, int numOfOrders) {
         this.userName = userName;
         this.password = password;
         this.userType = userType;
+        this.NumOfOrders = numOfOrders;
         this.NumOfOrders = 0;
     }
 

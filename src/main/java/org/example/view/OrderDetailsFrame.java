@@ -123,12 +123,8 @@ public class OrderDetailsFrame extends JFrame {
             order.setTip(Double.parseDouble(tipField.getText()));
             order.setOrderType((OrderType) typeComboBox.getSelectedItem());
             order.setOrderItems(orderItems);
+            order.setOrderStatus(OrderStatus.BEING_PREPARED);
             OrderController.addOrderToFile(order,FilePath.getOrders());
-            order.getUser().setNumOfOrders(order.getUser().getNumOfOrders()+1);
-            for(OrderItem OI : order.getOrderItems()){
-                MenuItem MI = MenuController.getMenuItemFromID(OI.getItemID());
-                MI.setNumOfOrders(MI.getNumOfOrders()+OI.getQuantity());
-            }
             OrderController.addOrderToFile(order, FilePath.getOrders());
             if(OrderController.getDateDailyOrder().equals(Order.formatToLocalDate(new Date()))){
                 OrderController.addOrderToFile(order,FilePath.getDailyOrders());
@@ -140,6 +136,12 @@ public class OrderDetailsFrame extends JFrame {
             }
             order.getOrderItems().clear();
             mf.reload();
+
+            order.getUser().setNumOfOrders(order.getUser().getNumOfOrders()+1);
+            for(OrderItem OI : order.getOrderItems()){
+                MenuItem MI = MenuController.getMenuItemFromID(OI.getItemID());
+                MI.setNumOfOrders(MI.getNumOfOrders()+OI.getQuantity());
+            }
 
             JOptionPane.showMessageDialog(this, "Order updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
             dispose();

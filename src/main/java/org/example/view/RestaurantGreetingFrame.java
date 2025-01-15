@@ -29,7 +29,7 @@ public class RestaurantGreetingFrame extends JFrame {
             MenuController.loadMenu();
             TypeController.loadTypes();
             UserController.loadUsers();
-            MenuFrame mf = new MenuFrame(new User("","", UserType.GUEST));
+            MenuFrame mf = new MenuFrame(new User("","", UserType.GUEST,0));
             });
             t1.start();
         });

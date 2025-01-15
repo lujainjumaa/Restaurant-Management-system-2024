@@ -55,8 +55,10 @@ public class MenuFrame extends JFrame {
             setupAdminHeader(buttonPanel, name);
         } else if (user.getUserType() == UserType.GUEST) {
             setupGuestHeader(buttonPanel);
-        } else {
+        } else if(user.getUserType() == UserType.CLIENT){
             setupCustomerHeader(buttonPanel, name);
+        }else{
+            return;
         }
 
         add(buttonPanel, BorderLayout.NORTH);
@@ -77,7 +79,7 @@ public class MenuFrame extends JFrame {
             JFrame frame = new JFrame();
             frame.setTitle("Frequent Users");
             frame.setSize(400, 600);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.setLocationRelativeTo(null); // Center the frame on the screen
             frame.setLayout(new BorderLayout());
             frame.add(new BestSellerItemsPanel());
