@@ -2,15 +2,20 @@ package org.example.controller;
 
 import org.example.model.*;
 
+import javax.sound.sampled.Line;
 import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class OrderController {
+    static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 
-    public static void addOrderToFile(Order order) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FilePath.getOrders(), true))) {
+    public static void addOrderToFile(Order order,String filePath) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
             writer.write(order.toString());
             writer.newLine();
             writer.write("--------------------------------------------------");
@@ -32,11 +37,17 @@ public class OrderController {
                     }
                     order = new Order();
                     int id = Integer.parseInt(line.split(":")[1].trim());
+                    order.setHighestID(Math.max(order.getHighestID(),id));
                     order.setID(id);
                 } else if (order != null) {
                     if (line.startsWith("Order Type:")) {
                         order.setOrderType(OrderType.valueOf(line.split(":")[1].trim()));
-                    } else if (line.startsWith("Address:")) {
+                    }
+                    else if (line.startsWith("Order Date:")) {
+                        String dateStr = line.split(":")[1].trim();
+                        order.setOrderDate(dateFormat.parse(dateStr));
+                    }
+                    else if (line.startsWith("Address:")) {
                         order.setAddress(line.split(":")[1].trim());
                     } else if (line.startsWith("Total Price:")) {
                         order.setPrice(Double.parseDouble(line.split(":")[1].trim().replace("$", "")));
@@ -67,8 +78,39 @@ public class OrderController {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
         }
         return orders;
     }
-
+    public static void addDateToDailyOrder(){
+        StringBuilder sb = new StringBuilder();
+        Date dayDate=new Date();
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FilePath.getDailyOrders(), true))) {
+            writer.write(String.valueOf(sb.append(dateFormat.format(dayDate)).append("\n")));
+        } catch (IOException e) {
+            System.err.println("Failed to write the Date to file: " + e.getMessage());
+        }
+    }
+    public static String getDateDailyOrder(){
+        String line = "";
+        try(BufferedReader reader=new BufferedReader(new FileReader(FilePath.getDailyOrders()))){
+            line=reader.readLine();
+        }
+        catch (IOException e){
+            System.out.println("failed to return daily date");
+        }
+        return line;
+    }
+    public static void clearFileContent(String filePath) {
+        File file = new File(filePath);
+        file.delete();
+        try {
+            if (file.createNewFile()) {
+                System.out.println("File content cleared successfully");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

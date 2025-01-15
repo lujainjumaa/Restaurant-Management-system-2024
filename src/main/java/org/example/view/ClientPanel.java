@@ -108,7 +108,7 @@ public class ClientPanel {
                         if (cartPanel != null) {
                             mf.remove(cartPanel);
                         }
-                        cartPanel = new CartPanel(order);
+                        cartPanel = new CartPanel(order,mf);
                         mf.add(cartPanel, BorderLayout.EAST);
 
                         newOrder = true;

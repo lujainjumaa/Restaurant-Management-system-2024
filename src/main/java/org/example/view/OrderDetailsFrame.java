@@ -2,6 +2,7 @@ package org.example.view;
 
 import org.example.controller.MenuController;
 import org.example.controller.OrderController;
+import org.example.model.*;
 import org.example.model.MenuItem;
 import org.example.model.Order;
 import org.example.model.OrderItem;
@@ -10,6 +11,7 @@ import org.example.model.OrderType;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Date;
 import java.util.List;
 
 public class OrderDetailsFrame extends JFrame {
@@ -19,12 +21,13 @@ public class OrderDetailsFrame extends JFrame {
     private JTextField tipField;
     private JComboBox<OrderType> typeComboBox;
     private List<OrderItem> orderItems;
-
+    private MenuFrame mf;
     private Order order;
 
-    public OrderDetailsFrame(Order order) {
+    public OrderDetailsFrame(Order order, MenuFrame mf) {
         this.order = order;
         this.orderItems=order.getOrderItems();
+        this.mf=mf;
         initializeFrame();
     }
 
@@ -120,13 +123,24 @@ public class OrderDetailsFrame extends JFrame {
             order.setTip(Double.parseDouble(tipField.getText()));
             order.setOrderType((OrderType) typeComboBox.getSelectedItem());
             order.setOrderItems(orderItems);
-            OrderController.addOrderToFile(order);
+            OrderController.addOrderToFile(order,FilePath.getOrders());
             order.getUser().setNumOfOrders(order.getUser().getNumOfOrders()+1);
             for(OrderItem OI : order.getOrderItems()){
                 MenuItem MI = MenuController.getMenuItemFromID(OI.getItemID());
                 MI.setNumOfOrders(MI.getNumOfOrders()+OI.getQuantity());
             }
+            OrderController.addOrderToFile(order, FilePath.getOrders());
+            if(OrderController.getDateDailyOrder().equals(Order.formatToLocalDate(new Date()))){
+                OrderController.addOrderToFile(order,FilePath.getDailyOrders());
+            }
+            else {
+                OrderController.clearFileContent(FilePath.getDailyOrders());
+                OrderController.addDateToDailyOrder();
+                OrderController.addOrderToFile(order,FilePath.getDailyOrders());
+            }
             order.getOrderItems().clear();
+            mf.reload();
+
             JOptionPane.showMessageDialog(this, "Order updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
             dispose();
         } catch (Exception e) {

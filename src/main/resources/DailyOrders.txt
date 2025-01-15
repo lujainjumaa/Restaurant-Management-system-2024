@@ -1,0 +1,14 @@
+2025-01-15
+Order Details:
+Order ID: 0
+Order Date: 2025-01-15
+Order Type: dineIn
+Address: H
+Total Price: $29.98
+Tip: $0.0
+Order Status: null
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=2}
+
+--------------------------------------------------

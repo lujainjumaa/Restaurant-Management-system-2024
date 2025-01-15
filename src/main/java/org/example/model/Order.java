@@ -1,9 +1,13 @@
 package org.example.model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class Order {
+    static int highestID;
     int ID;
     List<OrderItem> orderItems = new ArrayList<>();
     OrderType orderType;
@@ -11,10 +15,24 @@ public class Order {
     double price;
     double tip;
     OrderStatus orderStatus;
+    Date orderDate;
+
+public Order(){
+    ID=highestID;
+    orderDate=new Date();
+}
+    public void setHighestID(int highestID) {
+        this.highestID = highestID;
+    }
+
     User user;
 
+    public int getHighestID() {
+        return highestID;
+    }
+
     public void setID(int ID) {
-        this.ID = ID;
+        this.ID = ++highestID;
     }
     public int getID() {
         return ID;
@@ -26,10 +44,26 @@ public class Order {
     public List<OrderItem> getOrderItems() {
         return orderItems;
     }
+
+    public String getOrderDate() {
+        return formatToLocalDate(orderDate);
+    }
+
+    public static String formatToLocalDate(Date date) {
+        SimpleDateFormat localDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        return localDateFormat.format(date);
+    }
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
+    }
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
         sb.append("Order Details:\n");
-        sb.append("Order ID: ").append(ID).append("\n");
+        sb.append("Order ID: ").append(getID()).append("\n");
+        sb.append("Order Date: ").append(orderDate != null ? dateFormat.format(orderDate) : "N/A").append("\n");
         sb.append("Order Type: ").append(orderType).append("\n");
         sb.append("Address: ").append(address == null ? "N/A" : address).append("\n");
         sb.append("Total Price: $").append(price).append("\n");
