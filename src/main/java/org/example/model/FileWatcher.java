@@ -1,6 +1,7 @@
 package org.example.model;
 
 import org.example.view.MenuFrame;
+import org.example.view.RestaurantGreetingFrame;
 
 import java.io.IOException;
 import java.nio.file.*;
@@ -10,8 +11,7 @@ public class FileWatcher implements Runnable {
     private final Path directoryToWatch;
     private MenuFrame mf;
 
-    public FileWatcher(String filePath, MenuFrame mf) {
-        this.mf = mf;
+    public FileWatcher(String filePath) {
         this.fileToWatch = Paths.get(filePath); // The file to monitor
         this.directoryToWatch = fileToWatch.getParent(); // Get the directory containing the file
     }
@@ -43,7 +43,9 @@ public class FileWatcher implements Runnable {
                         if (kind == StandardWatchEventKinds.ENTRY_MODIFY) {
                             System.out.println("File modified: " + fileToWatch);
                             // Perform your custom action here
-                            mf.reload();
+                            for(MenuFrame mf : RestaurantGreetingFrame.getMfs()){
+                                mf.reload();
+                            }
                         }
                     }
                 }

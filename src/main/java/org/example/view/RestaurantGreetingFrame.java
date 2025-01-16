@@ -13,8 +13,20 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class RestaurantGreetingFrame extends JFrame {
+
+    static ArrayList<MenuFrame> mfs = new ArrayList<MenuFrame>();
+
+    public static ArrayList<MenuFrame> getMfs() {
+        return mfs;
+    }
+
+    public static void setMfs(ArrayList<MenuFrame> mfs) {
+        RestaurantGreetingFrame.mfs = mfs;
+    }
+
     public RestaurantGreetingFrame (){
         setTitle("Login");
         setSize(new Dimension(400, 350));
@@ -27,16 +39,17 @@ public class RestaurantGreetingFrame extends JFrame {
         seeTheMenuPanel.add(seeTheMenu);
         add(seeTheMenuPanel);
         setVisible(true);
+
+        Thread watcherThread = new Thread(new FileWatcher(FilePath.getDailyOrders()));
+        watcherThread.start();
+
         seeTheMenu.addActionListener(e -> {
             Thread t1 = new Thread(()->{
-                MenuController.loadMenu();
-                TypeController.loadTypes();
-                UserController.loadUsers();
-                OrderController.loadOrders();
-                OrderController.loadDailyOrders();
+
                 MenuFrame mf = new MenuFrame(new User("","", UserType.GUEST,0));
-                Thread watcherThread = new Thread(new FileWatcher(FilePath.getDailyOrders(),mf));
-                watcherThread.start();
+                mf.reload();
+
+                mfs.add(mf);
             });
             t1.start();
 

@@ -22,6 +22,13 @@ public class Main {
     public static void main(String[] args) {
 
         //System.out.println(date.getTime());
+
+        MenuController.loadMenu();
+        TypeController.loadTypes();
+        UserController.loadUsers();
+        OrderController.loadOrders();
+        OrderController.loadDailyOrders();
+
         new RestaurantGreetingFrame();
 
     }

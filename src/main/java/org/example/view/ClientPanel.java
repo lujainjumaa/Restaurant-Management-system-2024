@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class ClientPanel {
 
-    static boolean newOrder=false;
+    boolean newOrder=false;
     MenuFrame mf;
     Order order;
     CartPanel cartPanel;
@@ -96,40 +96,38 @@ public class ClientPanel {
         JButton addButton = new JButton("Add to Order");
         addButton.setPreferredSize(new Dimension(120, 30));
         addToOrderPanel.add(addButton);
-        addButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    int quantity = Integer.parseInt(quantityField.getText());
+        addButton.addActionListener(e -> {
+            try {
+                int quantity = Integer.parseInt(quantityField.getText());
 
-                    if (!newOrder) {
-                        order = new Order();
-                        order.setUser(user);
-                        if (cartPanel != null) {
-                            mf.remove(cartPanel);
-                        }
-                        cartPanel = new CartPanel(order,mf);
-                        mf.add(cartPanel, BorderLayout.EAST);
+                if (!newOrder) {
+                    order = new Order();
+                    order.setUser(user);
+                    if (cartPanel != null) {
+                        mf.remove(cartPanel);
+                    }
+                    cartPanel = new CartPanel(order,mf, this);
+                    mf.add(cartPanel, BorderLayout.EAST);
 
-                        newOrder = true;
-                    }
-                    int j=0;
-                    for (OrderItem orderItem : order.getOrderItems()) {
-                        if(orderItem.getItemID()==item.getID()){
-                            orderItem.setQuantity(orderItem.getQuantity()+quantity);
-                            j++;
-                        }
-                    }
-                    if(j==0){
-                        OrderItem orderItem = new OrderItem(item.getID(), quantity);
-                        order.addToOrderItems(orderItem);
-                    }
-                    mf.revalidate();
-                    mf.repaint();
-                    cartPanel.refreshCart();
-                } catch (NumberFormatException | ItemNotFoundException ex) {
-                    JOptionPane.showMessageDialog(panel, "Please enter a valid quantity.", "Error", JOptionPane.ERROR_MESSAGE);
+                    newOrder = true;
                 }
+                int j=0;
+                for (OrderItem orderItem : order.getOrderItems()) {
+                    if(orderItem.getItemID()==item.getID()){
+                        orderItem.setQuantity(orderItem.getQuantity()+quantity);
+                        j++;
+                    }
+                }
+                if(j==0){
+                    OrderItem orderItem = new OrderItem(item.getID(), quantity);
+                    order.addToOrderItems(orderItem);
+                }
+
+                mf.revalidate();
+                mf.repaint();
+                cartPanel.refreshCart();
+            } catch (NumberFormatException | ItemNotFoundException ex) {
+                JOptionPane.showMessageDialog(panel, "Please enter a valid quantity.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         });
 
@@ -139,8 +137,8 @@ public class ClientPanel {
 
         return panel;
     }
-    public static void setNewOrder(boolean newOrder) {
-        ClientPanel.newOrder = newOrder;
+    public void setNewOrder(boolean newOrder) {
+        this.newOrder = newOrder;
     }
 
 }

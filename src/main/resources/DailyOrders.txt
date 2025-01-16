@@ -83,55 +83,68 @@ Order Items:
 
 --------------------------------------------------
 Order Details:
-Order ID: 7
+Order ID: 24
 Order Date: 2025-01-16
 Order Type: delivery
-Address: bgfb
+Address: gergfre
+Total Price: $7.98
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=10, quantity=2}
+
+--------------------------------------------------
+Order Details:
+Order ID: 25
+Order Date: 2025-01-16
+Order Type: delivery
+Address: gergfre
+Total Price: $7.98
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+
+--------------------------------------------------
+Order Details:
+Order ID: 26
+Order Date: 2025-01-16
+Order Type: delivery
+Address: csdvds
+Total Price: $21.490000000000002
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+ - OrderItem{itemID=15, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 27
+Order Date: 2025-01-16
+Order Type: dineIn
+Address: dfbfdbf
+Total Price: $28.490000000000002
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=16, quantity=1}
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 28
+Order Date: 2025-01-16
+Order Type: dineIn
+Address: fvfdvdfv
 Total Price: $14.99
 Tip: $0.0
 Order Status: PENDING
 User: User{userName='Bishr', userType=CLIENT}
 Order Items:
  - OrderItem{itemID=13, quantity=1}
-
---------------------------------------------------
-Order Details:
-Order ID: 8
-Order Date: 2025-01-16
-Order Type: delivery
-Address: dfbf
-Total Price: $6.98
-Tip: $0.0
-Order Status: PENDING
-User: User{userName='Bishr', userType=CLIENT}
-Order Items:
- - OrderItem{itemID=11, quantity=2}
-
---------------------------------------------------
-Order Details:
-Order ID: 9
-Order Date: 2025-01-16
-Order Type: dineIn
-Address: bfgbrgb
-Total Price: $8.0
-Tip: $0.0
-Order Status: PENDING
-User: User{userName='Bishr', userType=CLIENT}
-Order Items:
- - OrderItem{itemID=21, quantity=2}
-
---------------------------------------------------
-Order Details:
-Order ID: 10
-Order Date: 2025-01-16
-Order Type: dineIn
-Address: fggtetg
-Total Price: $43.480000000000004
-Tip: $0.0
-Order Status: PENDING
-User: User{userName='Bishr', userType=CLIENT}
-Order Items:
- - OrderItem{itemID=13, quantity=2}
- - OrderItem{itemID=16, quantity=1}
 
 --------------------------------------------------

@@ -23,15 +23,17 @@ public class OrderDetailsFrame extends JFrame {
     private List<OrderItem> orderItems;
     private MenuFrame mf;
     private Order order;
+    private ClientPanel cp;
 
-    public OrderDetailsFrame(Order order, MenuFrame mf) {
+    public OrderDetailsFrame(Order order, MenuFrame mf, ClientPanel cp) {
+        this.cp = cp;
         this.order = order;
         this.orderItems=order.getOrderItems();
         this.mf=mf;
-        initializeFrame();
+        initializeFrame(cp);
     }
 
-    private void initializeFrame() {
+    private void initializeFrame(ClientPanel cp) {
         setTitle("Edit Order Details");
         setSize(500, 500);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -92,7 +94,7 @@ public class OrderDetailsFrame extends JFrame {
         saveButton.setPreferredSize(new Dimension(100, 30));
         saveButton.addActionListener(e -> {
             saveChanges();
-            ClientPanel.setNewOrder(false);
+            cp.setNewOrder(false);
         });
         buttonPanel.add(saveButton);
 

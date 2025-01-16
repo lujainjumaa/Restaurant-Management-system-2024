@@ -7,6 +7,8 @@ import org.example.model.MenuItem;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.util.List;
+import java.util.Map;
 
 public class MenuFrame extends JFrame {
     public User user;
@@ -29,7 +31,24 @@ public class MenuFrame extends JFrame {
 
 
     public void reload() {
+
+        for(Map.Entry<Integer, List<MenuItem>> entry: MenuController.getMenuItems().entrySet()){
+            int type_ID = entry.getKey();
+            List<MenuItem> items = entry.getValue();
+            for(MenuItem el_item : items){
+                System.out.println(el_item.getID());
+            }
+        }
         MenuController.loadMenu();
+        System.out.println(" --=--------- ");
+        for(Map.Entry<Integer, List<MenuItem>> entry: MenuController.getMenuItems().entrySet()){
+            int type_ID = entry.getKey();
+            List<MenuItem> items = entry.getValue();
+            for(MenuItem el_item : items){
+                System.out.println(el_item.getID());
+            }
+        }
+        System.out.println("DONEOENOENOENOENEOENOEN");
         getContentPane().removeAll();
 
         try {
