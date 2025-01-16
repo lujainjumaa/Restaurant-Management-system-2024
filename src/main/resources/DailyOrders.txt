@@ -1,40 +1,137 @@
 2025-01-16
 Order Details:
+Order ID: 1
+Order Date: 2025-01-16
+Order Type: dineIn
+Address: gverfvgr
+Total Price: $23.97
+Tip: $0.0
+Order Status: BEING_PREPARED
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+ - OrderItem{itemID=7, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 2
+Order Date: 2025-01-16
+Order Type: delivery
+Address: wefwefew
+Total Price: $28.490000000000002
+Tip: $0.0
+Order Status: BEING_PREPARED
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+ - OrderItem{itemID=16, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 3
+Order Date: 2025-01-16
+Order Type: delivery
+Address: asdd
+Total Price: $22.48
+Tip: $0.0
+Order Status: BEING_PREPARED
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=7, quantity=1}
+ - OrderItem{itemID=16, quantity=1}
+
+--------------------------------------------------
+Order Details:
 Order ID: 4
 Order Date: 2025-01-16
 Order Type: dineIn
-Address: lk
-Total Price: $14.99
+Address: csdd
+Total Price: $23.97
 Tip: $0.0
 Order Status: BEING_PREPARED
-User: User{userName='Hasan', userType=CLIENT}
+User: User{userName='Bishr', userType=CLIENT}
 Order Items:
  - OrderItem{itemID=13, quantity=1}
+ - OrderItem{itemID=7, quantity=1}
 
 --------------------------------------------------
 Order Details:
 Order ID: 5
 Order Date: 2025-01-16
 Order Type: dineIn
-Address: d
+Address: vfdsv
+Total Price: $28.490000000000002
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+ - OrderItem{itemID=16, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 6
+Order Date: 2025-01-16
+Order Type: dineIn
+Address: bfgb
 Total Price: $14.99
 Tip: $0.0
-Order Status: BEING_PREPARED
-User: User{userName='Hasan', userType=CLIENT}
+Order Status: PENDING
+User: User{userName='Bishr', userType=CLIENT}
 Order Items:
  - OrderItem{itemID=13, quantity=1}
 
 --------------------------------------------------
 Order Details:
-Order ID: 0
+Order ID: 7
 Order Date: 2025-01-16
-Order Type: dineIn
-Address: dd
+Order Type: delivery
+Address: bgfb
 Total Price: $14.99
 Tip: $0.0
-Order Status: BEING_PREPARED
-User: User{userName='Hasan', userType=CLIENT}
+Order Status: PENDING
+User: User{userName='Bishr', userType=CLIENT}
 Order Items:
  - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 8
+Order Date: 2025-01-16
+Order Type: delivery
+Address: dfbf
+Total Price: $6.98
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=11, quantity=2}
+
+--------------------------------------------------
+Order Details:
+Order ID: 9
+Order Date: 2025-01-16
+Order Type: dineIn
+Address: bfgbrgb
+Total Price: $8.0
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=21, quantity=2}
+
+--------------------------------------------------
+Order Details:
+Order ID: 10
+Order Date: 2025-01-16
+Order Type: dineIn
+Address: fggtetg
+Total Price: $43.480000000000004
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=2}
+ - OrderItem{itemID=16, quantity=1}
 
 --------------------------------------------------

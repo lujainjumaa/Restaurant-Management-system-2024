@@ -57,7 +57,7 @@ public class OrderController {
                     }
                     order = new Order();
                     int id = Integer.parseInt(line.split(":")[1].trim());
-                    order.setHighestID(Math.max(order.getHighestID(),id));
+                    Order.setHighestID(Math.max(Order.getHighestID(),id));
                     order.setID(id);
                 } else if (order != null) {
                     if (line.startsWith("Order Type:")) {
@@ -125,6 +125,7 @@ public class OrderController {
                     }
                     else if (line.startsWith("Order Date:")) {
                         String dateStr = line.split(":")[1].trim();
+                        System.out.println("order date : " + dateStr);
                         order.setOrderDate(dateFormat.parse(dateStr));
                     }
                     else if (line.startsWith("Address:")) {

@@ -1,16 +1,14 @@
 package org.example.view;
 
+import org.example.controller.MenuController;
 import org.example.controller.OrderController;
-import org.example.model.Order;
-import org.example.model.OrderItem;
-import org.example.model.OrderStatus;
-import org.example.model.OrderType;
+import org.example.model.*;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class EmployeePanel extends JPanel {
-    public EmployeePanel() {
+    public EmployeePanel() throws ItemNotFoundException {
         OrderController.loadDailyOrders();
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); // Arrange orders vertically
         for (Order order : OrderController.getDailyOrders()) {
@@ -20,7 +18,7 @@ public class EmployeePanel extends JPanel {
         setVisible(true);
     }
 
-    public static JPanel createOrderPanel(Order order) {
+    public static JPanel createOrderPanel(Order order) throws ItemNotFoundException {
         JPanel orderPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5); // Padding for elements
@@ -30,7 +28,7 @@ public class EmployeePanel extends JPanel {
         gbc.gridy = 0;
         gbc.weightx = 0.2;
         gbc.fill = GridBagConstraints.HORIZONTAL;
-        JLabel usernameLabel = new JLabel(order.getUser() != null ? order.getUser().toString() : "Guest");
+        JLabel usernameLabel = new JLabel(order.getUser().getUserName());
         usernameLabel.setFont(new Font("Arial", Font.BOLD, 14));
         usernameLabel.setHorizontalAlignment(SwingConstants.LEFT);
         orderPanel.add(usernameLabel, gbc);
@@ -41,7 +39,7 @@ public class EmployeePanel extends JPanel {
         JPanel itemsPanel = new JPanel();
         itemsPanel.setLayout(new BoxLayout(itemsPanel, BoxLayout.Y_AXIS));
         for (OrderItem item : order.getOrderItems()) {
-            itemsPanel.add(new JLabel(item.getQuantity() + "x Item " + item.getItemID()));
+            itemsPanel.add(new JLabel(item.getQuantity() + " -> " + MenuController.getMenuItemFromID(item.getItemID()).getName()));
         }
         orderPanel.add(itemsPanel, gbc);
 

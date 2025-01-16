@@ -1,8 +1,11 @@
 package org.example.view;
 
 import org.example.controller.MenuController;
+import org.example.controller.OrderController;
 import org.example.controller.TypeController;
 import org.example.controller.UserController;
+import org.example.model.FilePath;
+import org.example.model.FileWatcher;
 import org.example.model.User;
 import org.example.model.UserType;
 
@@ -26,12 +29,17 @@ public class RestaurantGreetingFrame extends JFrame {
         setVisible(true);
         seeTheMenu.addActionListener(e -> {
             Thread t1 = new Thread(()->{
-            MenuController.loadMenu();
-            TypeController.loadTypes();
-            UserController.loadUsers();
-            MenuFrame mf = new MenuFrame(new User("","", UserType.GUEST,0));
+                MenuController.loadMenu();
+                TypeController.loadTypes();
+                UserController.loadUsers();
+                OrderController.loadOrders();
+                OrderController.loadDailyOrders();
+                MenuFrame mf = new MenuFrame(new User("","", UserType.GUEST,0));
+                Thread watcherThread = new Thread(new FileWatcher(FilePath.getDailyOrders(),mf));
+                watcherThread.start();
             });
             t1.start();
+
         });
     }
 

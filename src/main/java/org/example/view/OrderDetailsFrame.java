@@ -123,17 +123,16 @@ public class OrderDetailsFrame extends JFrame {
             order.setTip(Double.parseDouble(tipField.getText()));
             order.setOrderType((OrderType) typeComboBox.getSelectedItem());
             order.setOrderItems(orderItems);
-            order.setOrderStatus(OrderStatus.BEING_PREPARED);
+            order.setOrderStatus(OrderStatus.PENDING);
+            order.setOrderDate(new Date());
+            Order.setHighestID(Order.getHighestID()+1);
+            order.setID(Order.getHighestID());
             OrderController.addOrderToFile(order,FilePath.getOrders());
-            OrderController.addOrderToFile(order, FilePath.getOrders());
-            if(OrderController.getDateDailyOrder().equals(Order.formatToLocalDate(new Date()))){
-                OrderController.addOrderToFile(order,FilePath.getDailyOrders());
-            }
-            else {
+            if(!OrderController.getDateDailyOrder().equals(Order.formatToLocalDate(new Date()))){
                 OrderController.clearFileContent(FilePath.getDailyOrders());
                 OrderController.addDateToDailyOrder();
-                OrderController.addOrderToFile(order,FilePath.getDailyOrders());
             }
+            OrderController.addOrderToFile(order,FilePath.getDailyOrders());
             order.getOrderItems().clear();
             mf.reload();
 

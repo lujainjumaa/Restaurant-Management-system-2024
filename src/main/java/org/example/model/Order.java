@@ -18,22 +18,18 @@ public class Order {
     Date orderDate;
 
 public Order(){
-    ID=highestID;
-    orderDate=new Date();
 }
-    public void setHighestID(int highestID) {
-        this.highestID = highestID;
+    public static void setHighestID(int highestID) {
+        Order.highestID = highestID;
     }
 
     User user;
 
-    public int getHighestID() {
+    public static int getHighestID() {
         return highestID;
     }
 
-    public void setID(int ID) {
-        this.ID = ++highestID;
-    }
+    public void setID(int ID) { this.ID = ID; }
     public int getID() {
         return ID;
     }
