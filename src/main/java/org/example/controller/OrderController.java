@@ -193,4 +193,18 @@ public class OrderController {
             e.printStackTrace();
         }
     }
+
+    public static double getDailyProfits(){
+        loadDailyOrders();
+        double dailyProfits = 0;
+        for(Order order:dailyOrders){
+            dailyProfits+=order.getPrice();
+        }
+        return dailyProfits;
+    }
+
+    public static int getNumOfDailyOrder(){
+        loadDailyOrders();;
+        return dailyOrders.size();
+    }
 }

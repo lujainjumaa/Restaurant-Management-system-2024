@@ -507,3 +507,81 @@ Order Items:
  - OrderItem{itemID=16, quantity=1}
 
 --------------------------------------------------
+Order Details:
+Order ID: 4
+Order Date: 2025-01-16
+Order Type: dineIn
+Address: lk
+Total Price: $14.99
+Tip: $0.0
+Order Status: BEING_PREPARED
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 4
+Order Date: 2025-01-16
+Order Type: dineIn
+Address: lk
+Total Price: $14.99
+Tip: $0.0
+Order Status: BEING_PREPARED
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 5
+Order Date: 2025-01-16
+Order Type: dineIn
+Address: d
+Total Price: $14.99
+Tip: $0.0
+Order Status: BEING_PREPARED
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 5
+Order Date: 2025-01-16
+Order Type: dineIn
+Address: d
+Total Price: $14.99
+Tip: $0.0
+Order Status: BEING_PREPARED
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 0
+Order Date: 2025-01-16
+Order Type: dineIn
+Address: dd
+Total Price: $14.99
+Tip: $0.0
+Order Status: BEING_PREPARED
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 0
+Order Date: 2025-01-16
+Order Type: dineIn
+Address: dd
+Total Price: $14.99
+Tip: $0.0
+Order Status: BEING_PREPARED
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
