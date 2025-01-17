@@ -4,10 +4,8 @@ import org.example.controller.MenuController;
 import org.example.controller.OrderController;
 import org.example.controller.TypeController;
 import org.example.controller.UserController;
-import org.example.model.FilePath;
+import org.example.model.*;
 //import org.example.model.FileWatcher;
-import org.example.model.User;
-import org.example.model.UserType;
 import org.example.view.MenuFrame;
 import org.example.view.RestaurantGreetingFrame;
 
@@ -21,7 +19,6 @@ import java.util.Date;
 public class Main {
     public static void main(String[] args) {
 
-        //System.out.println(date.getTime());
 
 
         MenuController.loadMenu();

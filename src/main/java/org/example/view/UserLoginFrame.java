@@ -16,7 +16,6 @@ public class UserLoginFrame extends JFrame {
     private JTextField usernameField;
     private JTextField passwordField;
     private JLabel errorLabel;
-    private JCheckBox isAdmin;
     private MenuFrame mf;
 
     public UserLoginFrame(MenuFrame mf) {
