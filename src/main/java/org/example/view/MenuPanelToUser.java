@@ -46,17 +46,17 @@ public class MenuPanelToUser extends JPanel {
         panel.setMinimumSize(new Dimension(200, 500));
         panel.setMaximumSize(new Dimension(200, 500));
 
-        JPanel a = new JPanel(new GridLayout());
-        a.add(new JLabel("bRUH"));
-        a.add(new JLabel("Wow"));
-        panel.add(a);
+//        JPanel a = new JPanel(new GridLayout());
+//        a.add(new JLabel("bRUH"));
+//        a.add(new JLabel("Wow"));
+//        panel.add(a);
 
         OrderController.loadDailyOrders();
         int conter = 0;
         for(Order order : OrderController.getDailyOrders()){
-            System.out.println("IN");
+//            System.out.println("IN");
             if(order.getUser().getUserName().equals(user.getUserName())){
-                System.out.println("in");
+//                System.out.println("in");
 
                 JPanel p = new JPanel(new GridLayout(1,2));
                 p.add(new JLabel(String.valueOf(++conter)));

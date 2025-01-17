@@ -63,3 +63,31 @@ Order Items:
  - OrderItem{itemID=13, quantity=1}
 
 --------------------------------------------------
+Order Details:
+Order ID: 6
+Order Date: 2025-01-18
+Order Type: dineIn
+Address: wfrf
+Total Price: $58.47
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=3}
+ - OrderItem{itemID=16, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 7
+Order Date: 2025-01-18
+Order Type: delivery
+Address: dfvevv
+Total Price: $18.990000000000002
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+ - OrderItem{itemID=21, quantity=1}
+
+--------------------------------------------------

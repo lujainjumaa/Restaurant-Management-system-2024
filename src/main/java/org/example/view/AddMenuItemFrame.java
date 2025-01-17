@@ -31,7 +31,7 @@ public class AddMenuItemFrame extends JFrame {
 
     private void initializeFrame() {
         setTitle(edit ? "Edit Menu Item" : "Add New Menu Item");
-        setSize(400, 350);
+        setSize(400, 390);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -54,12 +54,12 @@ public class AddMenuItemFrame extends JFrame {
     }
 
     private void addPathField(JPanel panel) {
-        JLabel pathLabel = new JLabel("Path:");
-        pathLabel.setBounds(20, 20, 100, 25);
+        JLabel pathLabel = new JLabel("Picture's Path:");
+        pathLabel.setBounds(20, 140, 100, 25);
         panel.add(pathLabel);
 
         pathField = new JTextField(edit ? item.getPath() : "");
-        pathField.setBounds(120, 20, 250, 25);
+        pathField.setBounds(120, 140, 250, 25);
         pathField.setBorder(new EmptyBorder(2, 2, 2, 2));
         panel.add(pathField);
     }
@@ -99,23 +99,23 @@ public class AddMenuItemFrame extends JFrame {
 
     private void addBestsellerCheckbox(JPanel panel) {
         JLabel bestsellerLabel = new JLabel("Is Bestseller:");
-        bestsellerLabel.setBounds(20, 140, 100, 25);
+        bestsellerLabel.setBounds(20, 180, 100, 25);
         panel.add(bestsellerLabel);
 
         bestsellerCheckBox = new JCheckBox();
-        bestsellerCheckBox.setBounds(120, 140, 25, 25);
+        bestsellerCheckBox.setBounds(120, 180, 25, 25);
         bestsellerCheckBox.setSelected(edit && item.isIs_bestseller());
         panel.add(bestsellerCheckBox);
     }
 
     private void addTypeComboBox(JPanel panel) {
         JLabel typeLabel = new JLabel("Type:");
-        typeLabel.setBounds(20, 180, 100, 25);
+        typeLabel.setBounds(20, 220, 100, 25);
         panel.add(typeLabel);
 
         typeComboBox = new JComboBox<>();
         populateTypeComboBox();
-        typeComboBox.setBounds(120, 180, 250, 25);
+        typeComboBox.setBounds(120, 220, 250, 25);
 
         if (edit) {
             try {
@@ -130,17 +130,17 @@ public class AddMenuItemFrame extends JFrame {
 
     private void addButtons(JPanel panel) {
         JButton addTypeButton = new JButton("Add New Type");
-        addTypeButton.setBounds(120, 220, 150, 25);
+        addTypeButton.setBounds(120, 260, 150, 25);
         addTypeButton.addActionListener(e -> addNewType());
         panel.add(addTypeButton);
 
         JButton saveButton = new JButton("Save");
-        saveButton.setBounds(120, 260, 100, 30);
+        saveButton.setBounds(120, 300, 100, 30);
         saveButton.addActionListener(e -> handleSave());
         panel.add(saveButton);
 
         JButton cancelButton = new JButton("Cancel");
-        cancelButton.setBounds(230, 260, 100, 30);
+        cancelButton.setBounds(230, 300, 100, 30);
         cancelButton.addActionListener(e -> dispose());
         panel.add(cancelButton);
     }

@@ -13,6 +13,7 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -70,93 +71,149 @@ public class ClientPanel {
             e.printStackTrace();
         }
 
+        image = makeRoundedCorner(image,80);
+
+        BufferedImage addImage = null;
+
+        //ImageIcon imageIcon = new ImageIcon("path/to/your/image.png");
+
+
+        Font nameFont = new Font("Segoe UI Semibold", Font.PLAIN, 23); // Change font name, style, and size as desired
         // Resize the image (adjust width as needed)
-        int newWidth = 150; // Example: Resize to 150 pixels wide
+        int newWidth = 200; // Example: Resize to 150 pixels wide
         int newHeight = (int) (image.getHeight() * ((double) newWidth / image.getWidth()));
         Image resizedImage = image.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
         ImageIcon imageIcon = new ImageIcon(resizedImage);
 
+
         // Create a JLabel for the image
         JLabel imageLabel = new JLabel(imageIcon);
-        imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        imageLabel.setBackground(new Color(19, 15, 11));
+        //imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        Dimension imageLabelsize = imageLabel.getPreferredSize();
+        imageLabel.setBounds(390, 20, imageLabelsize.width, imageLabelsize.height);
+        imageLabel.setBackground(new Color(255, 250, 255));
         imageLabel.setForeground(Color.WHITE);
+        imageLabel.setBorder(new RoundedBorder(20, Color.WHITE));
         // Create a JLabel for the description
+
+
+
+
+        JLabel nameLabel = new JLabel(item.getName());
+        nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        nameLabel.setFont(nameFont);
+        nameLabel.setForeground(new Color(51, 51, 51));
+        nameLabel.setBackground(new Color(255, 250, 255));
+
+        Dimension size = nameLabel.getPreferredSize();
+        nameLabel.setBounds(25, 40, size.width, size.height);
+        //nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+
 
         JLabel descriptionLabel = new JLabel(item.getDescription());
         descriptionLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        Font font = new Font("Segoe Script", Font.PLAIN, 14); // Change font name, style, and size as desired
+        Font font = new Font("Segoe UI Semibold", Font.PLAIN, 19); // Change font name, style, and size as desired
         descriptionLabel.setFont(font);
 
-        descriptionLabel.setBackground(new Color(19, 15, 11));
-        descriptionLabel.setForeground(Color.WHITE);
+        descriptionLabel.setBackground(new Color(255, 250, 255));
+        descriptionLabel.setForeground(new Color(126, 127, 131));
+        Dimension descriptionLabelsize = descriptionLabel.getPreferredSize();
+        descriptionLabel.setBounds(25, 70,descriptionLabelsize.width, descriptionLabelsize.height);
 
-        JLabel PriceLabel = new JLabel(String.valueOf(item.getPrice()));
+        // descriptionLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+
+
+
+
+        JLabel PriceLabel = new JLabel(item.getPrice() + "$");
         PriceLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        PriceLabel.setFont(nameFont);
+        Dimension PriceLabelsize = PriceLabel.getPreferredSize();
+        PriceLabel.setBounds(25, 110, PriceLabelsize.width, PriceLabelsize.height);
+        PriceLabel.setBackground(new Color(255, 250, 255));
+        PriceLabel.setForeground(new Color(51, 51, 51));
 
-        PriceLabel.setFont(font);
-
-        PriceLabel.setBackground(new Color(19, 15, 11));
-        PriceLabel.setForeground(Color.WHITE);
-
-        // Create a panel for the image
-        JPanel imagePanel = new JPanel(new BorderLayout());
-        imagePanel.add(imageLabel, BorderLayout.CENTER);
-        imagePanel.add(descriptionLabel, BorderLayout.SOUTH);
-        imagePanel.add(PriceLabel, BorderLayout.AFTER_LAST_LINE);
-        imagePanel.add(descriptionLabel, BorderLayout.BEFORE_FIRST_LINE);
-        imagePanel.setBackground(new Color(19, 15, 11));
-        imagePanel.setForeground(Color.WHITE);
 
         // Create order button
-        JButton orderButton = new JButton("Order");
-        orderButton.setBackground(new Color(19, 15, 11)); // Set button background to RGB(19, 15, 11)
-        orderButton.setForeground(Color.WHITE); // Set text color to white
-        orderButton.setBorderPainted(false); // Remove button border
+        JButton orderButton = new JButton("ADD");
+        orderButton.setBackground(new Color(255, 250, 255)); // Set button background to RGB(19, 15, 11)
+        orderButton.setForeground(new Color(215, 81, 132)); // Set text color to white
+//        orderButton.setOpaque(false);
+        orderButton.setFocusPainted(false);
+//        orderButton.setContentAreaFilled(false);
+        Dimension orderButtonsize = orderButton.getPreferredSize();
+        orderButton.setBounds(440, 200, 100, 40);
+        // orderButton.setBorder(new RoundedBorder(20, new Color(215, 81, 132))); // Remove button border
         orderButton.setFont(font);
+        //  orderButton.setBorder(BorderFactory.createLineBorder(new Color(215, 81, 132),2));
+        orderButton.setBorder(BorderFactory.createLineBorder(new Color(215, 81, 132),2, false));
+
+//        orderButton.toFront();
 
         // Create main panel with image and button stacked vertically
         JPanel mainPanel = new JPanel();
-        mainPanel.setBackground(new Color(19, 15, 11)); // Set background color to RGB(19, 15, 11)
-        mainPanel.add(imagePanel);
+        mainPanel.setLayout(null);
+        mainPanel.add(nameLabel);
+        mainPanel.setBackground(new Color(255, 250, 255)); // Set background color to RGB(19, 15, 11)
+        mainPanel.add(imageLabel);
         mainPanel.add(orderButton);
+        // mainPanel.add(descriptionNamePanel, BorderLayout.SOUTH);
+        mainPanel.add(PriceLabel);
+//        mainPanel.add(nameLabel);
+        mainPanel.add(descriptionLabel);
+//
+        //mainPanel.setLayout(null);
+        //mainPanel.add(descriptionLabel, BorderLayout.BEFORE_FIRST_LINE);
 
         // Set preferred size for the panel (adjust as needed)
-        mainPanel.setPreferredSize(new Dimension(1000, 250));
-//        orderButton.addActionListener(e -> {
-//            try {
-//                int quantity = Integer.parseInt(quantityField.getText());
+        mainPanel.setPreferredSize(new Dimension(600, 250));
+        mainPanel.setComponentZOrder(imageLabel, 1);
+        mainPanel.setComponentZOrder(orderButton, 0);
+//        mainPanel.add(imageLabel, "FIRST");
+//        mainPanel.add(orderButton, "SECOND");
+
+        // Create a panel for the image
+//        JPanel imagePanel = new JPanel(new BorderLayout());
+//        imagePanel.add(imageLabel, BorderLayout.CENTER);
 //
-//                if (!newOrder) {
-//                    order = new Order();
-//                    order.setUser(user);
-//                    if (cartPanel != null) {
-//                        mf.remove(cartPanel);
-//                    }
-//                    cartPanel = new CartPanel(order,mf, this);
-//                    mf.add(cartPanel, BorderLayout.EAST);
-//
-//                    newOrder = true;
-//                }
-//                int j=0;
-//                for (OrderItem orderItem : order.getOrderItems()) {
-//                    if(orderItem.getItemID()==item.getID()){
-//                        orderItem.setQuantity(orderItem.getQuantity()+quantity);
-//                        j++;
-//                    }
-//                }
-//                if(j==0){
-//                    OrderItem orderItem = new OrderItem(item.getID(), quantity);
-//                    order.addToOrderItems(orderItem);
-//                }
-//
-//                mf.revalidate();
-//                mf.repaint();
-//                cartPanel.refreshCart();
-//            } catch (NumberFormatException | ItemNotFoundException ex) {
-//                JOptionPane.showMessageDialog(panel, "Please enter a valid quantity.", "Error", JOptionPane.ERROR_MESSAGE);
-//            }
-//        });
+//        imagePanel.setBackground(new Color(255, 250, 255));
+//        imagePanel.setForeground(Color.WHITE);
+        orderButton.addActionListener(e -> {
+            try {
+
+                if (!newOrder) {
+                    order = new Order();
+                    order.setUser(user);
+                    if (cartPanel != null) {
+                        mf.remove(cartPanel);
+                    }
+                    cartPanel = new CartPanel(order,mf, this);
+                    mf.add(cartPanel, BorderLayout.EAST);
+
+                    newOrder = true;
+                }
+                int j=0;
+                for (OrderItem orderItem : order.getOrderItems()) {
+                    if(orderItem.getItemID()==item.getID()){
+                        orderItem.setQuantity(orderItem.getQuantity()+1);
+                        j++;
+                    }
+                }
+                if(j==0){
+                    OrderItem orderItem = new OrderItem(item.getID(), 1);
+                    order.addToOrderItems(orderItem);
+                }
+
+                mf.revalidate();
+                mf.repaint();
+                cartPanel.refreshCart();
+            } catch (NumberFormatException | ItemNotFoundException ex) {
+                JOptionPane.showMessageDialog(mainPanel, "Please enter a valid quantity.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        });
 
 
 //        panel.add(addToOrderPanel, gdb);
@@ -166,6 +223,32 @@ public class ClientPanel {
     }
     public void setNewOrder(boolean newOrder) {
         this.newOrder = newOrder;
+    }
+    public static BufferedImage makeRoundedCorner(BufferedImage image, int cornerRadius) {
+        int w = image.getWidth();
+        int h = image.getHeight();
+        BufferedImage output = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+
+        Graphics2D g2 = output.createGraphics();
+
+        // This is what we want, but it only does hard-clipping, i.e. aliasing
+        // g2.setClip(new RoundRectangle2D ...)
+
+        // so instead fake soft-clipping by first drawing the desired clip shape
+        // in fully opaque white with antialiasing enabled...
+        g2.setComposite(AlphaComposite.Src);
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2.setColor(Color.WHITE);
+        g2.fill(new RoundRectangle2D.Float(0, 0, w, h, cornerRadius, cornerRadius));
+
+        // ... then compositing the image on top,
+        // using the white shape from above as alpha source
+        g2.setComposite(AlphaComposite.SrcAtop);
+        g2.drawImage(image, 0, 0, null);
+
+        g2.dispose();
+
+        return output;
     }
 
 }
