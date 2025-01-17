@@ -6,6 +6,8 @@ import org.example.model.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class EmployeePanel extends JPanel {
     public EmployeePanel() throws ItemNotFoundException {
@@ -46,23 +48,55 @@ public class EmployeePanel extends JPanel {
         // Status combo box column
         gbc.gridx = 2;
         gbc.weightx = 0.3;
-        String[] statuses = getStatusesForOrderType(order.getOrderType());
-        JComboBox<String> statusComboBox = new JComboBox<>(statuses);
-        statusComboBox.setSelectedItem(order.getOrderStatus().toString());
-        orderPanel.add(statusComboBox, gbc);
+
+        JPanel btnPanel = new JPanel();
+        JToggleButton btnPending = new JToggleButton("PENDING");
+        JToggleButton btnBeingPrepared = new JToggleButton("BEING PREPARED");
+        JToggleButton btnOnTheWay = new JToggleButton("On The Way");
+        JToggleButton btnArrived = new JToggleButton("Arrived");
+        JToggleButton btnDone = new JToggleButton("Done");
+
+        ButtonGroup buttonGroup = new ButtonGroup();
+        buttonGroup.add(btnPending);
+        buttonGroup.add(btnBeingPrepared);
+        buttonGroup.add(btnOnTheWay);
+        buttonGroup.add(btnArrived);
+        buttonGroup.add(btnDone);
+
+        btnPending.addActionListener(e -> {
+            OrderController.updateOrderStatus(order.getID(), String.valueOf(OrderStatus.PENDING));
+        });
+        btnBeingPrepared.addActionListener(e -> {
+            OrderController.updateOrderStatus(order.getID(), String.valueOf(OrderStatus.BEING_PREPARED));
+        });
+        btnOnTheWay.addActionListener(e -> {
+            OrderController.updateOrderStatus(order.getID(), String.valueOf(OrderStatus.ON_THE_WAY));
+        });
+        btnArrived.addActionListener(e -> {
+            OrderController.updateOrderStatus(order.getID(), String.valueOf(OrderStatus.ARRIVED));
+        });
+        btnDone.addActionListener(e -> {
+            OrderController.updateOrderStatus(order.getID(), String.valueOf(OrderStatus.DONE));
+        });
+
+        btnPanel.add(btnPending);
+        btnPanel.add(btnBeingPrepared);
+
+        if (order.getOrderType() == OrderType.delivery) {
+
+            btnPanel.add(btnOnTheWay);
+            btnPanel.add(btnArrived);
+
+        } else if (order.getOrderType() == OrderType.dineIn) {
+
+            btnPanel.add(btnDone);
+        }
+        btnPending.setSelected(true);
+        orderPanel.add(btnPanel, gbc);
 
         // Border for better appearance
         orderPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 
         return orderPanel;
-    }
-
-    private static String[] getStatusesForOrderType(OrderType type) {
-        if (type == OrderType.delivery) {
-            return new String[]{"BEING_PREPARED", "ON_THE_WAY", "ARRIVED"};
-        } else if (type == OrderType.dineIn) {
-            return new String[]{"BEING_PREPARED", "DONE"};
-        }
-        return new String[]{};
     }
 }

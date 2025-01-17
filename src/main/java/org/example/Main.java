@@ -25,7 +25,7 @@ public class Main {
         UserController.loadUsers();
         OrderController.loadOrders();
         OrderController.loadDailyOrders();
-
+//        System.out.println(OrderController.getDailyOrders());
         new RestaurantGreetingFrame();
 
     }

@@ -1,6 +1,7 @@
 package org.example.view;
 
 import org.example.controller.MenuController;
+import org.example.controller.OrderController;
 import org.example.controller.TypeController;
 import org.example.model.*;
 import org.example.model.MenuItem;
@@ -50,6 +51,7 @@ public class ClientPanel {
                 mainPanel.add(itemPanel);
                 mainPanel.add(Box.createRigidArea(new Dimension(0, 10)));
             }
+
         }
         return mainPanel;
     }
