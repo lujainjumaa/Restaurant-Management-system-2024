@@ -135,6 +135,9 @@ public class OrderDetailsFrame extends JFrame {
                 OrderController.addDateToDailyOrder();
             }
             OrderController.addOrderToFile(order,FilePath.getDailyOrders());
+            for(MenuFrame mf : RestaurantGreetingFrame.getMfs()){
+                mf.reload();
+            }
             order.getOrderItems().clear();
             mf.reload();
 

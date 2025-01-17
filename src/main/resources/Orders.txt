@@ -356,3 +356,354 @@ Order Items:
  - OrderItem{itemID=13, quantity=1}
 
 --------------------------------------------------
+Order Details:
+Order ID: 29
+Order Date: 2025-01-17
+Order Type: dineIn
+Address: m
+Total Price: $14.99
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 30
+Order Date: 2025-01-17
+Order Type: dineIn
+Address: m
+Total Price: $14.99
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+
+--------------------------------------------------
+Order Details:
+Order ID: 31
+Order Date: 2025-01-17
+Order Type: delivery
+Address: ddd
+Total Price: $14.99
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 32
+Order Date: 2025-01-17
+Order Type: dineIn
+Address: dd
+Total Price: $14.99
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 33
+Order Date: 2025-01-17
+Order Type: dineIn
+Address: dd
+Total Price: $53.88
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=7, quantity=6}
+
+--------------------------------------------------
+Order Details:
+Order ID: 34
+Order Date: 2025-01-17
+Order Type: dineIn
+Address: gg
+Total Price: $8.98
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=7, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 35
+Order Date: 2025-01-17
+Order Type: delivery
+Address: ddd
+Total Price: $14.99
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 36
+Order Date: 2025-01-17
+Order Type: dineIn
+Address: cc
+Total Price: $14.99
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 37
+Order Date: 2025-01-17
+Order Type: dineIn
+Address: nm
+Total Price: $14.99
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 38
+Order Date: 2025-01-17
+Order Type: dineIn
+Address: cc
+Total Price: $14.99
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 39
+Order Date: 2025-01-17
+Order Type: dineIn
+Address: cc
+Total Price: $14.99
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 40
+Order Date: 2025-01-17
+Order Type: dineIn
+Address: cc
+Total Price: $14.99
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 41
+Order Date: 2025-01-17
+Order Type: delivery
+Address: dd
+Total Price: $101.82000000000001
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=2}
+ - OrderItem{itemID=7, quantity=8}
+
+--------------------------------------------------
+Order Details:
+Order ID: 42
+Order Date: 2025-01-17
+Order Type: dineIn
+Address: zz
+Total Price: $14.99
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 43
+Order Date: 2025-01-17
+Order Type: dineIn
+Address: dd
+Total Price: $14.99
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 44
+Order Date: 2025-01-17
+Order Type: dineIn
+Address: dd
+Total Price: $44.97
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=3}
+
+--------------------------------------------------
+Order Details:
+Order ID: 45
+Order Date: 2025-01-17
+Order Type: dineIn
+Address: cc
+Total Price: $29.98
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=2}
+
+--------------------------------------------------
+Order Details:
+Order ID: 46
+Order Date: 2025-01-17
+Order Type: dineIn
+Address: j,n
+Total Price: $74.95
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=5}
+
+--------------------------------------------------
+Order Details:
+Order ID: 47
+Order Date: 2025-01-17
+Order Type: dineIn
+Address: n
+Total Price: $14.99
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 48
+Order Date: 2025-01-17
+Order Type: dineIn
+Address: bhkg
+Total Price: $14.99
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 49
+Order Date: 2025-01-17
+Order Type: dineIn
+Address: bhkg
+Total Price: $14.99
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 50
+Order Date: 2025-01-17
+Order Type: delivery
+Address: jlkjn
+Total Price: $14.99
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 51
+Order Date: 2025-01-17
+Order Type: delivery
+Address: jknk,
+Total Price: $104.93
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=7}
+
+--------------------------------------------------
+Order Details:
+Order ID: 52
+Order Date: 2025-01-17
+Order Type: dineIn
+Address: s
+Total Price: $29.98
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=2}
+
+--------------------------------------------------
+Order Details:
+Order ID: 53
+Order Date: 2025-01-17
+Order Type: dineIn
+Address: c
+Total Price: $29.98
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=2}
+
+--------------------------------------------------
+Order Details:
+Order ID: 54
+Order Date: 2025-01-17
+Order Type: dineIn
+Address: .mkn.
+Total Price: $14.99
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 55
+Order Date: 2025-01-17
+Order Type: dineIn
+Address: cc
+Total Price: $74.95
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=5}
+
+--------------------------------------------------

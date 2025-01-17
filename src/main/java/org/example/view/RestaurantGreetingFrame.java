@@ -5,7 +5,7 @@ import org.example.controller.OrderController;
 import org.example.controller.TypeController;
 import org.example.controller.UserController;
 import org.example.model.FilePath;
-import org.example.model.FileWatcher;
+//import org.example.model.FileWatcher;
 import org.example.model.User;
 import org.example.model.UserType;
 
@@ -40,8 +40,8 @@ public class RestaurantGreetingFrame extends JFrame {
         add(seeTheMenuPanel);
         setVisible(true);
 
-        Thread watcherThread = new Thread(new FileWatcher(FilePath.getDailyOrders()));
-        watcherThread.start();
+//        Thread watcherThread = new Thread(new FileWatcher(FilePath.getDailyOrders()));
+//        watcherThread.start();
 
         seeTheMenu.addActionListener(e -> {
             Thread t1 = new Thread(()->{
