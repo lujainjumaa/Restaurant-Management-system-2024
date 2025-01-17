@@ -48,7 +48,6 @@ public class RestaurantGreetingFrame extends JFrame {
 
                 MenuFrame mf = new MenuFrame(new User("","", UserType.GUEST,0));
                 mf.reload();
-
                 mfs.add(mf);
             });
             t1.start();

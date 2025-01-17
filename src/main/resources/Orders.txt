@@ -11,3 +11,55 @@ Order Items:
  - OrderItem{itemID=13, quantity=1}
 
 --------------------------------------------------
+Order Details:
+Order ID: 2
+Order Date: 2025-01-17
+Order Type: dineIn
+Address: dd
+Total Price: $14.99
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 3
+Order Date: 2025-01-17
+Order Type: dineIn
+Address: cc
+Total Price: $14.99
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 4
+Order Date: 2025-01-17
+Order Type: dineIn
+Address: xxx
+Total Price: $14.99
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 5
+Order Date: 2025-01-17
+Order Type: dineIn
+Address: dd
+Total Price: $14.99
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Fatema', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------

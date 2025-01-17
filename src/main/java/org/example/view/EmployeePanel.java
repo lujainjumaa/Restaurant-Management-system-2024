@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class EmployeePanel extends JPanel {
     public EmployeePanel() throws ItemNotFoundException {
@@ -65,18 +66,38 @@ public class EmployeePanel extends JPanel {
 
         btnPending.addActionListener(e -> {
             OrderController.updateOrderStatus(order.getID(), String.valueOf(OrderStatus.PENDING));
+            for(MenuFrame mf : RestaurantGreetingFrame.getMfs()){
+                if(mf.getUser().getUserType() == UserType.EMPLOYEE || Objects.equals(mf.getUser().getUserName(), order.getUser().getUserName()))
+                    mf.reload();
+            }
         });
         btnBeingPrepared.addActionListener(e -> {
             OrderController.updateOrderStatus(order.getID(), String.valueOf(OrderStatus.BEING_PREPARED));
+            for(MenuFrame mf : RestaurantGreetingFrame.getMfs()){
+                if(mf.getUser().getUserType() == UserType.EMPLOYEE || Objects.equals(mf.getUser().getUserName(), order.getUser().getUserName()))
+                    mf.reload();
+            }
         });
         btnOnTheWay.addActionListener(e -> {
             OrderController.updateOrderStatus(order.getID(), String.valueOf(OrderStatus.ON_THE_WAY));
+            for(MenuFrame mf : RestaurantGreetingFrame.getMfs()){
+                if(mf.getUser().getUserType() == UserType.EMPLOYEE || Objects.equals(mf.getUser().getUserName(), order.getUser().getUserName()))
+                    mf.reload();
+            }
         });
         btnArrived.addActionListener(e -> {
             OrderController.updateOrderStatus(order.getID(), String.valueOf(OrderStatus.ARRIVED));
+            for(MenuFrame mf : RestaurantGreetingFrame.getMfs()){
+                if(mf.getUser().getUserType() == UserType.EMPLOYEE || Objects.equals(mf.getUser().getUserName(), order.getUser().getUserName()))
+                    mf.reload();
+            }
         });
         btnDone.addActionListener(e -> {
             OrderController.updateOrderStatus(order.getID(), String.valueOf(OrderStatus.DONE));
+            for(MenuFrame mf : RestaurantGreetingFrame.getMfs()){
+                if(mf.getUser().getUserType() == UserType.EMPLOYEE || Objects.equals(mf.getUser().getUserName(), order.getUser().getUserName()))
+                    mf.reload();
+            }
         });
 
         btnPanel.add(btnPending);
@@ -91,7 +112,21 @@ public class EmployeePanel extends JPanel {
 
             btnPanel.add(btnDone);
         }
-        btnPending.setSelected(true);
+        if(order.getOrderStatus()==OrderStatus.PENDING){
+            btnPending.setSelected(true);
+        }
+        if(order.getOrderStatus()==OrderStatus.DONE){
+            btnDone.setSelected(true);
+        }
+        if(order.getOrderStatus()==OrderStatus.ARRIVED){
+            btnArrived.setSelected(true);
+        }
+        if(order.getOrderStatus()==OrderStatus.ON_THE_WAY){
+            btnOnTheWay.setSelected(true);
+        }
+        if(order.getOrderStatus()==OrderStatus.BEING_PREPARED){
+            btnBeingPrepared.setSelected(true);
+        }
         orderPanel.add(btnPanel, gbc);
 
         // Border for better appearance
