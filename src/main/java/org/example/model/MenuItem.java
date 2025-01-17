@@ -29,7 +29,7 @@ public class MenuItem {
         this.path = path;
     }
 
-    public String getPath() {
+    public String getPath() {git
         return path;
     }
 
