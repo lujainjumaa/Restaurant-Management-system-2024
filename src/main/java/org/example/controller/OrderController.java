@@ -106,6 +106,10 @@ public class OrderController {
     public static void loadDailyOrders() {
 //        List<Order> orders = new ArrayList<>();
         dailyOrders.clear();
+        if(!OrderController.getDateDailyOrder().equals(Order.formatToLocalDate(new Date()))){
+            OrderController.clearFileContent(FilePath.getDailyOrders());
+            OrderController.addDateToDailyOrder();
+        }
         try (BufferedReader reader = new BufferedReader(new FileReader(FilePath.getDailyOrders()))) {
             String line = reader.readLine();
             Order order = null;
