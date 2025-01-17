@@ -4,6 +4,8 @@ import org.example.model.*;
 
 import javax.sound.sampled.Line;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -209,7 +211,41 @@ public class OrderController {
     }
 
     public static int getNumOfDailyOrder(){
-        loadDailyOrders();;
+        loadDailyOrders();
         return dailyOrders.size();
     }
+
+    public static void updateOrderStatus(int orderId, String newStatus) {
+        try {
+            loadDailyOrders();
+            boolean isOrderFound = false;
+            for (Order order : dailyOrders) {
+                if (order.getID() == orderId) {
+                    isOrderFound = true;
+                    try {
+                        order.setOrderStatus(OrderStatus.valueOf(newStatus));
+                    } catch (IllegalArgumentException e) {
+                        System.err.println("Invalid status" + newStatus);
+                        return;
+                    }
+                    break;
+                }
+            }
+            if (!isOrderFound) {
+                System.out.println(orderId + " not found");
+                return;
+            }
+            clearFileContent(FilePath.getDailyOrders());
+            addDateToDailyOrder();
+            for (Order order : dailyOrders) {
+                addOrderToFile(order, FilePath.getDailyOrders());
+            }
+            System.out.println(orderId+newStatus);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Failed to update order status " + e.getMessage());
+        }
+    }
+
+
 }
