@@ -59,7 +59,8 @@ public class MenuController {
                 String description = parts[4];
                 double price = Double.parseDouble(parts[5]);
                 boolean is_bestseller = Integer.parseInt(parts[6]) != 0;
-                MenuItem item = new MenuItem(id ,numOfOrders, type_ID, name, description, price, is_bestseller);
+                String path = parts[7];
+                MenuItem item = new MenuItem(id ,numOfOrders, type_ID, name, description, price, is_bestseller, path);
 
                 if (!menuItems.containsKey(type_ID)) {
                     menuItems.put(type_ID, new ArrayList<>());

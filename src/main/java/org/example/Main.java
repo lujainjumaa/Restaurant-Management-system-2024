@@ -23,12 +23,14 @@ public class Main {
 
         //System.out.println(date.getTime());
 
+
         MenuController.loadMenu();
         TypeController.loadTypes();
         UserController.loadUsers();
         OrderController.loadOrders();
         OrderController.loadDailyOrders();
 //        System.out.println(OrderController.getDailyOrders());
+        System.out.println(MenuController.getMenuItemsList());
         new RestaurantGreetingFrame();
 
     }

@@ -28,10 +28,10 @@ public class MenuFrame extends JFrame {
 
     private void initializeFrame() {
         setTitle("Restaurant Menu");
-        setSize(600, 600);
+        setSize(1000, 1000);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
-        setResizable(false);
+        setResizable(true);
         reload();
     }
 
@@ -82,7 +82,7 @@ public class MenuFrame extends JFrame {
         buttonPanel.add(viewFrequentCustomersButton,BorderLayout.EAST);
         Panel.add(buttonPanel);
         addNewItemButton.addActionListener(e -> {
-            AddMenuItemFrame newItem = new AddMenuItemFrame(new MenuItem(-1, 0, -1, "", "", 0, false), false, this);
+            AddMenuItemFrame newItem = new AddMenuItemFrame(new MenuItem(-1, 0, -1, "", "", 0, false,""), false, this);
         });
         viewFrequentCustomersButton.addActionListener(e -> {
             JFrame frame = new JFrame();

@@ -2,12 +2,15 @@ package org.example.model;
 
 import org.example.controller.MenuController;
 
+import javax.swing.*;
+
 public class MenuItem {
     int ID;
     int numOfOrders;
     int typeID;
     String name;
     String description;
+    String path;
 
     public int getTypeID() {
         return typeID;
@@ -15,7 +18,7 @@ public class MenuItem {
     double price;
     boolean is_bestseller;
 
-    public MenuItem(int ID, int numOfOrders, int typeID, String name, String description, double price, boolean is_bestseller) {
+    public MenuItem(int ID, int numOfOrders, int typeID, String name, String description, double price, boolean is_bestseller, String path) {
         this.ID = ID;
         this.numOfOrders = numOfOrders;
         this.typeID = typeID;
@@ -23,6 +26,15 @@ public class MenuItem {
         this.description = description;
         this.price = price;
         this.is_bestseller = is_bestseller;
+        this.path = path;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public int getNumOfOrders() {

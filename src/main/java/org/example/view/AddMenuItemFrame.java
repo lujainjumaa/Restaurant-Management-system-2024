@@ -14,6 +14,7 @@ public class AddMenuItemFrame extends JFrame {
     MenuFrame mf;
     private JTextField nameField;
     private JTextField descriptionField;
+    private JTextField pathField;
     private JTextField priceField;
     private JCheckBox bestsellerCheckBox;
     private JComboBox<String> typeComboBox;
@@ -44,11 +45,23 @@ public class AddMenuItemFrame extends JFrame {
         addNameField(panel);
         addDescriptionField(panel);
         addPriceField(panel);
+        addPathField(panel);
         addBestsellerCheckbox(panel);
         addTypeComboBox(panel);
         addButtons(panel);
 
         return panel;
+    }
+
+    private void addPathField(JPanel panel) {
+        JLabel pathLabel = new JLabel("Path:");
+        pathLabel.setBounds(20, 20, 100, 25);
+        panel.add(pathLabel);
+
+        pathField = new JTextField(edit ? item.getPath() : "");
+        pathField.setBounds(120, 20, 250, 25);
+        pathField.setBorder(new EmptyBorder(2, 2, 2, 2));
+        panel.add(pathField);
     }
 
     private void addNameField(JPanel panel) {
@@ -166,6 +179,7 @@ public class AddMenuItemFrame extends JFrame {
         try {
             String name = nameField.getText();
             String description = descriptionField.getText();
+            String path = pathField.getText();
             double price = Double.parseDouble(priceField.getText());
             boolean isBestseller = bestsellerCheckBox.isSelected();
             String selectedTypeName = (String) typeComboBox.getSelectedItem();
@@ -189,7 +203,7 @@ public class AddMenuItemFrame extends JFrame {
             }
 
             int newID = edit ? item.getID() : ++MenuController.highestId;
-            MenuItem newItem = new MenuItem(newID, 0, typeId, name, description, price, isBestseller);
+            MenuItem newItem = new MenuItem(newID, 0, typeId, name, description, price, isBestseller, path);
             MenuController.addMenuItemToFile(newItem, mf);
             JOptionPane.showMessageDialog(this, "Menu item added successfully!");
             dispose();
