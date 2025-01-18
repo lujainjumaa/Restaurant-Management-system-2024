@@ -73,10 +73,6 @@ public class ClientPanel {
 
         image = makeRoundedCorner(image,80);
 
-        BufferedImage addImage = null;
-
-        //ImageIcon imageIcon = new ImageIcon("path/to/your/image.png");
-
 
         Font nameFont = new Font("Segoe UI Semibold", Font.PLAIN, 23); // Change font name, style, and size as desired
         // Resize the image (adjust width as needed)

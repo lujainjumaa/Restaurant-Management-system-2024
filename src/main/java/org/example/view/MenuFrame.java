@@ -1,15 +1,12 @@
 package org.example.view;
 
 import org.example.controller.MenuController;
-import org.example.controller.OrderController;
 import org.example.model.*;
 import org.example.model.MenuItem;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class MenuFrame extends JFrame {
     public User user;
@@ -55,22 +52,28 @@ public class MenuFrame extends JFrame {
     }
 
     private void setupHeader() {
-        JPanel buttonPanel = new JPanel(new BorderLayout());
+        JPanel headerPanel = new JPanel(new BorderLayout());
         JLabel name = new JLabel(user.getUserName());
-        buttonPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
+        headerPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
 
         if (user.getUserType() == UserType.ADMIN) {
-            setupAdminHeader(buttonPanel, name);
+            setupAdminHeader(headerPanel, name);
         } else if (user.getUserType() == UserType.GUEST) {
-            setupGuestHeader(buttonPanel);
+            setupGuestHeader(headerPanel);
         } else if(user.getUserType() == UserType.CLIENT){
-            setupCustomerHeader(buttonPanel, name);
+            setupCustomerHeader(headerPanel, name);
         }else{
-            return;
+            setupEmployeeHeader(headerPanel,name);
         }
 
-        add(buttonPanel, BorderLayout.NORTH);
+        add(headerPanel, BorderLayout.NORTH);
+    }
+
+    private void setupEmployeeHeader(JPanel headerPanel, JLabel name) {
+
+        headerPanel.add(name, BorderLayout.WEST);
+
     }
 
     private void setupAdminHeader(JPanel Panel, JLabel name) {
