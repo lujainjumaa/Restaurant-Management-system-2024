@@ -90,11 +90,16 @@ public class MenuFrame extends JFrame {
         viewFrequentCustomersButton.addActionListener(e -> {
             JFrame frame = new JFrame();
             frame.setTitle("Frequent Users");
-            frame.setSize(600, 800);
+            frame.setSize(500, 600);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.setLocationRelativeTo(null);
 
+            frame.getContentPane().setBackground(new Color(255, 182, 193));
+
             JTabbedPane tabbedPane = new JTabbedPane();
+
+            UIManager.put("TabbedPane.background", new Color(255, 105, 180));
+            UIManager.put("TabbedPane.foreground", Color.WHITE);
 
             JScrollPane bestSellerScrollPane = new JScrollPane(new BestSellerItemsPanel());
             tabbedPane.addTab("Best Sellers", bestSellerScrollPane);
@@ -108,8 +113,9 @@ public class MenuFrame extends JFrame {
             JScrollPane dailyOrdersScrollPane = new JScrollPane(new DailyOrdersPanel());
             tabbedPane.addTab("Daily Orders", dailyOrdersScrollPane);
 
-            frame.add(tabbedPane, BorderLayout.CENTER);
+            tabbedPane.setBackground(new Color(255, 182, 193));
 
+            frame.add(tabbedPane, BorderLayout.CENTER);
             frame.setVisible(true);
         });
 
