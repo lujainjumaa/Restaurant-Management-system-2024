@@ -5,6 +5,8 @@ import org.example.model.User;
 import org.example.model.UserType;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserController {
 
@@ -40,12 +42,20 @@ public class UserController {
     public static void addUserToFile(User user){
         String filePath = FilePath.getAccounts();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+            int userTypeValue = -1;
+            if (user.getUserType() == UserType.ADMIN) {
+                userTypeValue = 1;
+            } else if (user.getUserType() == UserType.EMPLOYEE) {
+                userTypeValue = 2;
+            }else if(user.getUserType() == UserType.CLIENT){
+                userTypeValue=0;
+            }
             String line = String.format(
                     "%s,%s,%d,%d",
                     user.getUserName(),
                     user.getPassword(),
-                    0,
-                    0
+                    userTypeValue,
+                    user.getNumOfOrders()
             );
             writer.write(line);
             writer.newLine();
@@ -54,6 +64,23 @@ public class UserController {
 
         } catch (IOException e) {
             System.out.println("Error With The File....");
+            e.printStackTrace();
+        }
+    }
+    public static void removeUserFromFile(String username) {
+        List<User> updatedUsers = new ArrayList<>();
+        for (User user : User.getUsers()) {
+            if (!user.getUserName().equals(username)) {
+                updatedUsers.add(user);
+            }
+        }
+        String filePath = FilePath.getAccounts();
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            for (User user : updatedUsers) {
+                addUserToFile(user);
+            }
+        } catch (IOException e) {
+            System.out.println("filed to write remove user");
             e.printStackTrace();
         }
     }

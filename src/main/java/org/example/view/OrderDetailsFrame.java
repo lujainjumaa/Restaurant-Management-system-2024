@@ -151,7 +151,8 @@ public class OrderDetailsFrame extends JFrame {
             }
             order.getOrderItems().clear();
             mf.reload();
-
+            UserController.removeUserFromFile(mf.getUser().getUserName());
+            UserController.addUserToFile(mf.getUser());
             JOptionPane.showMessageDialog(this, "Order updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
             dispose();
         } catch (Exception e) {
