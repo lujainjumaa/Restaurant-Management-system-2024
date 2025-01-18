@@ -58,7 +58,7 @@ public class MenuController {
                 int type_ID = Integer.parseInt(parts[3]);
                 String description = parts[4];
                 double price = Double.parseDouble(parts[5]);
-                boolean is_bestseller = Integer.parseInt(parts[6]) != 0;
+                boolean is_bestseller = false;
                 String path = parts[7];
                 MenuItem item = new MenuItem(id ,numOfOrders, type_ID, name, description, price, is_bestseller, path);
 
@@ -69,8 +69,13 @@ public class MenuController {
                 menuItemsList.add(item);
                 menuItemsCounter++;
             }
-
-
+            int i = 5;
+            for(MenuItem MI : sortedMenuItemsList()){
+                if(i-->=0){
+                    MI.setIs_bestseller(true);
+                }else
+                    break;
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -79,14 +84,15 @@ public class MenuController {
         String filePath = FilePath.getMenuItems();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
             String line = String.format(
-                    "%d,%d,%s,%d,%s,%.2f,%d",
+                    "%d,%d,%s,%d,%s,%.2f,%d,%s",
                     item.getID(),
-                    0,
+                    item.getNumOfOrders(),
                     item.getName(),
                     item.getTypeID(),
                     item.getDescription(),
                     item.getPrice(),
-                    item.isIs_bestseller() ? 1 : 0
+                    item.isIs_bestseller() ? 1 : 0,
+                    item.getPath()
             );
             writer.write(line);
             writer.newLine();
@@ -107,7 +113,7 @@ public class MenuController {
         }
     }
 
-    public static void deleteMenuItemFromFile(int idToDelete, MenuFrame mf) {
+    public static void deleteMenuItemFromFile(int idToDelete, MenuFrame mf, boolean editItem) {
         String filePath = FilePath.getMenuItems();
         File inputFile = new File(filePath);
         File tempFile = new File("tempFile.txt");
@@ -137,7 +143,8 @@ public class MenuController {
         } else {
             System.err.println("Failed to delete the original file.");
         }
-        mf.reload();
+        if(!editItem)
+            mf.reload();
     }
 
     public int getTypeIDOfMenuItem(MenuItem item) throws ItemNotFoundException {
