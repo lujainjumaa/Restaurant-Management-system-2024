@@ -136,6 +136,15 @@ public class OrderDetailsFrame extends JFrame {
                 OrderController.addDateToDailyOrder();
             }
             OrderController.addOrderToFile(order,FilePath.getDailyOrders());
+
+            order.getUser().setNumOfOrders(order.getUser().getNumOfOrders()+1);
+            for(OrderItem OI : order.getOrderItems()){
+                MenuItem MI = MenuController.getMenuItemFromID(OI.getItemID());
+                MI.setNumOfOrders(MI.getNumOfOrders()+OI.getQuantity());
+                System.out.println("--->"+MI.getNumOfOrders());
+                MenuController.deleteMenuItemFromFile(OI.getItemID(), mf,true);
+                MenuController.addMenuItemToFile(MenuController.getMenuItemFromID(OI.getItemID()), mf);
+            }
             for(MenuFrame mf : RestaurantGreetingFrame.getMfs()){
                 if(mf.getUser().getUserType() == UserType.EMPLOYEE)
                     mf.reload();
@@ -143,15 +152,11 @@ public class OrderDetailsFrame extends JFrame {
             order.getOrderItems().clear();
             mf.reload();
 
-            order.getUser().setNumOfOrders(order.getUser().getNumOfOrders()+1);
-            for(OrderItem OI : order.getOrderItems()){
-                MenuItem MI = MenuController.getMenuItemFromID(OI.getItemID());
-                MI.setNumOfOrders(MI.getNumOfOrders()+OI.getQuantity());
-            }
-
             JOptionPane.showMessageDialog(this, "Order updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
             dispose();
         } catch (Exception e) {
+            e.getStackTrace();
+            System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(this, "Failed to save changes. Please check your inputs.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }

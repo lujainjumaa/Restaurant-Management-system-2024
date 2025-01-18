@@ -168,7 +168,7 @@ public class AddMenuItemFrame extends JFrame {
     private void handleSave() {
         try {
             if (edit) {
-                MenuController.deleteMenuItemFromFile(item.getID(), mf);
+                MenuController.deleteMenuItemFromFile(item.getID(), mf,false);
             }
             saveMenuItem();
         } catch (Exception e) {
@@ -204,7 +204,8 @@ public class AddMenuItemFrame extends JFrame {
             }
 
             int newID = edit ? item.getID() : ++MenuController.highestId;
-            MenuItem newItem = new MenuItem(newID, 0, typeId, name, description, price, isBestseller, path);
+            int numOfOrders = edit ? item.getNumOfOrders() : 0;
+            MenuItem newItem = new MenuItem(newID, numOfOrders, typeId, name, description, price, isBestseller, path);
             MenuController.addMenuItemToFile(newItem, mf);
             JOptionPane.showMessageDialog(this, "Menu item added successfully!");
             dispose();

@@ -122,3 +122,120 @@ Order Items:
  - OrderItem{itemID=16, quantity=1}
 
 --------------------------------------------------
+Order Details:
+Order ID: 9
+Order Date: 2025-01-18
+Order Type: delivery
+Address: ergegrg
+Total Price: $18.0
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=12, quantity=4}
+
+--------------------------------------------------
+Order Details:
+Order ID: 10
+Order Date: 2025-01-18
+Order Type: dineIn
+Address: sfewf
+Total Price: $18.0
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=12, quantity=4}
+
+--------------------------------------------------
+Order Details:
+Order ID: 11
+Order Date: 2025-01-18
+Order Type: delivery
+Address: d3d3
+Total Price: $18.0
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=12, quantity=4}
+
+--------------------------------------------------
+Order Details:
+Order ID: 12
+Order Date: 2025-01-18
+Order Type: delivery
+Address: cscdd
+Total Price: $18.0
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=12, quantity=4}
+
+--------------------------------------------------
+Order Details:
+Order ID: 13
+Order Date: 2025-01-18
+Order Type: delivery
+Address: hhbkh
+Total Price: $9.0
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=12, quantity=2}
+
+--------------------------------------------------
+Order Details:
+Order ID: 14
+Order Date: 2025-01-18
+Order Type: dineIn
+Address: dgbd
+Total Price: $9.0
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=12, quantity=2}
+
+--------------------------------------------------
+Order Details:
+Order ID: 15
+Order Date: 2025-01-18
+Order Type: dineIn
+Address: asasx
+Total Price: $13.5
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=12, quantity=3}
+
+--------------------------------------------------
+Order Details:
+Order ID: 16
+Order Date: 2025-01-18
+Order Type: delivery
+Address: fsfsedf
+Total Price: $13.5
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=12, quantity=3}
+
+--------------------------------------------------
+Order Details:
+Order ID: 17
+Order Date: 2025-01-18
+Order Type: delivery
+Address: vfvdfv
+Total Price: $13.5
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=12, quantity=3}
+
+--------------------------------------------------

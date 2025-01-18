@@ -5,12 +5,16 @@ import org.example.controller.TypeController;
 import org.example.model.MenuItem;
 import org.example.model.TypeNotFoundException;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -46,47 +50,135 @@ public class AdminPanel extends JPanel{
     }
 
     public JPanel createAdminItemPanel(MenuItem item) {
-        JPanel panel = new JPanel(new GridBagLayout());
-        panel.setBorder(BorderFactory.createCompoundBorder(new LineBorder(Color.LIGHT_GRAY, 2), new EmptyBorder(5, 5, 5, 5)));
-        panel.setBackground(new Color(0xF9F9F9));
-        panel.setMaximumSize(new Dimension(500, 100));
+        BufferedImage image = null;
+        String RESOURCES_PATH = "src/main/resources/Pictures/";
+        try {
+            image = ImageIO.read(new File(RESOURCES_PATH + item.getPath())); // Replace "hamburger.jpg" with your image file
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        GridBagConstraints gdb = new GridBagConstraints();
-        gdb.gridx = 0;
-        gdb.gridy = 0;
-        gdb.weightx = 1;
-        gdb.weighty = 1;
-        gdb.fill = GridBagConstraints.BOTH;
-        gdb.anchor = GridBagConstraints.LINE_START;
-        JPanel detailsPanel = new JPanel(new GridLayout(4, 1, 5, 5));
-        detailsPanel.setPreferredSize(new Dimension(370, 100));
-        detailsPanel.setMinimumSize(new Dimension(370, 100));
-        detailsPanel.setMaximumSize(new Dimension(370, 100));
-        detailsPanel.setBackground(new Color(0xF9F9F9));
-        detailsPanel.add(new JLabel("Name: " + item.getName()));
-        detailsPanel.add(new JLabel("Description: " + item.getDescription()));
-        detailsPanel.add(new JLabel("Price: $" + item.getPrice()));
-        detailsPanel.add(new JLabel(item.isIs_bestseller() ? "Bestseller" : "Regular Item"));
-        panel.add(detailsPanel, gdb);
+        image = ClientPanel.makeRoundedCorner(image,80);
 
-        gdb.gridx = GridBagConstraints.RELATIVE;
-        gdb.gridy = GridBagConstraints.RELATIVE;
-        gdb.weightx = 1;
-        gdb.weighty = 1;
-        gdb.fill = GridBagConstraints.VERTICAL;
-        gdb.anchor = GridBagConstraints.LINE_END;
 
-        JPanel buttonsPanel = new JPanel(new GridLayout(2, 1, 5, 5));
-        buttonsPanel.setPreferredSize(new Dimension(75, 100));
-        buttonsPanel.setMinimumSize(new Dimension(75, 100));
-        buttonsPanel.setMaximumSize(new Dimension(75, 100));
-        buttonsPanel.setBackground(new Color(0xF9F9F9));
-        JButton editButton = new JButton("Edit");
-        JButton deleteButton = new JButton("Delete");
+        Font nameFont = new Font("Segoe UI Semibold", Font.PLAIN, 23); // Change font name, style, and size as desired
+        // Resize the image (adjust width as needed)
+        int newWidth = 200; // Example: Resize to 150 pixels wide
+        int newHeight = (int) (image.getHeight() * ((double) newWidth / image.getWidth()));
+        Image resizedImage = image.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
+        ImageIcon imageIcon = new ImageIcon(resizedImage);
 
-        buttonsPanel.add(editButton);
-        buttonsPanel.add(deleteButton);
-        panel.add(buttonsPanel, gdb);
+
+        // Create a JLabel for the image
+        JLabel imageLabel = new JLabel(imageIcon);
+        //imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        Dimension imageLabelsize = imageLabel.getPreferredSize();
+        imageLabel.setBounds(390, 20, imageLabelsize.width, imageLabelsize.height);
+        imageLabel.setBackground(new Color(255, 250, 255));
+        imageLabel.setForeground(Color.WHITE);
+        imageLabel.setBorder(new RoundedBorder(20, Color.WHITE));
+        // Create a JLabel for the description
+
+
+
+
+        JLabel nameLabel = new JLabel(item.getName());
+        nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        nameLabel.setFont(nameFont);
+        nameLabel.setForeground(new Color(51, 51, 51));
+        nameLabel.setBackground(new Color(255, 250, 255));
+
+        Dimension size = nameLabel.getPreferredSize();
+        nameLabel.setBounds(25, 40, size.width, size.height);
+        //nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+
+
+        JLabel descriptionLabel = new JLabel(item.getDescription());
+        descriptionLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        Font font = new Font("Segoe UI Semibold", Font.PLAIN, 19); // Change font name, style, and size as desired
+        descriptionLabel.setFont(font);
+
+        descriptionLabel.setBackground(new Color(255, 250, 255));
+        descriptionLabel.setForeground(new Color(126, 127, 131));
+        Dimension descriptionLabelsize = descriptionLabel.getPreferredSize();
+        descriptionLabel.setBounds(25, 70,descriptionLabelsize.width, descriptionLabelsize.height);
+
+        // descriptionLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+
+
+
+
+        JLabel PriceLabel = new JLabel(item.getPrice() + "$");
+        PriceLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        PriceLabel.setFont(nameFont);
+        Dimension PriceLabelsize = PriceLabel.getPreferredSize();
+        PriceLabel.setBounds(25, 110, PriceLabelsize.width, PriceLabelsize.height);
+        PriceLabel.setBackground(new Color(255, 250, 255));
+        PriceLabel.setForeground(new Color(51, 51, 51));
+
+
+        // Create order button
+        JButton editButton = new JButton("EDIT");
+        editButton.setBackground(new Color(255, 250, 255)); // Set button background to RGB(19, 15, 11)
+        editButton.setForeground(new Color(215, 81, 132)); // Set text color to white
+//        orderButton.setOpaque(false);
+        editButton.setFocusPainted(false);
+//        orderButton.setContentAreaFilled(false);
+        Dimension orderButtonSize = editButton.getPreferredSize();
+        editButton.setBounds(415, 200, 70, 40);
+        // orderButton.setBorder(new RoundedBorder(20, new Color(215, 81, 132))); // Remove button border
+        editButton.setFont(font);
+        //  orderButton.setBorder(BorderFactory.createLineBorder(new Color(215, 81, 132),2));
+        editButton.setBorder(BorderFactory.createLineBorder(new Color(215, 81, 132),2, false));
+        JButton deleteButton = new JButton("DELETE");
+        deleteButton.setBackground(new Color(255, 250, 255)); // Set button background to RGB(19, 15, 11)
+        deleteButton.setForeground(new Color(215, 81, 132)); // Set text color to white
+//        orderButton.setOpaque(false);
+        deleteButton.setFocusPainted(false);
+//        orderButton.setContentAreaFilled(false);
+        Dimension deleteButtonSize = deleteButton.getPreferredSize();
+        deleteButton.setBounds(500, 200, 70, 40);
+        // orderButton.setBorder(new RoundedBorder(20, new Color(215, 81, 132))); // Remove button border
+        deleteButton.setFont(font);
+        //  orderButton.setBorder(BorderFactory.createLineBorder(new Color(215, 81, 132),2));
+        deleteButton.setBorder(BorderFactory.createLineBorder(new Color(215, 81, 132),2, false));
+
+//        orderButton.toFront();
+
+        // Create main panel with image and button stacked vertically
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(null);
+        mainPanel.add(nameLabel);
+        mainPanel.setBackground(new Color(255, 250, 255)); // Set background color to RGB(19, 15, 11)
+        mainPanel.add(imageLabel);
+        mainPanel.add(editButton);
+        mainPanel.add(deleteButton);
+        // mainPanel.add(descriptionNamePanel, BorderLayout.SOUTH);
+        mainPanel.add(PriceLabel);
+//        mainPanel.add(nameLabel);
+        mainPanel.add(descriptionLabel);
+//
+        //mainPanel.setLayout(null);
+        //mainPanel.add(descriptionLabel, BorderLayout.BEFORE_FIRST_LINE);
+
+        // Set preferred size for the panel (adjust as needed)
+        mainPanel.setPreferredSize(new Dimension(600, 250));
+        mainPanel.setComponentZOrder(imageLabel, 1);
+        mainPanel.setComponentZOrder(editButton, 0);
+        mainPanel.setComponentZOrder(deleteButton, 0);
+
+//        mainPanel.add(imageLabel, "FIRST");
+//        mainPanel.add(orderButton, "SECOND");
+
+        // Create a panel for the image
+//        JPanel imagePanel = new JPanel(new BorderLayout());
+//        imagePanel.add(imageLabel, BorderLayout.CENTER);
+//
+//        imagePanel.setBackground(new Color(255, 250, 255));
+//        imagePanel.setForeground(Color.WHITE);
 
         editButton.addActionListener(new ActionListener() {
             @Override
@@ -99,11 +191,11 @@ public class AdminPanel extends JPanel{
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MenuController.deleteMenuItemFromFile(item.getID(), mf);
+                MenuController.deleteMenuItemFromFile(item.getID(), mf,false);
             }
         });
 
-        return panel;
+        return mainPanel;
     }
 
 
