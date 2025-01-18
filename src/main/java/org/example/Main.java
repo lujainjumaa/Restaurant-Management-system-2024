@@ -56,7 +56,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-
+        System.setProperty("flatlaf.animation", "true");
         MenuController.loadMenu();
         TypeController.loadTypes();
         UserController.loadUsers();

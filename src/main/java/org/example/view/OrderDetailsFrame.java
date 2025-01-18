@@ -2,6 +2,7 @@ package org.example.view;
 
 import org.example.controller.MenuController;
 import org.example.controller.OrderController;
+import org.example.controller.UserController;
 import org.example.model.*;
 import org.example.model.MenuItem;
 import org.example.model.Order;
@@ -17,7 +18,7 @@ import java.util.List;
 public class OrderDetailsFrame extends JFrame {
 
     private JTextField addressField;
-    private JTextField priceField;
+    private JLabel priceField;
     private JTextField tipField;
     private JComboBox<OrderType> typeComboBox;
     private List<OrderItem> orderItems;
@@ -58,7 +59,7 @@ public class OrderDetailsFrame extends JFrame {
 
         // Price Field
         formPanel.add(new JLabel("Price:"));
-        priceField = new JTextField(String.valueOf(order.getPrice()));
+        priceField = new JLabel(String.valueOf(order.getPrice()));
         formPanel.add(priceField);
 
         // Tip Field
@@ -121,7 +122,7 @@ public class OrderDetailsFrame extends JFrame {
     private void saveChanges() {
         try {
             order.setAddress(addressField.getText());
-            order.setPrice(Double.parseDouble(priceField.getText()));
+//            order.setPrice(Double.parseDouble(priceField.getText()));
             order.setTip(Double.parseDouble(tipField.getText()));
             order.setOrderType((OrderType) typeComboBox.getSelectedItem());
             order.setOrderItems(orderItems);

@@ -54,6 +54,9 @@ public class CartPanel extends JPanel {
 
         // Scroll Pane
         JScrollPane scrollPane = new JScrollPane(itemsPanel);
+        JScrollBar verticalScrollBar = scrollPane.getVerticalScrollBar();
+        verticalScrollBar.setUnitIncrement(14);
+        verticalScrollBar.setBlockIncrement(90);
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         add(scrollPane, BorderLayout.CENTER);
 

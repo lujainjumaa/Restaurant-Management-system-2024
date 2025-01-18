@@ -90,14 +90,27 @@ public class MenuFrame extends JFrame {
         viewFrequentCustomersButton.addActionListener(e -> {
             JFrame frame = new JFrame();
             frame.setTitle("Frequent Users");
-            frame.setSize(400, 600);
+            frame.setSize(600, 800);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            frame.setLocationRelativeTo(null); // Center the frame on the screen
-            frame.setLayout(new BorderLayout());
-            frame.add(new BestSellerItemsPanel());
+            frame.setLocationRelativeTo(null);
+
+            JTabbedPane tabbedPane = new JTabbedPane();
+
+            JScrollPane bestSellerScrollPane = new JScrollPane(new BestSellerItemsPanel());
+            tabbedPane.addTab("Best Sellers", bestSellerScrollPane);
+
+            JScrollPane frequentUsersScrollPane = new JScrollPane(new FrequentUsersPanel());
+            tabbedPane.addTab("Frequent Users", frequentUsersScrollPane);
+
+            JScrollPane dailyProfitsScrollPane = new JScrollPane(new DailyProfitsPanel());
+            tabbedPane.addTab("Daily Profits", dailyProfitsScrollPane);
+
+            JScrollPane dailyOrdersScrollPane = new JScrollPane(new DailyOrdersPanel());
+            tabbedPane.addTab("Daily Orders", dailyOrdersScrollPane);
+
+            frame.add(tabbedPane, BorderLayout.CENTER);
+
             frame.setVisible(true);
-
-
         });
 
     }
@@ -126,6 +139,9 @@ public class MenuFrame extends JFrame {
     private void setupMenuContent(boolean viewOrdersON) throws TypeNotFoundException {
         menuPanelToUser = new MenuPanelToUser(user, this, viewOrdersON);
         JScrollPane scrollPane = new JScrollPane(menuPanelToUser);
+        JScrollBar verticalScrollBar = scrollPane.getVerticalScrollBar();
+        verticalScrollBar.setUnitIncrement(14);
+        verticalScrollBar.setBlockIncrement(90);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         setSize(900, 700);
         add(scrollPane, BorderLayout.CENTER);
