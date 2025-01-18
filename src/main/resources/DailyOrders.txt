@@ -20,7 +20,7 @@ Order Type: delivery
 Address: dfvevv
 Total Price: $18.990000000000002
 Tip: $0.0
-Order Status: ON_THE_WAY
+Order Status: ARRIVED
 User: User{userName='Bishr', userType=CLIENT}
 Order Items:
  - OrderItem{itemID=13, quantity=1}
@@ -34,7 +34,7 @@ Order Type: delivery
 Address: rhyyrf
 Total Price: $58.47
 Tip: $0.0
-Order Status: BEING_PREPARED
+Order Status: ARRIVED
 User: User{userName='Bishr', userType=CLIENT}
 Order Items:
  - OrderItem{itemID=13, quantity=3}
@@ -42,19 +42,93 @@ Order Items:
 
 --------------------------------------------------
 Order Details:
-Order ID: 8
+Order ID: 9
 Order Date: 2025-01-18
-Order Type: dineIn
-Address: ddd
-Total Price: $140.40000000000003
+Order Type: delivery
+Address: dd
+Total Price: $14.99
 Tip: $0.0
-Order Status: PENDING
+Order Status: ARRIVED
 User: User{userName='Hasan', userType=CLIENT}
 Order Items:
- - OrderItem{itemID=13, quantity=7}
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 10
+Order Date: 2025-01-18
+Order Type: dineIn
+Address: www
+Total Price: $14.99
+Tip: $0.0
+Order Status: DONE
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 11
+Order Date: 2025-01-18
+Order Type: delivery
+Address: aa
+Total Price: $108.91999999999999
+Tip: $0.0
+Order Status: ARRIVED
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
  - OrderItem{itemID=16, quantity=1}
  - OrderItem{itemID=7, quantity=1}
  - OrderItem{itemID=8, quantity=1}
  - OrderItem{itemID=11, quantity=1}
+ - OrderItem{itemID=14, quantity=1}
+ - OrderItem{itemID=17, quantity=1}
+ - OrderItem{itemID=21, quantity=1}
+ - OrderItem{itemID=9, quantity=1}
+ - OrderItem{itemID=18, quantity=1}
+ - OrderItem{itemID=20, quantity=1}
+ - OrderItem{itemID=10, quantity=1}
+ - OrderItem{itemID=12, quantity=1}
+ - OrderItem{itemID=19, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 12
+Order Date: 2025-01-18
+Order Type: delivery
+Address: dd
+Total Price: $14.99
+Tip: $0.0
+Order Status: ARRIVED
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 13
+Order Date: 2025-01-18
+Order Type: delivery
+Address: gg
+Total Price: $483.75
+Tip: $0.0
+Order Status: ARRIVED
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=19, quantity=129}
+
+--------------------------------------------------
+Order Details:
+Order ID: 14
+Order Date: 2025-01-18
+Order Type: delivery
+Address: سس
+Total Price: $26.25
+Tip: $0.0
+Order Status: ARRIVED
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=19, quantity=7}
 
 --------------------------------------------------

@@ -21,6 +21,9 @@ public class EmployeePanel extends JPanel {
         ordersPanel.setLayout(new BoxLayout(ordersPanel, BoxLayout.Y_AXIS));
 
         for (Order order : OrderController.getDailyOrders()) {
+            if(order.getOrderStatus().equals(OrderStatus.DONE) || order.getOrderStatus().equals(OrderStatus.ARRIVED)){
+                continue;
+            }
             ordersPanel.add(createOrderPanel(order));
             ordersPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Add spacing between orders
 

@@ -16,7 +16,6 @@ public class AddMenuItemFrame extends JFrame {
     private JTextField descriptionField;
     private JTextField pathField;
     private JTextField priceField;
-    private JCheckBox bestsellerCheckBox;
     private JComboBox<String> typeComboBox;
 
     public AddMenuItemFrame(MenuItem item, Boolean edit, MenuFrame mf) {
@@ -47,7 +46,6 @@ public class AddMenuItemFrame extends JFrame {
         addDescriptionField(panel);
         addPriceField(panel);
         addPathField(panel);
-        addBestsellerCheckbox(panel);
         addTypeComboBox(panel);
         addButtons(panel);
 
@@ -96,17 +94,6 @@ public class AddMenuItemFrame extends JFrame {
         priceField.setBounds(120, 100, 250, 25);
         priceField.setBorder(new EmptyBorder(2, 2, 2, 2));
         panel.add(priceField);
-    }
-
-    private void addBestsellerCheckbox(JPanel panel) {
-        JLabel bestsellerLabel = new JLabel("Is Bestseller:");
-        bestsellerLabel.setBounds(20, 180, 100, 25);
-        panel.add(bestsellerLabel);
-
-        bestsellerCheckBox = new JCheckBox();
-        bestsellerCheckBox.setBounds(120, 180, 25, 25);
-        bestsellerCheckBox.setSelected(edit && item.isIs_bestseller());
-        panel.add(bestsellerCheckBox);
     }
 
     private void addTypeComboBox(JPanel panel) {
@@ -182,7 +169,6 @@ public class AddMenuItemFrame extends JFrame {
             String description = descriptionField.getText();
             String path = pathField.getText();
             double price = Double.parseDouble(priceField.getText());
-            boolean isBestseller = bestsellerCheckBox.isSelected();
             String selectedTypeName = (String) typeComboBox.getSelectedItem();
 
             if (selectedTypeName == null || selectedTypeName.isEmpty()) {
@@ -204,7 +190,7 @@ public class AddMenuItemFrame extends JFrame {
             }
 
             int newID = edit ? item.getID() : ++MenuController.highestId;
-            MenuItem newItem = new MenuItem(newID, 0, typeId, name, description, price, isBestseller, path);
+            MenuItem newItem = new MenuItem(newID, 0, typeId, name, description, price, false, path);
             MenuController.addMenuItemToFile(newItem, mf);
             JOptionPane.showMessageDialog(this, "Menu item added successfully!");
             dispose();
