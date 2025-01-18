@@ -5,34 +5,47 @@ import org.example.controller.OrderController;
 import org.example.model.*;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Objects;
+
+import static javax.swing.BorderFactory.createLineBorder;
 
 public class EmployeePanel extends JPanel {
     public EmployeePanel() throws ItemNotFoundException {
         OrderController.loadDailyOrders();
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); // Arrange orders vertically
+
+        // Use a vertical box layout for orders
+        setLayout(new BorderLayout());
+        JPanel ordersPanel = new JPanel();
+        ordersPanel.setLayout(new BoxLayout(ordersPanel, BoxLayout.Y_AXIS));
+
         for (Order order : OrderController.getDailyOrders()) {
-            add(createOrderPanel(order));
-            add(Box.createRigidArea(new Dimension(0, 10))); // Add spacing between orders
+            ordersPanel.add(createOrderPanel(order));
+            ordersPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Add spacing between orders
+
         }
+        ordersPanel.setBorder(createLineBorder(new Color(126, 127, 131), 4));
+        JScrollPane scrollPane = new JScrollPane(ordersPanel);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        add(scrollPane, BorderLayout.CENTER);
         setVisible(true);
     }
 
     public static JPanel createOrderPanel(Order order) throws ItemNotFoundException {
         JPanel orderPanel = new JPanel(new GridBagLayout());
+        orderPanel.setBorder(BorderFactory.createCompoundBorder(new EmptyBorder(20,40,0,40),createLineBorder(Color.WHITE,5))); // Add border for clarity
+
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5); // Padding for elements
+        gbc.fill = GridBagConstraints.BOTH; // Fill the available space
 
         // Username column
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.weightx = 0.2;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
         JLabel usernameLabel = new JLabel(order.getUser().getUserName());
-        usernameLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        usernameLabel.setFont(UI.getNameFont());
         usernameLabel.setHorizontalAlignment(SwingConstants.LEFT);
         orderPanel.add(usernameLabel, gbc);
 
@@ -42,96 +55,88 @@ public class EmployeePanel extends JPanel {
         JPanel itemsPanel = new JPanel();
         itemsPanel.setLayout(new BoxLayout(itemsPanel, BoxLayout.Y_AXIS));
         for (OrderItem item : order.getOrderItems()) {
-            itemsPanel.add(new JLabel(item.getQuantity() + " -> " + MenuController.getMenuItemFromID(item.getItemID()).getName()));
+            JLabel orderItemLabel = new JLabel(item.getQuantity() + " -> " + MenuController.getMenuItemFromID(item.getItemID()).getName());
+            orderItemLabel.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 15));
+            itemsPanel.add(orderItemLabel);
         }
         orderPanel.add(itemsPanel, gbc);
 
-        // Status combo box column
+        // Buttons column
         gbc.gridx = 2;
         gbc.weightx = 0.3;
+        JPanel btnPanel = createButtonsPanel(order);
+        orderPanel.add(btnPanel, gbc);
 
-        JPanel btnPanel = new JPanel();
-        JToggleButton btnPending = new JToggleButton("PENDING");
-        JToggleButton btnBeingPrepared = new JToggleButton("BEING PREPARED");
-        JToggleButton btnOnTheWay = new JToggleButton("On The Way");
-        JToggleButton btnArrived = new JToggleButton("Arrived");
-        JToggleButton btnDone = new JToggleButton("Done");
+        return orderPanel;
+    }
 
+    private static JPanel createButtonsPanel(Order order) {
+        JPanel btnPanel = new JPanel(new GridLayout(0, 1, 5, 5)); // Buttons stacked vertically
         ButtonGroup buttonGroup = new ButtonGroup();
+
+        // Create buttons with consistent sizes
+        JToggleButton btnPending = createToggleButton("PENDING");
+        JToggleButton btnBeingPrepared = createToggleButton("BEING PREPARED");
+        JToggleButton btnOnTheWay = createToggleButton("ON THE WAY");
+        JToggleButton btnArrived = createToggleButton("ARRIVED");
+        JToggleButton btnDone = createToggleButton("DONE");
+
+        // Add buttons to the panel and group
         buttonGroup.add(btnPending);
-        buttonGroup.add(btnBeingPrepared);
-        buttonGroup.add(btnOnTheWay);
-        buttonGroup.add(btnArrived);
-        buttonGroup.add(btnDone);
-
-        btnPending.addActionListener(e -> {
-            OrderController.updateOrderStatus(order.getID(), String.valueOf(OrderStatus.PENDING));
-            for(MenuFrame mf : RestaurantGreetingFrame.getMfs()){
-                if(mf.getUser().getUserType() == UserType.EMPLOYEE || Objects.equals(mf.getUser().getUserName(), order.getUser().getUserName()))
-                    mf.reload();
-            }
-        });
-        btnBeingPrepared.addActionListener(e -> {
-            OrderController.updateOrderStatus(order.getID(), String.valueOf(OrderStatus.BEING_PREPARED));
-            for(MenuFrame mf : RestaurantGreetingFrame.getMfs()){
-                if(mf.getUser().getUserType() == UserType.EMPLOYEE || Objects.equals(mf.getUser().getUserName(), order.getUser().getUserName()))
-                    mf.reload();
-            }
-        });
-        btnOnTheWay.addActionListener(e -> {
-            OrderController.updateOrderStatus(order.getID(), String.valueOf(OrderStatus.ON_THE_WAY));
-            for(MenuFrame mf : RestaurantGreetingFrame.getMfs()){
-                if(mf.getUser().getUserType() == UserType.EMPLOYEE || Objects.equals(mf.getUser().getUserName(), order.getUser().getUserName()))
-                    mf.reload();
-            }
-        });
-        btnArrived.addActionListener(e -> {
-            OrderController.updateOrderStatus(order.getID(), String.valueOf(OrderStatus.ARRIVED));
-            for(MenuFrame mf : RestaurantGreetingFrame.getMfs()){
-                if(mf.getUser().getUserType() == UserType.EMPLOYEE || Objects.equals(mf.getUser().getUserName(), order.getUser().getUserName()))
-                    mf.reload();
-            }
-        });
-        btnDone.addActionListener(e -> {
-            OrderController.updateOrderStatus(order.getID(), String.valueOf(OrderStatus.DONE));
-            for(MenuFrame mf : RestaurantGreetingFrame.getMfs()){
-                if(mf.getUser().getUserType() == UserType.EMPLOYEE || Objects.equals(mf.getUser().getUserName(), order.getUser().getUserName()))
-                    mf.reload();
-            }
-        });
-
         btnPanel.add(btnPending);
+
+        buttonGroup.add(btnBeingPrepared);
         btnPanel.add(btnBeingPrepared);
 
         if (order.getOrderType() == OrderType.delivery) {
-
+            buttonGroup.add(btnOnTheWay);
             btnPanel.add(btnOnTheWay);
+
+            buttonGroup.add(btnArrived);
             btnPanel.add(btnArrived);
-
         } else if (order.getOrderType() == OrderType.dineIn) {
-
+            buttonGroup.add(btnDone);
             btnPanel.add(btnDone);
         }
-        if(order.getOrderStatus()==OrderStatus.PENDING){
-            btnPending.setSelected(true);
-        }
-        if(order.getOrderStatus()==OrderStatus.DONE){
-            btnDone.setSelected(true);
-        }
-        if(order.getOrderStatus()==OrderStatus.ARRIVED){
-            btnArrived.setSelected(true);
-        }
-        if(order.getOrderStatus()==OrderStatus.ON_THE_WAY){
-            btnOnTheWay.setSelected(true);
-        }
-        if(order.getOrderStatus()==OrderStatus.BEING_PREPARED){
-            btnBeingPrepared.setSelected(true);
-        }
-        orderPanel.add(btnPanel, gbc);
 
-        // Border for better appearance
-        orderPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        // Set initial selection
+        selectInitialStatusButton(order, btnPending, btnBeingPrepared, btnOnTheWay, btnArrived, btnDone);
 
-        return orderPanel;
+        // Add action listeners for buttons
+        addStatusButtonListeners(order, btnPending, btnBeingPrepared, btnOnTheWay, btnArrived, btnDone);
+
+        return btnPanel;
+    }
+
+    private static JToggleButton createToggleButton(String text) {
+        JToggleButton button = new JToggleButton(text);
+        button.setFont(new Font("Arial", Font.PLAIN, 12));
+        button.setBackground(new Color(255, 250, 255)); // Default background
+        button.setForeground(new Color(215, 81, 132)); // Default text color
+        button.setFocusPainted(false);
+        button.setBorder(createLineBorder(new Color(215, 81, 132), 2, false));
+        button.setPreferredSize(new Dimension(150, 30)); // Uniform size
+        return button;
+    }
+
+    private static void selectInitialStatusButton(Order order, JToggleButton btnPending, JToggleButton btnBeingPrepared, JToggleButton btnOnTheWay, JToggleButton btnArrived, JToggleButton btnDone) {
+        if (order.getOrderStatus() == OrderStatus.PENDING) btnPending.setSelected(true);
+        if (order.getOrderStatus() == OrderStatus.BEING_PREPARED) btnBeingPrepared.setSelected(true);
+        if (order.getOrderStatus() == OrderStatus.ON_THE_WAY) btnOnTheWay.setSelected(true);
+        if (order.getOrderStatus() == OrderStatus.ARRIVED) btnArrived.setSelected(true);
+        if (order.getOrderStatus() == OrderStatus.DONE) btnDone.setSelected(true);
+    }
+
+    private static void addStatusButtonListeners(Order order, JToggleButton... buttons) {
+        for (JToggleButton button : buttons) {
+            button.addActionListener(e -> {
+                OrderStatus status = OrderStatus.valueOf(button.getText().replace(" ", "_").toUpperCase());
+                OrderController.updateOrderStatus(order.getID(), String.valueOf(status));
+                for (MenuFrame mf : RestaurantGreetingFrame.getMfs()) {
+                    if (mf.getUser().getUserType() == UserType.EMPLOYEE || Objects.equals(mf.getUser().getUserName(), order.getUser().getUserName()))
+                        mf.reload();
+                }
+            });
+        }
     }
 }

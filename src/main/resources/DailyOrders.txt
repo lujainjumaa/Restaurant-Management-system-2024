@@ -6,7 +6,7 @@ Order Type: dineIn
 Address: wfrf
 Total Price: $58.47
 Tip: $0.0
-Order Status: PENDING
+Order Status: DONE
 User: User{userName='Bishr', userType=CLIENT}
 Order Items:
  - OrderItem{itemID=13, quantity=3}
@@ -20,7 +20,7 @@ Order Type: delivery
 Address: dfvevv
 Total Price: $18.990000000000002
 Tip: $0.0
-Order Status: PENDING
+Order Status: BEING_PREPARED
 User: User{userName='Bishr', userType=CLIENT}
 Order Items:
  - OrderItem{itemID=13, quantity=1}
