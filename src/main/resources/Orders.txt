@@ -91,3 +91,20 @@ Order Items:
  - OrderItem{itemID=21, quantity=1}
 
 --------------------------------------------------
+Order Details:
+Order ID: 8
+Order Date: 2025-01-18
+Order Type: dineIn
+Address: ddd
+Total Price: $140.40000000000003
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=7}
+ - OrderItem{itemID=16, quantity=1}
+ - OrderItem{itemID=7, quantity=1}
+ - OrderItem{itemID=8, quantity=1}
+ - OrderItem{itemID=11, quantity=1}
+
+--------------------------------------------------

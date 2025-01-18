@@ -206,8 +206,8 @@ public class ClientPanel {
                 mf.revalidate();
                 mf.repaint();
                 cartPanel.refreshCart();
-            } catch (NumberFormatException | ItemNotFoundException ex) {
-                JOptionPane.showMessageDialog(mainPanel, "Please enter a valid quantity.", "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (ItemNotFoundException ex) {
+                System.out.println(ex.getMessage());
             }
         });
 
