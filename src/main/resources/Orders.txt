@@ -193,3 +193,42 @@ Order Items:
  - OrderItem{itemID=13, quantity=1}
 
 --------------------------------------------------
+Order Details:
+Order ID: 30
+Order Date: 2025-01-19
+Order Type: delivery
+Address: qefnjkwje
+Total Price: $13.5
+Tip: $3.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=16, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 31
+Order Date: 2025-01-19
+Order Type: delivery
+Address: ss
+Total Price: $8.98
+Tip: $777.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=7, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 32
+Order Date: 2025-01-19
+Order Type: delivery
+Address: dd
+Total Price: $14.99
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------

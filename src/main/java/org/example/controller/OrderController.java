@@ -288,10 +288,12 @@ public class OrderController {
             System.err.println("Failed to update order status " + e.getMessage());
         }
     }
-    public static void cancelOrder(Order order){
+    public static boolean cancelOrder(Order order){
         if(order.getOrderStatus().equals(OrderStatus.PENDING)){
             deleteOrderById(order.getID());
+            return true;
         }
+        return false;
     }
     public static void deleteOrderById(int orderId) {
         try {

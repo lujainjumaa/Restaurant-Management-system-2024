@@ -97,7 +97,7 @@ Order Type: dineIn
 Address: N/A
 Total Price: $14.99
 Tip: $1.0
-Order Status: PENDING
+Order Status: BEING_PREPARED
 User: User{userName='ll', userType=CLIENT}
 Order Items:
  - OrderItem{itemID=13, quantity=1}
@@ -117,26 +117,26 @@ Order Items:
 
 --------------------------------------------------
 Order Details:
-Order ID: 28
+Order ID: 30
 Order Date: 2025-01-19
 Order Type: delivery
-Address: s
-Total Price: $8.98
-Tip: $1.0
-Order Status: PENDING
+Address: qefnjkwje
+Total Price: $13.5
+Tip: $3.0
+Order Status: ON_THE_WAY
 User: User{userName='Hasan', userType=CLIENT}
 Order Items:
- - OrderItem{itemID=7, quantity=1}
+ - OrderItem{itemID=16, quantity=1}
 
 --------------------------------------------------
 Order Details:
-Order ID: 29
+Order ID: 32
 Order Date: 2025-01-19
 Order Type: delivery
-Address: jj
+Address: dd
 Total Price: $14.99
 Tip: $0.0
-Order Status: PENDING
+Order Status: BEING_PREPARED
 User: User{userName='Hasan', userType=CLIENT}
 Order Items:
  - OrderItem{itemID=13, quantity=1}
