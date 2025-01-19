@@ -231,6 +231,26 @@ public class OrderController {
         }
         return dailyProfits;
     }
+    public static List<Double> calculateDailyProfitsForLastWeek() {
+        List<Double> dailyProfitsList = new ArrayList<>();
+        LocalDate currentDate = LocalDate.now();
+        loadOrders();
+
+        for (int i = 0; i < 7; i++) {
+            LocalDate targetDate = currentDate.minusDays(i);
+            double dailyProfit = 0;
+
+            for (Order order : orders) {
+                LocalDate orderDate = convertToLocalDate(order.getDate());
+                if (orderDate.isEqual(targetDate)) {
+                    dailyProfit += order.getPrice();
+                }
+            }
+            dailyProfitsList.add(dailyProfit);
+        }
+
+        return dailyProfitsList;
+    }
 
     public static int getNumOfDailyOrder(){
         loadDailyOrders();
@@ -268,6 +288,34 @@ public class OrderController {
             System.err.println("Failed to update order status " + e.getMessage());
         }
     }
-
-
+    public static boolean cancelOrder(Order order){
+        if(order.getOrderStatus().equals(OrderStatus.PENDING)){
+            deleteOrderById(order.getID());
+            return true;
+        }
+        return false;
+    }
+    public static void deleteOrderById(int orderId) {
+        try {
+            loadDailyOrders();
+            boolean isOrderFound = false;
+            for (Order order : dailyOrders) {
+                if (order.getID() == orderId) {
+                    isOrderFound = true;
+                    dailyOrders.remove(order);
+                    break;
+                }
+            }
+            if (isOrderFound) {
+                clearFileContent(FilePath.getDailyOrders());
+                addDateToDailyOrder();
+                for (Order order : dailyOrders) {
+                    addOrderToFile(order, FilePath.getDailyOrders());
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Failed to delete order: " + e.getMessage());
+        }
+    }
 }
