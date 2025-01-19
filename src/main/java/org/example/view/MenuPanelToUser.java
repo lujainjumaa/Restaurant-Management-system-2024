@@ -55,7 +55,7 @@ public class MenuPanelToUser extends JPanel {
         int conter = 0;
         for(Order order : OrderController.getDailyOrders()){
 //            System.out.println("IN");
-            if(order.getUser().getUserName().equals(user.getUserName()) && order.getOrderStatus()!=OrderStatus.ARRIVED && order.getOrderStatus()!=OrderStatus.DONE){
+            if(order.getUser().getUserName().equals(user.getUserName())){
 //                System.out.println("in");
 
                 JPanel p = new JPanel(new GridLayout(1,2));

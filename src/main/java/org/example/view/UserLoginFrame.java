@@ -14,7 +14,7 @@ import java.util.Objects;
 public class UserLoginFrame extends JFrame {
     private User user;
     private CustomTextField usernameField;
-    private CustomTextField passwordField;
+    private CustomPasswordField passwordField;
     private JLabel errorLabel;
     private MenuFrame mf;
 
@@ -76,7 +76,7 @@ public class UserLoginFrame extends JFrame {
         passwordPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
         JLabel passwordLabel = new JLabel("Password: ");
-        passwordField = new CustomTextField();
+        passwordField = new CustomPasswordField();
         passwordField.setBorder(BorderFactory.createCompoundBorder(
                 passwordField.getBorder(),
                 BorderFactory.createEmptyBorder(5, 5, 5, 5)));
