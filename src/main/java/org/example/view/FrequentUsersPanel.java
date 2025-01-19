@@ -1,6 +1,7 @@
 package org.example.view;
 
 import org.example.model.User;
+import org.example.model.UserType;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +14,8 @@ public class FrequentUsersPanel extends JPanel {
         setBackground(new Color(255, 255, 255));
 
         for (User user : User.sortedUsersList()) {
+            if(user.getUserType().equals(UserType.ADMIN) || user.getUserType().equals(UserType.EMPLOYEE))
+                continue;
             JPanel userPanel = new JPanel(new BorderLayout());
             userPanel.setBackground(Color.WHITE);
             userPanel.setBorder(BorderFactory.createCompoundBorder(

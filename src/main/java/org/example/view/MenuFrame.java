@@ -113,7 +113,7 @@ public class MenuFrame extends JFrame {
             ScrollBar2.setBlockIncrement(90);
             tabbedPane.addTab("Frequent Users", frequentUsersScrollPane);
 
-            JScrollPane dailyProfitsScrollPane = new JScrollPane(new DailyProfitsPanel());
+            JScrollPane dailyProfitsScrollPane = new JScrollPane(new DailyAndWeeklyProfitsPanel());
             tabbedPane.addTab("Daily Profits", dailyProfitsScrollPane);
 
             JScrollPane dailyOrdersScrollPane = new JScrollPane(new DailyOrdersPanel());

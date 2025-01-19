@@ -8,6 +8,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -200,12 +203,31 @@ public class OrderController {
             e.printStackTrace();
         }
     }
-
+    public static LocalDate convertToLocalDate(Date date) {
+        return date.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+    }
     public static double getDailyProfits(){
         loadDailyOrders();
         double dailyProfits = 0;
         for(Order order:dailyOrders){
             dailyProfits+=order.getPrice();
+        }
+        return dailyProfits;
+    }
+    public static double getWeeklyProfits(){
+        loadOrders();
+        double dailyProfits = 0;
+        LocalDate currentDate = convertToLocalDate(new Date());
+        for(Order order:orders){
+            System.out.println();
+            System.out.println(order);
+            LocalDate orderDate = convertToLocalDate(order.getDate());
+            if (ChronoUnit.DAYS.between(orderDate, currentDate) <= 7) {
+                System.out.println(orderDate+"order date");
+                dailyProfits += order.getPrice();
+            }
         }
         return dailyProfits;
     }

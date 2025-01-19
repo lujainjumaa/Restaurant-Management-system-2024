@@ -14,6 +14,7 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -67,8 +68,6 @@ public class Main {
         setGlobalButtonStyle();
 
 
-//        System.out.println(OrderController.getDailyOrders());
-        System.out.println(MenuController.getMenuItemsList());
         new RestaurantGreetingFrame();
 
     }

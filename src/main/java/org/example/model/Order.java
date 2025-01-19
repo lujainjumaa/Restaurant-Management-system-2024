@@ -33,7 +33,9 @@ public Order(){
     public int getID() {
         return ID;
     }
-
+    public Date getDate() {
+        return orderDate;
+    }
     public void addToOrderItems(OrderItem item){
         orderItems.add(item);
     }
@@ -44,6 +46,7 @@ public Order(){
     public String getOrderDate() {
         return formatToLocalDate(orderDate);
     }
+
 
 
     public static String formatToLocalDate(Date date) {
