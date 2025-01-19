@@ -1,7 +1,6 @@
 8,0,Grilled Chicken Salad,2,Fresh lettuce grilled chicken and a tangy vinaigrette,9.50,0,ham.png
 9,7,Mozzarella Sticks,3,Crispy fried mozzarella cheese sticks served with marinara sauce,5.99,1,mobile.jpg
 10,0,Chocolate Milkshake,4,Rich and creamy chocolate shake topped with whipped cream,3.99,0,summer-spritzes.jpg
-11,0,Garlic Bread,2,Toasted bread topped with garlic butter,3.49,0,mobile.jpg
 13,41,Chicken Alfredo,1,Pasta in creamy Alfredo sauce with grilled chicken,14.99,1,ham.png
 14,0,Vegetable Soup,2,Hearty and healthy soup with mixed vegetables,7.00,0,mobile.jpg
 15,0,Ice Cream Sundae,4,Vanilla ice cream topped with chocolate syrup and nuts,6.50,0,mobile.jpg
@@ -13,3 +12,4 @@
 7,9,Cheeseburger,1,Juicy beef patty with melted cheese,8.98,1,burger.jpg
 21,0,Tabboleh Salad,2,Salad with cilantro tomatoes and onions,4.00,0,summer-spritzes.jpg
 12,3,Large Cappuccino,4,Foamy and aromatic coffee,4.50,0,summer-spritzes.jpg
+11,2,Garlic Bread,2,Toasted bread topped with garlic butter,3.49,0,mobile.jpg

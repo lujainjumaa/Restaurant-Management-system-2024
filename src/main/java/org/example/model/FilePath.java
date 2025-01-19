@@ -1,6 +1,7 @@
 package org.example.model;
 
 public abstract class FilePath {
+    private static final String PIC_RESOURCES_PATH = "src/main/resources/Pictures/";
     private static final String RESOURCES_PATH = "src/main/resources/";
     private static final String menuItemsFilePath = RESOURCES_PATH + "MenuItemsFile.txt";
     private static final String typesAndIDs = RESOURCES_PATH + "TypesAndIDsOfItems.txt";
@@ -27,4 +28,9 @@ public abstract class FilePath {
     public static String getOrders() {
         return orders;
     }
+
+    public static String getPIC_RESOURCES_PATH() {
+        return PIC_RESOURCES_PATH;
+    }
+
 }
