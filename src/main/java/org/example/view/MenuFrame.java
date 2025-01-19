@@ -77,17 +77,29 @@ public class MenuFrame extends JFrame {
     }
 
     private void setupAdminHeader(JPanel Panel, JLabel name) {
-        JButton addNewItemButton = new JButton("Add New Menu Item");
-        JButton viewFrequentCustomersButton = new JButton("View Frequent Costumers");
+        JButton addNewItemButton = new JButton(" New Menu Item + ");
+        JButton moreButton = new JButton("More..");
         Panel.add(name, BorderLayout.WEST);
-        JPanel buttonPanel = new JPanel(new GridLayout(1,2, 100,30));
-        buttonPanel.add(addNewItemButton, BorderLayout.EAST);
-        buttonPanel.add(viewFrequentCustomersButton,BorderLayout.EAST);
-        Panel.add(buttonPanel);
+        JPanel buttonPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5); // Padding for elements
+        gbc.fill = GridBagConstraints.BOTH; // Fill the available space
+
+        // Username column
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 0.55;
+        buttonPanel.add(addNewItemButton,gbc);
+
+        gbc.gridx = 2;
+        gbc.weightx = 0.45;
+        buttonPanel.add(moreButton,gbc);
+
+        Panel.add(buttonPanel,BorderLayout.EAST);
         addNewItemButton.addActionListener(e -> {
             AddMenuItemFrame newItem = new AddMenuItemFrame(new MenuItem(-1, 0, -1, "", "", 0, false,""), false, this);
         });
-        viewFrequentCustomersButton.addActionListener(e -> {
+        moreButton.addActionListener(e -> {
             JFrame frame = new JFrame();
             frame.setTitle("Frequent Users");
             frame.setSize(500, 600);

@@ -37,3 +37,16 @@ Order Items:
  - OrderItem{itemID=13, quantity=1}
 
 --------------------------------------------------
+Order Details:
+Order ID: 18
+Order Date: 2025-01-19
+Order Type: delivery
+Address: gtg5g5g
+Total Price: $6.98
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=11, quantity=2}
+
+--------------------------------------------------

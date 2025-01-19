@@ -11,14 +11,19 @@ import org.example.model.OrderStatus;
 import org.example.model.OrderType;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.Date;
 import java.util.List;
+
+import static javax.swing.BorderFactory.createLineBorder;
 
 public class OrderDetailsFrame extends JFrame {
 
     private JTextField addressField;
-    private JLabel priceField;
+    private JLabel priceLabel;
     private JTextField tipField;
     private JComboBox<OrderType> typeComboBox;
     private List<OrderItem> orderItems;
@@ -32,82 +37,152 @@ public class OrderDetailsFrame extends JFrame {
         this.orderItems=order.getOrderItems();
         this.mf=mf;
         initializeFrame(cp);
+        setVisible(true);
     }
 
     private void initializeFrame(ClientPanel cp) {
-        setTitle("Edit Order Details");
-        setSize(500, 500);
+        setTitle("Complete Your Order");
+        setSize(500, 400);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
 
-        // Main Panel
         JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new BorderLayout(10, 10));
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        mainPanel.setBackground(Color.WHITE);
+        mainPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
 
-        // Form Panel
-        JPanel formPanel = new JPanel();
-        formPanel.setLayout(new GridLayout(6, 2, 10, 10));
-        formPanel.setBackground(Color.WHITE);
+        // Toggle Button Panel
+        JPanel btnPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
+        JToggleButton btnDelivery = createToggleButton("DELIVERY");
+        JToggleButton btnDineIn = createToggleButton("DINE IN");
 
-        // Address Field
-        formPanel.add(new JLabel("Address:"));
-        addressField = new JTextField(order.getAddress() != null ? order.getAddress() : "");
-        formPanel.add(addressField);
+        ButtonGroup buttonGroup = new ButtonGroup();
+        buttonGroup.add(btnDelivery);
+        buttonGroup.add(btnDineIn);
 
-        // Price Field
-        formPanel.add(new JLabel("Price:"));
-        priceField = new JLabel(String.valueOf(order.getPrice()));
-        formPanel.add(priceField);
+        btnPanel.add(btnDelivery);
+        btnPanel.add(btnDineIn);
 
-        // Tip Field
-        formPanel.add(new JLabel("Tip:"));
-        tipField = new JTextField(String.valueOf(order.getTip()));
-        formPanel.add(tipField);
+        // Address Panel (Field Only)
+        JPanel addressPanel = createAddressPanel();
+        addressPanel.setVisible(false); // Hidden by default
 
-        // Order Type
-        formPanel.add(new JLabel("Order Type:"));
-        typeComboBox = new JComboBox<>(OrderType.values());
-        typeComboBox.setSelectedItem(order.getOrderType());
-        formPanel.add(typeComboBox);
+        // Add ActionListeners for toggling visibility
+        btnDelivery.addActionListener(e -> addressPanel.setVisible(true));
+        btnDineIn.addActionListener(e -> addressPanel.setVisible(false));
 
-        // Order Items (Non-Editable Display)
-        formPanel.add(new JLabel("Order Items:"));
-        JTextArea orderItemsArea = new JTextArea();
-        orderItemsArea.setText(formatOrderItems(order.getOrderItems()));
-        orderItemsArea.setLineWrap(true);
-        orderItemsArea.setWrapStyleWord(true);
-        orderItemsArea.setEditable(false);
-        JScrollPane itemsScrollPane = new JScrollPane(orderItemsArea);
-        itemsScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        itemsScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-        formPanel.add(itemsScrollPane);
+        // Tip Panel
+        JPanel tipPanel = createTipPanel();
 
-        mainPanel.add(formPanel, BorderLayout.CENTER);
+        // Price Panel
+        JPanel pricePanel = createPricePanel();
 
-        // Button Panel
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        buttonPanel.setBackground(Color.WHITE);
+        // Place Order Button
+        JPanel buttonPanel = createPlaceOrderButton();
 
-        JButton saveButton = new JButton("Save");
-        saveButton.setPreferredSize(new Dimension(100, 30));
-        saveButton.addActionListener(e -> {
-            saveChanges();
-            cp.setNewOrder(false);
-        });
-        buttonPanel.add(saveButton);
-
-        JButton cancelButton = new JButton("Cancel");
-        cancelButton.setPreferredSize(new Dimension(100, 30));
-        cancelButton.addActionListener(e -> dispose());
-        buttonPanel.add(cancelButton);
-
-        mainPanel.add(buttonPanel, BorderLayout.SOUTH);
+        // Add Panels to Main Panel
+        mainPanel.add(btnPanel);
+        mainPanel.add(addressPanel);
+        mainPanel.add(tipPanel);
+        mainPanel.add(pricePanel);
+        mainPanel.add(buttonPanel);
 
         add(mainPanel);
     }
+    private JPanel createAddressPanel() {
+        JPanel addressPanel = new JPanel();
+        addressPanel.setBorder(new EmptyBorder(5, 0, 5, 0));
+
+        addressField = new JTextField("Enter your address...");
+        addressField.setPreferredSize(new Dimension(350, 40));
+        addressField.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(new Color(215, 81, 132), 1),
+                BorderFactory.createEmptyBorder(5, 5, 5, 5)
+        ));
+
+        // Placeholder functionality
+        addressField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (addressField.getText().equals("Enter your address...")) {
+                    addressField.setText("");
+                    addressField.setForeground(Color.BLACK);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (addressField.getText().isEmpty()) {
+                    addressField.setForeground(Color.GRAY);
+                    addressField.setText("Enter your address...");
+                }
+            }
+        });
+        addressField.setForeground(Color.GRAY);
+
+        addressPanel.add(addressField);
+        return addressPanel;
+    }
+
+    private JPanel createTipPanel() {
+        JPanel tipPanel = new JPanel();
+        tipPanel.setBorder(new EmptyBorder(5, 0, 5, 0));
+
+        JLabel tipLabel = new JLabel("Tip:");
+        tipField = new JTextField();
+        tipField.setPreferredSize(new Dimension(270, 25));
+        tipField.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(new Color(215, 81, 132), 1),
+                BorderFactory.createEmptyBorder(5, 5, 5, 5)
+        ));
+
+        tipPanel.add(tipLabel);
+        tipPanel.add(tipField);
+        return tipPanel;
+    }
+
+    private JPanel createPricePanel() {
+        JPanel pricePanel = new JPanel();
+        pricePanel.setBorder(new EmptyBorder(5, 0, 5, 0));
+
+        JLabel priceLabel = new JLabel("                Your Total: $" + order.getPrice() + "                      ");
+        priceLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        priceLabel.setForeground(new Color(51, 51, 51));
+
+        pricePanel.add(priceLabel);
+        return pricePanel;
+    }
+
+    private JPanel createPlaceOrderButton() {
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setBorder(new EmptyBorder(10, 0, 0, 0));
+
+        JButton placeOrderButton = new JButton("PLACE ORDER");
+        placeOrderButton.setFont(new Font("Arial", Font.BOLD, 14));
+        placeOrderButton.setBackground(new Color(215, 81, 132));
+        placeOrderButton.setForeground(Color.WHITE);
+        placeOrderButton.setFocusPainted(false);
+        placeOrderButton.setPreferredSize(new Dimension(150, 40));
+
+        placeOrderButton.addActionListener(e -> {
+            saveChanges();
+            cp.setNewOrder(false);
+        });
+
+        buttonPanel.add(placeOrderButton);
+        return buttonPanel;
+    }
+
+    private static JToggleButton createToggleButton(String text) {
+        JToggleButton button = new JToggleButton(text);
+        button.setFont(new Font("Arial", Font.PLAIN, 14));
+        button.setBackground(new Color(245, 245, 245));
+        button.setForeground(new Color(215, 81, 132));
+        button.setFocusPainted(false);
+        button.setBorder(BorderFactory.createLineBorder(new Color(215, 81, 132), 2));
+        button.setPreferredSize(new Dimension(150, 40));
+        return button;
+    }
+
 
     private String formatOrderItems(List<OrderItem> orderItems) {
         StringBuilder sb = new StringBuilder();
