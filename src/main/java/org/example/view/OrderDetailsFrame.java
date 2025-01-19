@@ -61,7 +61,6 @@ public class OrderDetailsFrame extends JFrame {
 
         btnPanel.add(btnDelivery);
         btnPanel.add(btnDineIn);
-
         JPanel addressPanel = createAddressPanel();
         addressPanel.setVisible(false);
 
