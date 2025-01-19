@@ -16,7 +16,7 @@ public class User {
         this.password = password;
         this.userType = userType;
         this.NumOfOrders = numOfOrders;
-        this.NumOfOrders = 0;
+//        this.NumOfOrders = 0;
     }
 
     public int getNumOfOrders() {

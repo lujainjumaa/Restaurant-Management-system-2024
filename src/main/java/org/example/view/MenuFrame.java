@@ -114,9 +114,15 @@ public class MenuFrame extends JFrame {
             UIManager.put("TabbedPane.foreground", Color.WHITE);
 
             JScrollPane bestSellerScrollPane = new JScrollPane(new BestSellerItemsPanel());
+            JScrollBar ScrollBar1 = bestSellerScrollPane.getVerticalScrollBar();
+            ScrollBar1.setUnitIncrement(14);
+            ScrollBar1.setBlockIncrement(90);
             tabbedPane.addTab("Best Sellers", bestSellerScrollPane);
 
             JScrollPane frequentUsersScrollPane = new JScrollPane(new FrequentUsersPanel());
+            JScrollBar ScrollBar2 = frequentUsersScrollPane.getVerticalScrollBar();
+            ScrollBar2.setUnitIncrement(14);
+            ScrollBar2.setBlockIncrement(90);
             tabbedPane.addTab("Frequent Users", frequentUsersScrollPane);
 
             JScrollPane dailyProfitsScrollPane = new JScrollPane(new DailyProfitsPanel());

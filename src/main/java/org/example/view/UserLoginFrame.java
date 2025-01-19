@@ -13,8 +13,8 @@ import java.util.Objects;
 
 public class UserLoginFrame extends JFrame {
     private User user;
-    private JTextField usernameField;
-    private JTextField passwordField;
+    private CustomTextField usernameField;
+    private CustomTextField passwordField;
     private JLabel errorLabel;
     private MenuFrame mf;
 
@@ -28,7 +28,7 @@ public class UserLoginFrame extends JFrame {
 
     private void initializeFrame() {
         setTitle("Login");
-        setSize(new Dimension(400, 350));
+        setSize(new Dimension(420, 430));
         setLayout(new BorderLayout());
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -59,7 +59,8 @@ public class UserLoginFrame extends JFrame {
         userNamePanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
         JLabel usernameLabel = new JLabel("Username: ");
-        usernameField = new JTextField();
+        usernameField = new CustomTextField();
+
         usernameField.setBorder(BorderFactory.createCompoundBorder(
                 usernameField.getBorder(),
                 BorderFactory.createEmptyBorder(5, 5, 5, 5)));
@@ -75,7 +76,7 @@ public class UserLoginFrame extends JFrame {
         passwordPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
         JLabel passwordLabel = new JLabel("Password: ");
-        passwordField = new JTextField();
+        passwordField = new CustomTextField();
         passwordField.setBorder(BorderFactory.createCompoundBorder(
                 passwordField.getBorder(),
                 BorderFactory.createEmptyBorder(5, 5, 5, 5)));

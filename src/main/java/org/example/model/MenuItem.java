@@ -11,12 +11,12 @@ public class MenuItem {
     String name;
     String description;
     String path;
+    double price;
+    boolean is_bestseller;
 
     public int getTypeID() {
         return typeID;
     }
-    double price;
-    boolean is_bestseller;
 
     public MenuItem(int ID, int numOfOrders, int typeID, String name, String description, double price, boolean is_bestseller, String path) {
         this.ID = ID;
