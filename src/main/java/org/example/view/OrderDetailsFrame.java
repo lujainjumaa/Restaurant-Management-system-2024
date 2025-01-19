@@ -62,13 +62,17 @@ public class OrderDetailsFrame extends JFrame {
         btnPanel.add(btnDelivery);
         btnPanel.add(btnDineIn);
 
-        // Address Panel (Field Only)
         JPanel addressPanel = createAddressPanel();
-        addressPanel.setVisible(false); // Hidden by default
+        addressPanel.setVisible(false);
 
-        // Add ActionListeners for toggling visibility
-        btnDelivery.addActionListener(e -> addressPanel.setVisible(true));
-        btnDineIn.addActionListener(e -> addressPanel.setVisible(false));
+        btnDelivery.addActionListener(e -> {
+            addressPanel.setVisible(true);
+            order.setOrderType(OrderType.delivery);
+    });
+        btnDineIn.addActionListener(e -> {
+            addressPanel.setVisible(false);
+            order.setOrderType(OrderType.dineIn);
+        });
 
         // Tip Panel
         JPanel tipPanel = createTipPanel();
@@ -164,7 +168,7 @@ public class OrderDetailsFrame extends JFrame {
         placeOrderButton.setPreferredSize(new Dimension(150, 40));
 
         placeOrderButton.addActionListener(e -> {
-            saveChanges();
+            placeOrder();
             cp.setNewOrder(false);
         });
 
@@ -194,12 +198,14 @@ public class OrderDetailsFrame extends JFrame {
         return sb.toString();
     }
 
-    private void saveChanges() {
+    private void placeOrder() {
         try {
-            order.setAddress(addressField.getText());
+            if(order.getOrderType().equals(OrderType.delivery)){
+                order.setAddress(addressField.getText());
+            }
 //            order.setPrice(Double.parseDouble(priceField.getText()));
             order.setTip(Double.parseDouble(tipField.getText()));
-            order.setOrderType((OrderType) typeComboBox.getSelectedItem());
+//            order.setOrderType((OrderType) typeComboBox.getSelectedItem());
             order.setOrderItems(orderItems);
             order.setOrderStatus(OrderStatus.PENDING);
             order.setOrderDate(new Date());

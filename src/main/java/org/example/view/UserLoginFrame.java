@@ -170,8 +170,10 @@ public class UserLoginFrame extends JFrame {
         }
 
         User newUser = new User(username, password, UserType.CLIENT,0);
+        User.getUsers().add(newUser);
         UserController.addUserToFile(newUser);
         mf.setUser(newUser);
+        dispose();
         return false;
     }
 
