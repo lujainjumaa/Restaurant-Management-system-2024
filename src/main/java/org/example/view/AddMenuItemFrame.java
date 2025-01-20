@@ -12,10 +12,10 @@ public class AddMenuItemFrame extends JFrame {
     private MenuItem item;
     private boolean edit;
     MenuFrame mf;
-    private JTextField nameField;
-    private JTextField descriptionField;
-    private JTextField pathField;
-    private JTextField priceField;
+    private CustomTextField nameField;
+    private CustomTextField descriptionField;
+    private CustomTextField pathField;
+    private CustomTextField priceField;
     private JComboBox<String> typeComboBox;
 
     public AddMenuItemFrame(MenuItem item, Boolean edit, MenuFrame mf) {
@@ -57,9 +57,9 @@ public class AddMenuItemFrame extends JFrame {
         pathLabel.setBounds(20, 140, 100, 25);
         panel.add(pathLabel);
 
-        pathField = new JTextField(edit ? item.getPath() : "");
+        pathField = new CustomTextField(edit ? item.getPath() : "");
         pathField.setBounds(120, 140, 250, 25);
-        pathField.setBorder(new EmptyBorder(2, 2, 2, 2));
+        pathField.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(UI.orangeColor,2),new EmptyBorder(2, 2, 2, 2)));
         panel.add(pathField);
     }
 
@@ -68,9 +68,9 @@ public class AddMenuItemFrame extends JFrame {
         nameLabel.setBounds(20, 20, 100, 25);
         panel.add(nameLabel);
 
-        nameField = new JTextField(edit ? item.getName() : "");
+        nameField = new CustomTextField(edit ? item.getName() : "");
         nameField.setBounds(120, 20, 250, 25);
-        nameField.setBorder(new EmptyBorder(2, 2, 2, 2));
+        nameField.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(UI.orangeColor,2),new EmptyBorder(2, 2, 2, 2)));
         panel.add(nameField);
     }
 
@@ -79,9 +79,9 @@ public class AddMenuItemFrame extends JFrame {
         descriptionLabel.setBounds(20, 60, 100, 25);
         panel.add(descriptionLabel);
 
-        descriptionField = new JTextField(edit ? item.getDescription() : "");
+        descriptionField = new CustomTextField(edit ? item.getDescription() : "");
         descriptionField.setBounds(120, 60, 250, 25);
-        descriptionField.setBorder(new EmptyBorder(2, 2, 2, 2));
+        descriptionField.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(UI.orangeColor,2),new EmptyBorder(2, 2, 2, 2)));
         panel.add(descriptionField);
     }
 
@@ -90,9 +90,9 @@ public class AddMenuItemFrame extends JFrame {
         priceLabel.setBounds(20, 100, 100, 25);
         panel.add(priceLabel);
 
-        priceField = new JTextField(edit ? String.valueOf(item.getPrice()) : "");
+        priceField = new CustomTextField(edit ? String.valueOf(item.getPrice()) : "");
         priceField.setBounds(120, 100, 250, 25);
-        priceField.setBorder(new EmptyBorder(2, 2, 2, 2));
+        priceField.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(UI.orangeColor,2),new EmptyBorder(2, 2, 2, 2)));
         panel.add(priceField);
     }
 

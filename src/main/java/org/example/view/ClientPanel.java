@@ -33,7 +33,7 @@ public class ClientPanel {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         mainPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
-        mainPanel.setBackground(Color.WHITE);
+        mainPanel.setBackground(UI.blueColor);
 
         for (Map.Entry<Integer, java.util.List<org.example.model.MenuItem>> entry : MenuController.getMenuItems().entrySet()) {
             int typeID = entry.getKey();
@@ -45,8 +45,9 @@ public class ClientPanel {
             JLabel header = new JLabel(typeName + "s", SwingConstants.CENTER);
             JPanel headerPanel = new JPanel();
             headerPanel.add(header);
-            header.setFont(new Font("Arial", Font.BOLD, 16));
-            header.setForeground(new Color(0x2E3B4E));
+            headerPanel.setBackground(UI.blueColor);
+            header.setFont(new Font("Arial", Font.BOLD, 18));
+            header.setForeground(UI.whiteColor);
             mainPanel.add(headerPanel);
             mainPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
@@ -62,9 +63,8 @@ public class ClientPanel {
 
     public JPanel createClientItemPanel(MenuItem item) {
         BufferedImage image = null;
-        String RESOURCES_PATH = "src/main/resources/Pictures/";
         try {
-            image = ImageIO.read(new File(RESOURCES_PATH + item.getPath()));
+            image = ImageIO.read(new File(FilePath.getPIC_RESOURCES_PATH() + item.getPath()));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -72,7 +72,7 @@ public class ClientPanel {
         image = makeRoundedCorner(image,80);
 
 
-        Font nameFont = new Font("Segoe UI Semibold", Font.PLAIN, 23);
+        Font nameFont = UI.getMainFont(23);
         int newWidth = 200;
         int newHeight = (int) (image.getHeight() * ((double) newWidth / image.getWidth()));
         Image resizedImage = image.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
@@ -82,24 +82,32 @@ public class ClientPanel {
         JLabel imageLabel = new JLabel(imageIcon);
         Dimension imageLabelsize = imageLabel.getPreferredSize();
         imageLabel.setBounds(390, 20, imageLabelsize.width, imageLabelsize.height);
-        imageLabel.setBackground(new Color(255, 250, 255));
-        imageLabel.setForeground(Color.WHITE);
-        imageLabel.setBorder(new RoundedBorder(20, Color.WHITE));
+        imageLabel.setBackground(UI.whiteColor);
+        imageLabel.setForeground(UI.whiteColor);
+        imageLabel.setBorder(new RoundedBorder(20, UI.whiteColor));
 
         JLabel nameLabel = new JLabel(item.getName());
-        nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+//        nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         nameLabel.setFont(nameFont);
         nameLabel.setForeground(new Color(51, 51, 51));
         nameLabel.setBackground(new Color(255, 250, 255));
 
         Dimension size = nameLabel.getPreferredSize();
-        nameLabel.setBounds(25, 40, size.width, size.height);
+        nameLabel.setBounds(25, 40, 400, 30);
         //nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+
+        JLabel bestseller = new JLabel("BESTSELLER");
+        bestseller.setHorizontalAlignment(SwingConstants.CENTER);
+        bestseller.setFont(UI.getMainFont(18));
+        bestseller.setBounds(220, 130, 200,50 );
+        bestseller.setBackground(new Color(255, 250, 255));
+        bestseller.setForeground(new Color(224, 79, 33));
 
         JLabel descriptionLabel = new JLabel(item.getDescription());
         descriptionLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        Font font = new Font("Segoe UI Semibold", Font.PLAIN, 19);
+        Font font = UI.getMainFont(19);
         descriptionLabel.setFont(font);
 
         descriptionLabel.setBackground(new Color(255, 250, 255));
@@ -108,7 +116,6 @@ public class ClientPanel {
         descriptionLabel.setBounds(25, 70,descriptionLabelsize.width, descriptionLabelsize.height);
 
         // descriptionLabel.setHorizontalAlignment(SwingConstants.CENTER);
-
 
         JLabel PriceLabel = new JLabel(item.getPrice() + "$");
         PriceLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -121,7 +128,7 @@ public class ClientPanel {
 
         JButton orderButton = new JButton("ADD");
         orderButton.setBackground(new Color(255, 250, 255));
-        orderButton.setForeground(new Color(215, 81, 132));
+        orderButton.setForeground(UI.orangeColor);
 //        orderButton.setOpaque(false);
         orderButton.setFocusPainted(false);
 //        orderButton.setContentAreaFilled(false);
@@ -130,19 +137,22 @@ public class ClientPanel {
         // orderButton.setBorder(new RoundedBorder(20, new Color(215, 81, 132)));
         orderButton.setFont(font);
         //  orderButton.setBorder(BorderFactory.createLineBorder(new Color(215, 81, 132),2));
-        orderButton.setBorder(BorderFactory.createLineBorder(new Color(215, 81, 132),2, false));
+        orderButton.setBorder(BorderFactory.createLineBorder(UI.orangeColor,2, false));
 
 //        orderButton.toFront();
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(null);
         mainPanel.add(nameLabel);
-        mainPanel.setBackground(new Color(255, 250, 255));
+        mainPanel.setBackground(UI.whiteColor);
         mainPanel.add(imageLabel);
         mainPanel.add(orderButton);
         // mainPanel.add(descriptionNamePanel, BorderLayout.SOUTH);
         mainPanel.add(PriceLabel);
 //        mainPanel.add(nameLabel);
+        if(item.isIs_bestseller()){
+            mainPanel.add(bestseller);
+        }
         mainPanel.add(descriptionLabel);
 //
         //mainPanel.setLayout(null);

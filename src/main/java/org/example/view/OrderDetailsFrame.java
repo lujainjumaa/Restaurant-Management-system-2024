@@ -92,7 +92,7 @@ public class OrderDetailsFrame extends JFrame {
         addressField = new JTextField("Enter your address...");
         addressField.setPreferredSize(new Dimension(350, 40));
         addressField.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(215, 81, 132), 1),
+                BorderFactory.createLineBorder(UI.orangeColor, 1),
                 BorderFactory.createEmptyBorder(5, 5, 5, 5)
         ));
 
@@ -127,7 +127,7 @@ public class OrderDetailsFrame extends JFrame {
         tipField = new JTextField();
         tipField.setPreferredSize(new Dimension(270, 25));
         tipField.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(215, 81, 132), 1),
+                BorderFactory.createLineBorder(UI.orangeColor, 1),
                 BorderFactory.createEmptyBorder(5, 5, 5, 5)
         ));
 
@@ -154,7 +154,7 @@ public class OrderDetailsFrame extends JFrame {
 
         JButton placeOrderButton = new JButton("PLACE ORDER");
         placeOrderButton.setFont(new Font("Arial", Font.BOLD, 14));
-        placeOrderButton.setBackground(new Color(215, 81, 132));
+        placeOrderButton.setBackground(UI.orangeColor);
         placeOrderButton.setForeground(Color.WHITE);
         placeOrderButton.setFocusPainted(false);
         placeOrderButton.setPreferredSize(new Dimension(150, 40));
@@ -172,9 +172,9 @@ public class OrderDetailsFrame extends JFrame {
         JToggleButton button = new JToggleButton(text);
         button.setFont(new Font("Arial", Font.PLAIN, 14));
         button.setBackground(new Color(245, 245, 245));
-        button.setForeground(new Color(215, 81, 132));
+        button.setForeground(UI.orangeColor);
         button.setFocusPainted(false);
-        button.setBorder(BorderFactory.createLineBorder(new Color(215, 81, 132), 2));
+        button.setBorder(BorderFactory.createLineBorder(UI.orangeColor, 2));
         button.setPreferredSize(new Dimension(150, 40));
         return button;
     }

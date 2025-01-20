@@ -4,14 +4,12 @@ import org.example.controller.MenuController;
 import org.example.controller.OrderController;
 import org.example.controller.TypeController;
 import org.example.controller.UserController;
-import org.example.model.*;
 //import org.example.model.FileWatcher;
-import org.example.view.MenuFrame;
 import org.example.view.RestaurantGreetingFrame;
 import org.example.view.UI;
 
 import javax.swing.*;
-import java.awt.*;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -21,9 +19,13 @@ public class Main {
         UserController.loadUsers();
         OrderController.loadOrders();
         OrderController.loadDailyOrders();
-        UIManager.put("Panel.background", new Color(255, 240, 255));
-        UI.setGlobalFont(new Font("Segoe UI Semibold", Font.PLAIN, 16));
+        UIManager.put("Panel.background", UI.beigeColor);
+        UI.setGlobalFont(UI.getMainFont(16));
         UI.setGlobalButtonStyle();
+        UIManager.put("Label.font", UI.getMainFont(16));
+//        UIManager.put("ComboBox.font", globalFont);
+//        UIManager.put("ComboBox.foreground", Color.ORANGE);
+        UIManager.put("Label.foreground", UI.blueColor);
         new RestaurantGreetingFrame();
 
     }

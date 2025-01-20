@@ -128,7 +128,9 @@ public class RestaurantGreetingFrame extends JFrame {
                 MenuFrame mf = new MenuFrame(new User("", "", UserType.GUEST, 0));
                 mf.reload();
                 mfs.add(mf);
+
             });
+
             t1.start();
 
         });
@@ -170,8 +172,8 @@ public class RestaurantGreetingFrame extends JFrame {
 //
 //        JLabel nameLabel = new JLabel("Endless Loop Of Flavors");
 //        nameLabel.setHorizontalAlignment(SwingConstants.HORIZONTAL);
-//        Font nameFont = new Font("Segoe UI Semibold", Font.PLAIN, 23);
-//        nameLabel.setFont(nameFont);
+//        Font mainFont = new Font("Segoe UI Semibold", Font.PLAIN, 23);
+//        nameLabel.setFont(mainFont);
 //        nameLabel.setForeground(new Color(51, 51, 51));
 //        nameLabel.setBackground(new Color(255, 250, 255));
 //

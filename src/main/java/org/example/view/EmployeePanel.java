@@ -46,7 +46,7 @@ public class EmployeePanel extends JPanel {
         gbc.gridy = 0;
         gbc.weightx = 0.2;
         JLabel usernameLabel = new JLabel(order.getUser().getUserName());
-        usernameLabel.setFont(UI.getNameFont());
+        usernameLabel.setFont(UI.getMainFont());
         usernameLabel.setHorizontalAlignment(SwingConstants.LEFT);
         orderPanel.add(usernameLabel, gbc);
 
@@ -107,9 +107,9 @@ public class EmployeePanel extends JPanel {
         JToggleButton button = new JToggleButton(text);
         button.setFont(new Font("Arial", Font.PLAIN, 12));
         button.setBackground(new Color(255, 250, 255));
-        button.setForeground(new Color(215, 81, 132));
+        button.setForeground(UI.orangeColor);
         button.setFocusPainted(false);
-        button.setBorder(createLineBorder(new Color(215, 81, 132), 2, false));
+        button.setBorder(createLineBorder(UI.orangeColor, 2, false));
         button.setPreferredSize(new Dimension(150, 30));
         return button;
     }

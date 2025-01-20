@@ -19,7 +19,7 @@ public class FrequentUsersPanel extends JPanel {
             JPanel userPanel = new JPanel(new BorderLayout());
             userPanel.setBackground(Color.WHITE);
             userPanel.setBorder(BorderFactory.createCompoundBorder(
-                    BorderFactory.createMatteBorder(0, 0, 1, 0, new Color(255, 182, 193)),
+                    BorderFactory.createMatteBorder(0, 0, 1, 0, UI.orangeColor),
                     BorderFactory.createEmptyBorder(10, 10, 10, 10)
             ));
 

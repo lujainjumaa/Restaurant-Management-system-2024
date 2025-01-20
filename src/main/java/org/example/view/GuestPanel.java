@@ -8,7 +8,6 @@ import org.example.model.TypeNotFoundException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -21,17 +20,21 @@ public class GuestPanel {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         mainPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
-        mainPanel.setBackground(Color.WHITE);
+        mainPanel.setBackground(UI.blueColor);
 
         for (Map.Entry<Integer, java.util.List<org.example.model.MenuItem>> entry : MenuController.getMenuItems().entrySet()) {
             int typeID = entry.getKey();
             List<org.example.model.MenuItem> items = entry.getValue();
+            if(items.isEmpty()){
+                continue;
+            }
             String typeName = TypeController.getTypeNameFromTypeID(typeID);
             JLabel header = new JLabel(typeName + "s", SwingConstants.CENTER);
             JPanel headerPanel = new JPanel();
             headerPanel.add(header);
-            header.setFont(new Font("Arial", Font.BOLD, 16));
-            header.setForeground(new Color(0x2E3B4E));
+            headerPanel.setBackground(UI.blueColor);
+            header.setFont(new Font("Arial", Font.BOLD, 18));
+            header.setForeground(UI.whiteColor);
             mainPanel.add(headerPanel);
             mainPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
@@ -57,7 +60,7 @@ public class GuestPanel {
         image = ClientPanel.makeRoundedCorner(image,80);
 
 
-        Font nameFont = new Font("Segoe UI Semibold", Font.PLAIN, 23);
+        Font nameFont = UI.getMainFont(23);
         int newWidth = 200;
         int newHeight = (int) (image.getHeight() * ((double) newWidth / image.getWidth()));
         Image resizedImage = image.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
@@ -68,24 +71,24 @@ public class GuestPanel {
         //imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
         Dimension imageLabelsize = imageLabel.getPreferredSize();
         imageLabel.setBounds(390, 20, imageLabelsize.width, imageLabelsize.height);
-        imageLabel.setBackground(new Color(255, 250, 255));
-        imageLabel.setForeground(Color.WHITE);
-        imageLabel.setBorder(new RoundedBorder(20, Color.WHITE));
+        imageLabel.setBackground(UI.whiteColor);
+        imageLabel.setForeground(UI.whiteColor);
+        imageLabel.setBorder(new RoundedBorder(20, UI.whiteColor));
 
         JLabel nameLabel = new JLabel(item.getName());
-        nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+//        nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         nameLabel.setFont(nameFont);
         nameLabel.setForeground(new Color(51, 51, 51));
         nameLabel.setBackground(new Color(255, 250, 255));
 
-        Dimension size = nameLabel.getPreferredSize();
-        nameLabel.setBounds(25, 40, size.width, size.height);
+//        Dimension size = nameLabel.getPreferredSize();
+        nameLabel.setBounds(25, 40, 400, 30);
         //nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         JLabel descriptionLabel = new JLabel(item.getDescription());
         descriptionLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        Font font = new Font("Segoe UI Semibold", Font.PLAIN, 19);
+        Font font = UI.getMainFont(19);
         descriptionLabel.setFont(font);
 
         descriptionLabel.setBackground(new Color(255, 250, 255));
@@ -96,7 +99,11 @@ public class GuestPanel {
         // descriptionLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         JLabel bestseller = new JLabel("BESTSELLER");
-
+        bestseller.setHorizontalAlignment(SwingConstants.CENTER);
+        bestseller.setFont(UI.getMainFont(18));
+        bestseller.setBounds(220, 130, 200,50 );
+        bestseller.setBackground(new Color(255, 250, 255));
+        bestseller.setForeground(new Color(224, 79, 33));
 
         JLabel PriceLabel = new JLabel(item.getPrice() + "$");
         PriceLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -111,8 +118,11 @@ public class GuestPanel {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(null);
         mainPanel.add(nameLabel);
-        mainPanel.setBackground(new Color(255, 250, 255));
+        mainPanel.setBackground(UI.whiteColor);
         mainPanel.add(imageLabel);
+        if(item.isIs_bestseller()){
+            mainPanel.add(bestseller);
+        }
         // mainPanel.add(descriptionNamePanel, BorderLayout.SOUTH);
         mainPanel.add(PriceLabel);
 //        mainPanel.add(nameLabel);

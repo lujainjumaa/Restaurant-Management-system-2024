@@ -6,15 +6,15 @@ import java.awt.*;
 public class CustomTextField extends JTextField {
     String text;
 
-    public CustomTextField() {
+    public CustomTextField(String text) {
         this.text = text;
         this.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 16));
-        this.setForeground(new Color(215, 81, 132));
-        this.setBackground(Color.WHITE);
-        this.setBorder(BorderFactory.createLineBorder(new Color(87, 82, 82), 2));
-        this.setBorder(BorderFactory.createLineBorder(new Color(215, 81, 132), 2));
-        this.setSelectionColor(new Color(161, 75, 122));
-        this.setSelectedTextColor(Color.WHITE);
+        this.setForeground(UI.orangeColor);
+        this.setBackground(UI.whiteColor);
+//        this.setBorder(BorderFactory.createLineBorder(new Color(87, 82, 82), 2));
+        this.setBorder(BorderFactory.createLineBorder(UI.orangeColor, 2));
+        this.setSelectionColor(UI.orangeColor);
+        this.setSelectedTextColor(UI.whiteColor);
         this.setMargin(new Insets(10, 10, 10, 10));
 //        this.setHorizontalAlignment(JTextField.CENTER);
         this.setPreferredSize(new Dimension(200, 90));

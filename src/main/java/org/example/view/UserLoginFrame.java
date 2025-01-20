@@ -59,7 +59,7 @@ public class UserLoginFrame extends JFrame {
         userNamePanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
         JLabel usernameLabel = new JLabel("Username: ");
-        usernameField = new CustomTextField();
+        usernameField = new CustomTextField("");
 
         usernameField.setBorder(BorderFactory.createCompoundBorder(
                 usernameField.getBorder(),
@@ -76,6 +76,7 @@ public class UserLoginFrame extends JFrame {
         passwordPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
         JLabel passwordLabel = new JLabel("Password: ");
+
         passwordField = new CustomPasswordField();
         passwordField.setBorder(BorderFactory.createCompoundBorder(
                 passwordField.getBorder(),
