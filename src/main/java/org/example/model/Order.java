@@ -63,9 +63,9 @@ public Order(){
 
         sb.append("Order Details:\n");
         sb.append("Order ID: ").append(getID()).append("\n");
-        sb.append("Order Date: ").append(orderDate != null ? dateFormat.format(orderDate) : "N/A").append("\n");
+        sb.append("Order Date: ").append(orderDate != null ? dateFormat.format(orderDate) : "").append("\n");
         sb.append("Order Type: ").append(orderType).append("\n");
-        sb.append("Address: ").append(address == null ? "N/A" : address).append("\n");
+        sb.append("Address: ").append(address == null ? "" : address).append("\n");
         sb.append("Total Price: $").append(price).append("\n");
         sb.append("Tip: $").append(tip).append("\n");
         sb.append("Order Status: ").append(orderStatus).append("\n");

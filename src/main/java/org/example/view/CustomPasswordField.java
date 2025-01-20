@@ -16,7 +16,6 @@ public class CustomPasswordField extends JPasswordField {
         this.setSelectionColor(UI.orangeColor);
         this.setSelectedTextColor(UI.whiteColor);
         this.setMargin(new Insets(10, 10, 10, 10));
-//        this.setHorizontalAlignment(JTextField.CENTER);
         this.setPreferredSize(new Dimension(200, 90));
     }
 }

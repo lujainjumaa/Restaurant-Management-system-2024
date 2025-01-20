@@ -17,9 +17,8 @@ class RoundedBorder extends AbstractBorder {
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        // Draw the rounded rectangle border
         g2.setColor(borderColor);
-        g2.setStroke(new BasicStroke(6)); // Adjust the border thickness
+        g2.setStroke(new BasicStroke(6));
         g2.drawRoundRect(x + 1, y + 1, width - 2, height - 2, cornerRadius, cornerRadius);
     }
 
