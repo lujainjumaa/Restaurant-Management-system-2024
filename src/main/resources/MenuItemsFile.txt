@@ -10,6 +10,6 @@
 20,6,Buffalo Wings,3,Spicy chicken wings served with ranch dressing,10.99,1,ham.png
 21,0,Tabboleh Salad,2,Salad with cilantro tomatoes and onions,4.00,0,summer-spritzes.jpg
 12,3,Large Cappuccino,4,Foamy and aromatic coffee,4.50,0,summer-spritzes.jpg
-16,11,Spaghetti Bolognese,1,Classic Italian pasta with a rich meat sauce,13.50,1,ham.png
-7,11,Cheeseburger,1,Juicy beef patty with melted cheese,8.98,1,burger.jpg
-13,47,Chicken Alfredo,1,Pasta in creamy Alfredo sauce with grilled chicken,14.99,1,ham.png
+16,11,Spaghetti Bolognese,1,Classic Italian pasta with a rich meat sauce,13.50,0,ham.png
+7,11,Cheeseburger,1,Juicy beef patty with melted cheese,19.98,0,burger.jpg
+13,47,Chicken Alfredo,1,Pasta in creamy Alfredo sauce with grilled chicken,14.99,0,ham.png

@@ -8,41 +8,35 @@ import java.awt.*;
 
 public class BestSellerItemsPanel extends JPanel {
     public BestSellerItemsPanel() {
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); // تخطيط عام عمودي
-        setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // هوامش خارجية
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        // لون خلفية اللوحة الرئيسية
-        setBackground(new Color(249, 249, 249)); // لون خلفية فاتح
+        setBackground(new Color(249, 249, 249));
 
         for (MenuItem menuItem : MenuController.sortedMenuItemsList()) {
-            // إنشاء لوحة لكل عنصر
             JPanel itemPanel = new JPanel(new BorderLayout());
-            itemPanel.setBackground(Color.WHITE); // لون خلفية أبيض
+            itemPanel.setBackground(Color.WHITE);
             itemPanel.setBorder(BorderFactory.createCompoundBorder(
-                    BorderFactory.createMatteBorder(0, 0, 1, 0, new Color(255, 182, 193)), // حد سفلي
-                    BorderFactory.createEmptyBorder(10, 10, 10, 10) // هوامش داخلية
+                    BorderFactory.createMatteBorder(0, 0, 1, 0, new Color(255, 182, 193)),
+                    BorderFactory.createEmptyBorder(10, 10, 10, 10)
             ));
 
-            // إضافة اسم العنصر وسعره
             JLabel nameLabel = new JLabel(menuItem.getName());
-            nameLabel.setFont(new Font("Arial", Font.BOLD, 18)); // خط كبير وعريض
+            nameLabel.setFont(new Font("Arial", Font.BOLD, 18));
 
             JLabel priceLabel = new JLabel(menuItem.getPrice() + " $");
-            priceLabel.setFont(new Font("Arial", Font.PLAIN, 16)); // خط أصغر
+            priceLabel.setFont(new Font("Arial", Font.PLAIN, 16));
 
-            // لوحة لتجميع الاسم والسعر
             JPanel infoPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-            infoPanel.setBackground(Color.WHITE); // لون خلفية أبيض
+            infoPanel.setBackground(Color.WHITE);
             infoPanel.add(nameLabel);
-            infoPanel.add(Box.createRigidArea(new Dimension(10, 0))); // مسافة بين الاسم والسعر
+            infoPanel.add(Box.createRigidArea(new Dimension(10, 0)));
             infoPanel.add(priceLabel);
 
-            // إضافة لوحة المعلومات إلى لوحة العنصر
             itemPanel.add(infoPanel, BorderLayout.CENTER);
 
-            // إضافة لوحة العنصر إلى اللوحة الرئيسية
             add(itemPanel);
-            add(Box.createRigidArea(new Dimension(0, 10))); // مسافة بين العناصر
+            add(Box.createRigidArea(new Dimension(0, 10)));
         }
 
         setVisible(true);

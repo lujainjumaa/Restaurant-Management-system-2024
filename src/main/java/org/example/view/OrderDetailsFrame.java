@@ -18,7 +18,6 @@ import java.awt.event.FocusListener;
 import java.util.Date;
 import java.util.List;
 
-import static javax.swing.BorderFactory.createLineBorder;
 
 public class OrderDetailsFrame extends JFrame {
 
@@ -50,7 +49,6 @@ public class OrderDetailsFrame extends JFrame {
         JPanel mainPanel = new JPanel();
         mainPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
 
-        // Toggle Button Panel
         JPanel btnPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
         JToggleButton btnDelivery = createToggleButton("DELIVERY");
         JToggleButton btnDineIn = createToggleButton("DINE IN");
@@ -73,16 +71,12 @@ public class OrderDetailsFrame extends JFrame {
             order.setOrderType(OrderType.dineIn);
         });
 
-        // Tip Panel
         JPanel tipPanel = createTipPanel();
 
-        // Price Panel
         JPanel pricePanel = createPricePanel();
 
-        // Place Order Button
         JPanel buttonPanel = createPlaceOrderButton();
 
-        // Add Panels to Main Panel
         mainPanel.add(btnPanel);
         mainPanel.add(addressPanel);
         mainPanel.add(tipPanel);
@@ -102,7 +96,6 @@ public class OrderDetailsFrame extends JFrame {
                 BorderFactory.createEmptyBorder(5, 5, 5, 5)
         ));
 
-        // Placeholder functionality
         addressField.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {

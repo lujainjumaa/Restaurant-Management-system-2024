@@ -103,7 +103,7 @@ MenuFrame mf;
                 JPanel infoPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
                 infoPanel.setBackground(Color.WHITE);
                 infoPanel.add(orderNumberLabel);
-                infoPanel.add(Box.createRigidArea(new Dimension(10, 0))); // مسافة بين النصوص
+                infoPanel.add(Box.createRigidArea(new Dimension(10, 0)));
                 infoPanel.add(statusLabel);
 
                 JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
@@ -114,7 +114,7 @@ MenuFrame mf;
                 orderPanel.add(buttonPanel, BorderLayout.EAST);
 
                 mainPanel.add(orderPanel);
-                mainPanel.add(Box.createRigidArea(new Dimension(0, 10))); // مسافة بين العناصر
+                mainPanel.add(Box.createRigidArea(new Dimension(0, 10)));
             }
         }
         JScrollPane scrollPane = new JScrollPane(mainPanel);

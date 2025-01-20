@@ -82,10 +82,9 @@ public class MenuFrame extends JFrame {
         Panel.add(name, BorderLayout.WEST);
         JPanel buttonPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5); // Padding for elements
-        gbc.fill = GridBagConstraints.BOTH; // Fill the available space
+        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.fill = GridBagConstraints.BOTH;
 
-        // Username column
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.weightx = 0.55;
@@ -125,11 +124,8 @@ public class MenuFrame extends JFrame {
             ScrollBar2.setBlockIncrement(90);
             tabbedPane.addTab("Frequent Users", frequentUsersScrollPane);
 
-            JScrollPane dailyProfitsScrollPane = new JScrollPane(new WeeklyProfitsPanel());
+            JScrollPane dailyProfitsScrollPane = new JScrollPane(new DailyOrdersAndProfitsPanel());
             tabbedPane.addTab("Daily Profits", dailyProfitsScrollPane);
-
-            JScrollPane dailyOrdersScrollPane = new JScrollPane(new DailyOrdersPanel());
-            tabbedPane.addTab("Daily Orders", dailyOrdersScrollPane);
 
             tabbedPane.setBackground(new Color(255, 182, 193));
 
