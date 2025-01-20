@@ -63,7 +63,7 @@ public class Main {
         UserController.loadUsers();
         OrderController.loadOrders();
         OrderController.loadDailyOrders();
-        UIManager.put("Panel.background", new Color(255, 240, 255));
+        UIManager.put("Panel.background", new Color(214, 230, 243));
         setGlobalFont(new Font("Segoe UI Semibold", Font.PLAIN, 16));
         setGlobalButtonStyle();
 

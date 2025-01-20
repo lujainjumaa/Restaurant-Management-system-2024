@@ -45,6 +45,7 @@ public class GuestPanel {
     }
 
 
+
     public JPanel createGuestItemPanel(MenuItem item) {
         // Load the image
         BufferedImage image = null;
@@ -104,8 +105,7 @@ public class GuestPanel {
 
         // descriptionLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-
-
+        JLabel bestseller = new JLabel("BESTSELLER");
 
 
         JLabel PriceLabel = new JLabel(item.getPrice() + "$");
