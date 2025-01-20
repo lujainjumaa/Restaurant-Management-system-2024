@@ -22,7 +22,6 @@ import java.util.List;
 public class OrderDetailsFrame extends JFrame {
 
     private JTextField addressField;
-    private JLabel priceLabel;
     private JTextField tipField;
     private JComboBox<OrderType> typeComboBox;
     private List<OrderItem> orderItems;
@@ -63,10 +62,12 @@ public class OrderDetailsFrame extends JFrame {
         addressPanel.setVisible(false);
 
         btnDelivery.addActionListener(e -> {
+            addressField.setText("Enter your address...");
             addressPanel.setVisible(true);
             order.setOrderType(OrderType.delivery);
     });
         btnDineIn.addActionListener(e -> {
+            addressField.setText("");
             addressPanel.setVisible(false);
             order.setOrderType(OrderType.dineIn);
         });
@@ -160,8 +161,18 @@ public class OrderDetailsFrame extends JFrame {
         placeOrderButton.setPreferredSize(new Dimension(150, 40));
 
         placeOrderButton.addActionListener(e -> {
-            placeOrder();
-            cp.setNewOrder(false);
+            if(order.getOrderType() == null){
+                JOptionPane.showMessageDialog(this, "pleas choose your order type", "error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            if(addressField.getText().contains("Enter your address...")){
+                JOptionPane.showMessageDialog(this, "pleas add your address", "error", JOptionPane.ERROR_MESSAGE);
+            }
+            else {
+                placeOrder();
+                cp.setNewOrder(false);
+            }
+
         });
 
         buttonPanel.add(placeOrderButton);
@@ -192,41 +203,50 @@ public class OrderDetailsFrame extends JFrame {
 
     private void placeOrder() {
         try {
-            if(order.getOrderType().equals(OrderType.delivery)){
-                order.setAddress(addressField.getText());
+//            if (order.getOrderType().equals(OrderType.delivery)) {
+//                String address = ;
+//                if (address == null || address.trim().isEmpty()) {
+//                    JOptionPane.showMessageDialog(this, "الرجاء إدخال العنوان لتتمكن من تقديم الطلب.", "خطأ", JOptionPane.ERROR_MESSAGE);
+//                    return;
+//                }
+//            }
+            order.setAddress(addressField.getText());
+            if (tipField.getText() == null || tipField.getText().trim().isEmpty()) {
+                order.setTip(0);
+            } else {
+                order.setTip(Double.parseDouble(tipField.getText()));
             }
-//            order.setPrice(Double.parseDouble(priceField.getText()));
-            order.setTip(Double.parseDouble(tipField.getText()));
-//            order.setOrderType((OrderType) typeComboBox.getSelectedItem());
+            order.setPrice(order.getPrice()+order.getTip());
             order.setOrderItems(orderItems);
             order.setOrderStatus(OrderStatus.PENDING);
             order.setOrderDate(new Date());
-            Order.setHighestID(Order.getHighestID()+1);
+            Order.setHighestID(Order.getHighestID() + 1);
             order.setID(Order.getHighestID());
-            OrderController.addOrderToFile(order,FilePath.getOrders());
-            if(!OrderController.getDateDailyOrder().equals(Order.formatToLocalDate(new Date()))){
+            OrderController.addOrderToFile(order, FilePath.getOrders());
+
+            if (!OrderController.getDateDailyOrder().equals(Order.formatToLocalDate(new Date()))) {
                 OrderController.clearFileContent(FilePath.getDailyOrders());
                 OrderController.addDateToDailyOrder();
             }
-            OrderController.addOrderToFile(order,FilePath.getDailyOrders());
+            OrderController.addOrderToFile(order, FilePath.getDailyOrders());
 
-            order.getUser().setNumOfOrders(order.getUser().getNumOfOrders()+1);
-            for(OrderItem OI : order.getOrderItems()){
+            order.getUser().setNumOfOrders(order.getUser().getNumOfOrders() + 1);
+            for (OrderItem OI : order.getOrderItems()) {
                 MenuItem MI = MenuController.getMenuItemFromID(OI.getItemID());
-                MI.setNumOfOrders(MI.getNumOfOrders()+OI.getQuantity());
-                System.out.println("--->"+MI.getNumOfOrders());
-                MenuController.deleteMenuItemFromFile(OI.getItemID(), mf,true);
+                MI.setNumOfOrders(MI.getNumOfOrders() + OI.getQuantity());
+                System.out.println("--->" + MI.getNumOfOrders());
+                MenuController.deleteMenuItemFromFile(OI.getItemID(), mf, true);
                 MenuController.addMenuItemToFile(MenuController.getMenuItemFromID(OI.getItemID()), mf);
             }
-            for(MenuFrame mf : RestaurantGreetingFrame.getMfs()){
-                if(mf.getUser().getUserType() == UserType.EMPLOYEE)
+            for (MenuFrame mf : RestaurantGreetingFrame.getMfs()) {
+                if (mf.getUser().getUserType() == UserType.EMPLOYEE)
                     mf.reload();
             }
             order.getOrderItems().clear();
             mf.reload();
             UserController.removeUserFromFile(mf.getUser().getUserName());
             UserController.addUserToFile(mf.getUser());
-            JOptionPane.showMessageDialog(this, "Order updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Order placed successfully... total:"+order.getPrice(), "Success", JOptionPane.INFORMATION_MESSAGE);
             dispose();
         } catch (Exception e) {
             e.getStackTrace();
