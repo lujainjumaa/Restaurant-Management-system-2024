@@ -51,8 +51,6 @@ MenuFrame mf;
 
         for (Order order : OrderController.getDailyOrders()) {
             if (order.getUser().getUserName().equals(user.getUserName())) {
-                if (order.getOrderStatus().equals(OrderStatus.DONE) || order.getOrderStatus().equals(OrderStatus.ARRIVED))
-                    continue;
                 counter++;
 
                 JPanel orderPanel = new JPanel(new BorderLayout());
