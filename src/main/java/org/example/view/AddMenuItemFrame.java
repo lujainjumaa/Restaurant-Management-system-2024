@@ -19,7 +19,6 @@ public class AddMenuItemFrame extends JFrame {
     private JComboBox<String> typeComboBox;
 
     public AddMenuItemFrame(MenuItem item, Boolean edit, MenuFrame mf) {
-//        super(edit ? "Edit Menu Item" : "Add New Menu Item");
         this.item = item;
         this.edit = edit;
         this.mf = mf;

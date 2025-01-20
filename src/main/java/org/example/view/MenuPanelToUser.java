@@ -6,8 +6,6 @@ import org.example.model.*;
 import javax.swing.*;
 import java.awt.*;
 
-import static org.example.controller.OrderController.loadOrders;
-
 public class MenuPanelToUser extends JPanel {
 MenuFrame mf;
     public MenuPanelToUser(User user, MenuFrame mf, boolean viewOrdersON)throws TypeNotFoundException {
@@ -28,7 +26,6 @@ MenuFrame mf;
             } catch (ItemNotFoundException e) {
                 System.out.println(e.getMessage());
             }
-//            هون ممكن يا نشيل التوابع اللي جوا الكلاسات ونضل عال  constructors او العكس
         }
         System.out.println(" = >>>> " + viewOrdersON);
         if(viewOrdersON && user.getUserType()==UserType.CLIENT){

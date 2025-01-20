@@ -40,7 +40,6 @@ public class RestaurantGreetingFrame extends JFrame {
 
         public ImagePanel(String imagePath) {
             try {
-                // Load the image using ImageIO
                 image = javax.imageio.ImageIO.read(new File(imagePath));
             } catch (IOException e) {
                 e.printStackTrace();
@@ -52,9 +51,7 @@ public class RestaurantGreetingFrame extends JFrame {
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
 
-            // Check if the image is loaded
             if (image != null) {
-                // Draw the image on the panel
                 g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
             }
         }

@@ -46,7 +46,6 @@ public class OrderController {
         }
     }
     public static void loadOrders() {
-//        List<Order> orders = new ArrayList<>();
         orders.clear();
         try (BufferedReader reader = new BufferedReader(new FileReader(FilePath.getOrders()))) {
             String line;
@@ -103,10 +102,8 @@ public class OrderController {
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
-//        return orders;
     }
     public static void loadDailyOrders() {
-//        List<Order> orders = new ArrayList<>();
         dailyOrders.clear();
         if(!OrderController.getDateDailyOrder().equals(Order.formatToLocalDate(new Date()))){
             OrderController.clearFileContent(FilePath.getDailyOrders());
@@ -168,7 +165,6 @@ public class OrderController {
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
-//        return orders;
     }
     public static void addDateToDailyOrder(){
         StringBuilder sb = new StringBuilder();
@@ -205,29 +201,7 @@ public class OrderController {
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
     }
-    public static double getDailyProfits(){
-        loadDailyOrders();
-        double dailyProfits = 0;
-        for(Order order:dailyOrders){
-            dailyProfits+=order.getPrice();
-        }
-        return dailyProfits;
-    }
-    public static double getWeeklyProfits(){
-        loadOrders();
-        double dailyProfits = 0;
-        LocalDate currentDate = convertToLocalDate(new Date());
-        for(Order order:orders){
-            System.out.println();
-            System.out.println(order);
-            LocalDate orderDate = convertToLocalDate(order.getDate());
-            if (ChronoUnit.DAYS.between(orderDate, currentDate) <= 7) {
-                System.out.println(orderDate+"order date");
-                dailyProfits += order.getPrice();
-            }
-        }
-        return dailyProfits;
-    }
+
     public static List<Double> calculateDailyProfitsForLastWeek() {
         List<Double> dailyProfitsList = new ArrayList<>();
         LocalDate currentDate = LocalDate.now();

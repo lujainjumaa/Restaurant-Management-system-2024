@@ -10,7 +10,6 @@ public class OurCustomFrame extends JFrame {
     public JPanel contentPanel;
 
     public OurCustomFrame(String title) {
-        // Set JFrame properties
 //        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 //        setSize(800, 600);
         setUndecorated(true);

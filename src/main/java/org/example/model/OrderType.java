@@ -1,5 +1,5 @@
 package org.example.model;
 
 public enum OrderType {
-    dineIn, delivery;
+    dineIn, delivery, special;
 }

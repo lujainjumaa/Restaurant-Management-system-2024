@@ -1,135 +1,5 @@
 2025-01-20
 Order Details:
-Order ID: 34
-Order Date: 2025-01-20
-Order Type: dineIn
-Address: N/A
-Total Price: $14.99
-Tip: $0.0
-Order Status: DONE
-User: User{userName='Hasan', userType=CLIENT}
-Order Items:
- - OrderItem{itemID=13, quantity=1}
-
---------------------------------------------------
-Order Details:
-Order ID: 35
-Order Date: 2025-01-20
-Order Type: delivery
-Address: h
-Total Price: $8.98
-Tip: $1.0
-Order Status: ARRIVED
-User: User{userName='Hasan', userType=CLIENT}
-Order Items:
- - OrderItem{itemID=7, quantity=1}
-
---------------------------------------------------
-Order Details:
-Order ID: 36
-Order Date: 2025-01-20
-Order Type: delivery
-Address: N/A
-Total Price: $13.5
-Tip: $0.0
-Order Status: PENDING
-User: User{userName='Hasan', userType=CLIENT}
-Order Items:
- - OrderItem{itemID=16, quantity=1}
-
---------------------------------------------------
-Order Details:
-Order ID: 37
-Order Date: 2025-01-20
-Order Type: delivery
-Address: N/A
-Total Price: $14.99
-Tip: $0.0
-Order Status: PENDING
-User: User{userName='Hasan', userType=CLIENT}
-Order Items:
- - OrderItem{itemID=13, quantity=1}
-
---------------------------------------------------
-Order Details:
-Order ID: 38
-Order Date: 2025-01-20
-Order Type: delivery
-Address: N/A
-Total Price: $8.98
-Tip: $0.0
-Order Status: PENDING
-User: User{userName='Hasan', userType=CLIENT}
-Order Items:
- - OrderItem{itemID=7, quantity=1}
-
---------------------------------------------------
-Order Details:
-Order ID: 39
-Order Date: 2025-01-20
-Order Type: delivery
-Address: N/A
-Total Price: $13.5
-Tip: $0.0
-Order Status: PENDING
-User: User{userName='Hasan', userType=CLIENT}
-Order Items:
- - OrderItem{itemID=16, quantity=1}
-
---------------------------------------------------
-Order Details:
-Order ID: 40
-Order Date: 2025-01-20
-Order Type: delivery
-Address: N/A
-Total Price: $14.99
-Tip: $0.0
-Order Status: PENDING
-User: User{userName='Hasan', userType=CLIENT}
-Order Items:
- - OrderItem{itemID=13, quantity=1}
-
---------------------------------------------------
-Order Details:
-Order ID: 41
-Order Date: 2025-01-20
-Order Type: delivery
-Address: N/A
-Total Price: $8.98
-Tip: $0.0
-Order Status: PENDING
-User: User{userName='Hasan', userType=CLIENT}
-Order Items:
- - OrderItem{itemID=7, quantity=1}
-
---------------------------------------------------
-Order Details:
-Order ID: 42
-Order Date: 2025-01-20
-Order Type: delivery
-Address: N/A
-Total Price: $13.5
-Tip: $0.0
-Order Status: PENDING
-User: User{userName='Hasan', userType=CLIENT}
-Order Items:
- - OrderItem{itemID=16, quantity=1}
-
---------------------------------------------------
-Order Details:
-Order ID: 43
-Order Date: 2025-01-20
-Order Type: dineIn
-Address: N/A
-Total Price: $14.99
-Tip: $0.0
-Order Status: PENDING
-User: User{userName='Hasan', userType=CLIENT}
-Order Items:
- - OrderItem{itemID=13, quantity=1}
-
---------------------------------------------------
-Order Details:
 Order ID: 44
 Order Date: 2025-01-20
 Order Type: dineIn
@@ -179,5 +49,57 @@ Order Status: PENDING
 User: User{userName='Hasan', userType=CLIENT}
 Order Items:
  - OrderItem{itemID=7, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 48
+Order Date: 2025-01-20
+Order Type: special
+Address: 
+Total Price: $13.5
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=16, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 49
+Order Date: 2025-01-20
+Order Type: special
+Address: 
+Total Price: $14.99
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 50
+Order Date: 2025-01-20
+Order Type: dineIn
+Address: 
+Total Price: $8.98
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=7, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 51
+Order Date: 2025-01-20
+Order Type: special
+Address: 
+Total Price: $13.5
+Tip: $0.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=16, quantity=1}
 
 --------------------------------------------------

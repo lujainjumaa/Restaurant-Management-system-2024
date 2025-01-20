@@ -51,13 +51,17 @@ public class OrderDetailsFrame extends JFrame {
         JPanel btnPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
         JToggleButton btnDelivery = createToggleButton("DELIVERY");
         JToggleButton btnDineIn = createToggleButton("DINE IN");
+//        JToggleButton btnSpecial=createToggleButton("Special");
 
         ButtonGroup buttonGroup = new ButtonGroup();
         buttonGroup.add(btnDelivery);
         buttonGroup.add(btnDineIn);
+//        buttonGroup.add(btnSpecial);
 
         btnPanel.add(btnDelivery);
         btnPanel.add(btnDineIn);
+//        btnPanel.add(btnSpecial);
+
         JPanel addressPanel = createAddressPanel();
         addressPanel.setVisible(false);
 
@@ -71,6 +75,11 @@ public class OrderDetailsFrame extends JFrame {
             addressPanel.setVisible(false);
             order.setOrderType(OrderType.dineIn);
         });
+//        btnSpecial.addActionListener(e -> {
+//            addressField.setText("");
+//            addressPanel.setVisible(false);
+//            order.setOrderType(OrderType.special);
+//        });
 
         JPanel tipPanel = createTipPanel();
 

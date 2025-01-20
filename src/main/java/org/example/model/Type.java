@@ -16,7 +16,6 @@ public class Type {
     public Type(String name) {
         this.name = name;
         ID = ++CounterOfTypes;
-//        add_type_to_list(this);
     }
 
     public Type(int ID, String name) {
