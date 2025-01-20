@@ -3,7 +3,6 @@ package org.example.controller;
 import org.example.model.FilePath;
 import org.example.model.ItemNotFoundException;
 import org.example.model.MenuItem;
-import org.example.model.User;
 import org.example.view.MenuFrame;
 
 import java.io.*;

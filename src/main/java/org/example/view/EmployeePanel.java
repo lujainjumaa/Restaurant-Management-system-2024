@@ -15,7 +15,6 @@ public class EmployeePanel extends JPanel {
     public EmployeePanel() throws ItemNotFoundException {
         OrderController.loadDailyOrders();
 
-        // Use a vertical box layout for orders
         setLayout(new BorderLayout());
         JPanel ordersPanel = new JPanel();
         ordersPanel.setLayout(new BoxLayout(ordersPanel, BoxLayout.Y_AXIS));
@@ -25,7 +24,7 @@ public class EmployeePanel extends JPanel {
                 continue;
             }
             ordersPanel.add(createOrderPanel(order));
-            ordersPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Add spacing between orders
+            ordersPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
         }
         ordersPanel.setBorder(createLineBorder(new Color(126, 127, 131), 4));
@@ -37,13 +36,12 @@ public class EmployeePanel extends JPanel {
 
     public static JPanel createOrderPanel(Order order) throws ItemNotFoundException {
         JPanel orderPanel = new JPanel(new GridBagLayout());
-        orderPanel.setBorder(BorderFactory.createCompoundBorder(new EmptyBorder(20,40,0,40),createLineBorder(Color.WHITE,5))); // Add border for clarity
+        orderPanel.setBorder(BorderFactory.createCompoundBorder(new EmptyBorder(20,40,0,40),createLineBorder(Color.WHITE,5)));
 
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5); // Padding for elements
-        gbc.fill = GridBagConstraints.BOTH; // Fill the available space
+        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.fill = GridBagConstraints.BOTH;
 
-        // Username column
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.weightx = 0.2;
@@ -52,7 +50,6 @@ public class EmployeePanel extends JPanel {
         usernameLabel.setHorizontalAlignment(SwingConstants.LEFT);
         orderPanel.add(usernameLabel, gbc);
 
-        // Order items column
         gbc.gridx = 1;
         gbc.weightx = 0.5;
         JPanel itemsPanel = new JPanel();
@@ -64,7 +61,6 @@ public class EmployeePanel extends JPanel {
         }
         orderPanel.add(itemsPanel, gbc);
 
-        // Buttons column
         gbc.gridx = 2;
         gbc.weightx = 0.3;
         JPanel btnPanel = createButtonsPanel(order);
@@ -74,17 +70,15 @@ public class EmployeePanel extends JPanel {
     }
 
     private static JPanel createButtonsPanel(Order order) {
-        JPanel btnPanel = new JPanel(new GridLayout(0, 1, 5, 5)); // Buttons stacked vertically
+        JPanel btnPanel = new JPanel(new GridLayout(0, 1, 5, 5));
         ButtonGroup buttonGroup = new ButtonGroup();
 
-        // Create buttons with consistent sizes
         JToggleButton btnPending = createToggleButton("PENDING");
         JToggleButton btnBeingPrepared = createToggleButton("BEING PREPARED");
         JToggleButton btnOnTheWay = createToggleButton("ON THE WAY");
         JToggleButton btnArrived = createToggleButton("ARRIVED");
         JToggleButton btnDone = createToggleButton("DONE");
 
-        // Add buttons to the panel and group
         buttonGroup.add(btnPending);
         btnPanel.add(btnPending);
 
@@ -102,10 +96,8 @@ public class EmployeePanel extends JPanel {
             btnPanel.add(btnDone);
         }
 
-        // Set initial selection
         selectInitialStatusButton(order, btnPending, btnBeingPrepared, btnOnTheWay, btnArrived, btnDone);
 
-        // Add action listeners for buttons
         addStatusButtonListeners(order, btnPending, btnBeingPrepared, btnOnTheWay, btnArrived, btnDone);
 
         return btnPanel;
@@ -114,11 +106,11 @@ public class EmployeePanel extends JPanel {
     private static JToggleButton createToggleButton(String text) {
         JToggleButton button = new JToggleButton(text);
         button.setFont(new Font("Arial", Font.PLAIN, 12));
-        button.setBackground(new Color(255, 250, 255)); // Default background
-        button.setForeground(new Color(215, 81, 132)); // Default text color
+        button.setBackground(new Color(255, 250, 255));
+        button.setForeground(new Color(215, 81, 132));
         button.setFocusPainted(false);
         button.setBorder(createLineBorder(new Color(215, 81, 132), 2, false));
-        button.setPreferredSize(new Dimension(150, 30)); // Uniform size
+        button.setPreferredSize(new Dimension(150, 30));
         return button;
     }
 

@@ -42,17 +42,14 @@ public class CartPanel extends JPanel {
         setBorder(new EmptyBorder(10, 10, 10, 10));
         setBackground(Color.WHITE);
 
-        // Title Label
         JLabel title = new JLabel("Your Cart", SwingConstants.CENTER);
         title.setFont(new Font("Arial", Font.BOLD, 20));
         add(title, BorderLayout.NORTH);
 
-        // Items Panel
         itemsPanel = new JPanel();
         itemsPanel.setLayout(new BoxLayout(itemsPanel, BoxLayout.Y_AXIS));
         itemsPanel.setBackground(Color.WHITE);
 
-        // Scroll Pane
         JScrollPane scrollPane = new JScrollPane(itemsPanel);
         JScrollBar verticalScrollBar = scrollPane.getVerticalScrollBar();
         verticalScrollBar.setUnitIncrement(14);
@@ -60,7 +57,6 @@ public class CartPanel extends JPanel {
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         add(scrollPane, BorderLayout.CENTER);
 
-        // Footer Panel
         JPanel footerPanel = createFooterPanel();
         add(footerPanel, BorderLayout.SOUTH);
     }
@@ -90,14 +86,12 @@ public class CartPanel extends JPanel {
         panel.setBackground(new Color(0xF9F9F9));
         panel.setMaximumSize(new Dimension(500, 100));
 
-        // Item Details
         JPanel detailsPanel = new JPanel(new GridLayout(2, 1));
         detailsPanel.setBackground(new Color(0xF9F9F9));
         detailsPanel.add(new JLabel("Name: " + menuItem.getName()));
         detailsPanel.add(new JLabel("Quantity: " + orderItem.getQuantity() + " x $" + menuItem.getPrice()));
         panel.add(detailsPanel, BorderLayout.CENTER);
 
-        // Remove Button
         JButton removeButton = new JButton("Remove");
         removeButton.setPreferredSize(new Dimension(100, 30));
         removeButton.addActionListener(e -> {

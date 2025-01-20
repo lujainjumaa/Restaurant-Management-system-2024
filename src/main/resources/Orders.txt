@@ -193,3 +193,16 @@ Order Items:
  - OrderItem{itemID=7, quantity=2}
 
 --------------------------------------------------
+Order Details:
+Order ID: 33
+Order Date: 2025-01-20
+Order Type: dineIn
+Address: N/A
+Total Price: $67.5
+Tip: $2.0
+Order Status: PENDING
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=16, quantity=5}
+
+--------------------------------------------------

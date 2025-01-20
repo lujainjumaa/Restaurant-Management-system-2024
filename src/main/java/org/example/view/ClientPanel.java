@@ -1,7 +1,6 @@
 package org.example.view;
 
 import org.example.controller.MenuController;
-import org.example.controller.OrderController;
 import org.example.controller.TypeController;
 import org.example.model.*;
 import org.example.model.MenuItem;
@@ -9,10 +8,7 @@ import org.example.model.MenuItem;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -42,6 +38,9 @@ public class ClientPanel {
         for (Map.Entry<Integer, java.util.List<org.example.model.MenuItem>> entry : MenuController.getMenuItems().entrySet()) {
             int typeID = entry.getKey();
             List<org.example.model.MenuItem> items = entry.getValue();
+            if(items.isEmpty()){
+                continue;
+            }
             String typeName = TypeController.getTypeNameFromTypeID(typeID);
             JLabel header = new JLabel(typeName + "s", SwingConstants.CENTER);
             JPanel headerPanel = new JPanel();
@@ -62,11 +61,10 @@ public class ClientPanel {
     }
 
     public JPanel createClientItemPanel(MenuItem item) {
-        // Load the image
         BufferedImage image = null;
         String RESOURCES_PATH = "src/main/resources/Pictures/";
         try {
-            image = ImageIO.read(new File(RESOURCES_PATH + item.getPath())); // Replace "hamburger.jpg" with your image file
+            image = ImageIO.read(new File(RESOURCES_PATH + item.getPath()));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -74,26 +72,19 @@ public class ClientPanel {
         image = makeRoundedCorner(image,80);
 
 
-        Font nameFont = new Font("Segoe UI Semibold", Font.PLAIN, 23); // Change font name, style, and size as desired
-        // Resize the image (adjust width as needed)
-        int newWidth = 200; // Example: Resize to 150 pixels wide
+        Font nameFont = new Font("Segoe UI Semibold", Font.PLAIN, 23);
+        int newWidth = 200;
         int newHeight = (int) (image.getHeight() * ((double) newWidth / image.getWidth()));
         Image resizedImage = image.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
         ImageIcon imageIcon = new ImageIcon(resizedImage);
 
 
-        // Create a JLabel for the image
         JLabel imageLabel = new JLabel(imageIcon);
-        //imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
         Dimension imageLabelsize = imageLabel.getPreferredSize();
         imageLabel.setBounds(390, 20, imageLabelsize.width, imageLabelsize.height);
         imageLabel.setBackground(new Color(255, 250, 255));
         imageLabel.setForeground(Color.WHITE);
         imageLabel.setBorder(new RoundedBorder(20, Color.WHITE));
-        // Create a JLabel for the description
-
-
-
 
         JLabel nameLabel = new JLabel(item.getName());
         nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -106,11 +97,9 @@ public class ClientPanel {
         nameLabel.setBounds(25, 40, size.width, size.height);
         //nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-
-
         JLabel descriptionLabel = new JLabel(item.getDescription());
         descriptionLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        Font font = new Font("Segoe UI Semibold", Font.PLAIN, 19); // Change font name, style, and size as desired
+        Font font = new Font("Segoe UI Semibold", Font.PLAIN, 19);
         descriptionLabel.setFont(font);
 
         descriptionLabel.setBackground(new Color(255, 250, 255));
@@ -119,9 +108,6 @@ public class ClientPanel {
         descriptionLabel.setBounds(25, 70,descriptionLabelsize.width, descriptionLabelsize.height);
 
         // descriptionLabel.setHorizontalAlignment(SwingConstants.CENTER);
-
-
-
 
 
         JLabel PriceLabel = new JLabel(item.getPrice() + "$");
@@ -133,27 +119,25 @@ public class ClientPanel {
         PriceLabel.setForeground(new Color(51, 51, 51));
 
 
-        // Create order button
         JButton orderButton = new JButton("ADD");
-        orderButton.setBackground(new Color(255, 250, 255)); // Set button background to RGB(19, 15, 11)
-        orderButton.setForeground(new Color(215, 81, 132)); // Set text color to white
+        orderButton.setBackground(new Color(255, 250, 255));
+        orderButton.setForeground(new Color(215, 81, 132));
 //        orderButton.setOpaque(false);
         orderButton.setFocusPainted(false);
 //        orderButton.setContentAreaFilled(false);
         Dimension orderButtonsize = orderButton.getPreferredSize();
         orderButton.setBounds(440, 200, 100, 40);
-        // orderButton.setBorder(new RoundedBorder(20, new Color(215, 81, 132))); // Remove button border
+        // orderButton.setBorder(new RoundedBorder(20, new Color(215, 81, 132)));
         orderButton.setFont(font);
         //  orderButton.setBorder(BorderFactory.createLineBorder(new Color(215, 81, 132),2));
         orderButton.setBorder(BorderFactory.createLineBorder(new Color(215, 81, 132),2, false));
 
 //        orderButton.toFront();
 
-        // Create main panel with image and button stacked vertically
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(null);
         mainPanel.add(nameLabel);
-        mainPanel.setBackground(new Color(255, 250, 255)); // Set background color to RGB(19, 15, 11)
+        mainPanel.setBackground(new Color(255, 250, 255));
         mainPanel.add(imageLabel);
         mainPanel.add(orderButton);
         // mainPanel.add(descriptionNamePanel, BorderLayout.SOUTH);
@@ -227,18 +211,12 @@ public class ClientPanel {
 
         Graphics2D g2 = output.createGraphics();
 
-        // This is what we want, but it only does hard-clipping, i.e. aliasing
-        // g2.setClip(new RoundRectangle2D ...)
-
-        // so instead fake soft-clipping by first drawing the desired clip shape
-        // in fully opaque white with antialiasing enabled...
         g2.setComposite(AlphaComposite.Src);
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setColor(Color.WHITE);
         g2.fill(new RoundRectangle2D.Float(0, 0, w, h, cornerRadius, cornerRadius));
 
-        // ... then compositing the image on top,
-        // using the white shape from above as alpha source
+
         g2.setComposite(AlphaComposite.SrcAtop);
         g2.drawImage(image, 0, 0, null);
 

@@ -45,13 +45,11 @@ public class GuestPanel {
     }
 
 
-
     public JPanel createGuestItemPanel(MenuItem item) {
-        // Load the image
         BufferedImage image = null;
         String RESOURCES_PATH = "src/main/resources/Pictures/";
         try {
-            image = ImageIO.read(new File(RESOURCES_PATH + item.getPath())); // Replace "hamburger.jpg" with your image file
+            image = ImageIO.read(new File(RESOURCES_PATH + item.getPath()));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -59,15 +57,13 @@ public class GuestPanel {
         image = ClientPanel.makeRoundedCorner(image,80);
 
 
-        Font nameFont = new Font("Segoe UI Semibold", Font.PLAIN, 23); // Change font name, style, and size as desired
-        // Resize the image (adjust width as needed)
-        int newWidth = 200; // Example: Resize to 150 pixels wide
+        Font nameFont = new Font("Segoe UI Semibold", Font.PLAIN, 23);
+        int newWidth = 200;
         int newHeight = (int) (image.getHeight() * ((double) newWidth / image.getWidth()));
         Image resizedImage = image.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
         ImageIcon imageIcon = new ImageIcon(resizedImage);
 
 
-        // Create a JLabel for the image
         JLabel imageLabel = new JLabel(imageIcon);
         //imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
         Dimension imageLabelsize = imageLabel.getPreferredSize();
@@ -75,10 +71,6 @@ public class GuestPanel {
         imageLabel.setBackground(new Color(255, 250, 255));
         imageLabel.setForeground(Color.WHITE);
         imageLabel.setBorder(new RoundedBorder(20, Color.WHITE));
-        // Create a JLabel for the description
-
-
-
 
         JLabel nameLabel = new JLabel(item.getName());
         nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -91,11 +83,9 @@ public class GuestPanel {
         nameLabel.setBounds(25, 40, size.width, size.height);
         //nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-
-
         JLabel descriptionLabel = new JLabel(item.getDescription());
         descriptionLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        Font font = new Font("Segoe UI Semibold", Font.PLAIN, 19); // Change font name, style, and size as desired
+        Font font = new Font("Segoe UI Semibold", Font.PLAIN, 19);
         descriptionLabel.setFont(font);
 
         descriptionLabel.setBackground(new Color(255, 250, 255));
@@ -118,11 +108,10 @@ public class GuestPanel {
 
 //        orderButton.toFront();
 
-        // Create main panel with image and button stacked vertically
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(null);
         mainPanel.add(nameLabel);
-        mainPanel.setBackground(new Color(255, 250, 255)); // Set background color to RGB(19, 15, 11)
+        mainPanel.setBackground(new Color(255, 250, 255));
         mainPanel.add(imageLabel);
         // mainPanel.add(descriptionNamePanel, BorderLayout.SOUTH);
         mainPanel.add(PriceLabel);
@@ -132,7 +121,6 @@ public class GuestPanel {
         //mainPanel.setLayout(null);
         //mainPanel.add(descriptionLabel, BorderLayout.BEFORE_FIRST_LINE);
 
-        // Set preferred size for the panel (adjust as needed)
         mainPanel.setPreferredSize(new Dimension(600, 250));
         mainPanel.setComponentZOrder(imageLabel, 1);
         return mainPanel;

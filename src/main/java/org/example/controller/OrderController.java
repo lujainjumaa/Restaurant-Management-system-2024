@@ -2,10 +2,7 @@ package org.example.controller;
 
 import org.example.model.*;
 
-import javax.sound.sampled.Line;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -252,9 +249,25 @@ public class OrderController {
         return dailyProfitsList;
     }
 
-    public static int getNumOfDailyOrder(){
-        loadDailyOrders();
-        return dailyOrders.size();
+    public static List calculateDailyOrdersForLastWeek(){
+        List<Double> dailyOrdersList = new ArrayList<>();
+        LocalDate currentDate = LocalDate.now();
+        loadOrders();
+
+        for (int i = 0; i < 7; i++) {
+            LocalDate targetDate = currentDate.minusDays(i);
+            double dailyOrder = 0;
+
+            for (Order order : orders) {
+                LocalDate orderDate = convertToLocalDate(order.getDate());
+                if (orderDate.isEqual(targetDate)) {
+                    dailyOrder ++;
+                }
+            }
+            dailyOrdersList.add(dailyOrder);
+        }
+
+        return dailyOrdersList;
     }
 
     public static void updateOrderStatus(int orderId, String newStatus) {
