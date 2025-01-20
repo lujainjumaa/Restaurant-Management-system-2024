@@ -2,4 +2,5 @@
 2,Appetizer
 3,Drink
 4,Dessert
-6,Salads
+6,Salad
+7,Side

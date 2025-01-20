@@ -1,15 +1,28 @@
-9,7,Mozzarella Sticks,3,Crispy fried mozzarella cheese sticks served with marinara sauce,5.99,1,mobile.jpg
-10,0,Chocolate Milkshake,4,Rich and creamy chocolate shake topped with whipped cream,3.99,0,summer-spritzes.jpg
-11,0,Garlic Bread,2,Toasted bread topped with garlic butter,3.49,0,mobile.jpg
-14,0,Vegetable Soup,2,Hearty and healthy soup with mixed vegetables,7.00,0,mobile.jpg
-15,0,Ice Cream Sundae,4,Vanilla ice cream topped with chocolate syrup and nuts,6.50,0,mobile.jpg
-17,0,Greek Salad,2,Fresh tomatoes cucumbers olives and feta cheese,8.25,0,summer-spritzes.jpg
-18,0,Fish Tacos,3,Grilled fish with fresh toppings in soft tortillas,9.99,0,burger.jpg
-19,0,Latte,4,Steamed milk and espresso with a hint of foam,3.75,0,mobile.jpg
-20,6,Buffalo Wings,3,Spicy chicken wings served with ranch dressing,10.99,1,ham.png
-21,0,Tabboleh Salad,2,Salad with cilantro tomatoes and onions,4.00,0,summer-spritzes.jpg
-12,3,Large Cappuccino,4,Foamy and aromatic coffee,4.50,0,summer-spritzes.jpg
-8,1,Grilled Chicken Salad,2,Fresh lettuce grilled chicken and a tangy vinaigrette,9.50,0,ham.png
-7,17,Cheeseburger,1,Juicy beef patty with melted cheese,8.98,1,burger.jpg
-13,48,Chicken Alfredo,1,Pasta in creamy Alfredo sauce with grilled chicken,14.99,1,ham.png
-16,12,Spaghetti Bolognese,1,Classic Italian pasta with a rich meat sauce,13.50,1,ham.png
+9,7,Nachos,2,Tortilla chips topped with melted cheese jalapeños and salsa,5.99,1,image_2025-01-20_20-09-37.png
+10,21,Stuffed Mushrooms,2,Mushrooms stuffed with cream cheese garlic and herbs then baked to perfection,3.99,0,image_2025-01-20_20-09-05.png
+11,0,Cheese Quesadilla,2,Grilled tortilla filled with melted cheese and served with guacamole,3.49,0,image_2025-01-20_20-11-57.png
+14,5,Chicken Wings,2,Spicy and crispy fried chicken wings served with ranch dressing,7.00,0,image_2025-01-20_20-08-05.png
+15,15,Lemonade,3,Refreshing lemon drink served chilled,6.50,0,image_2025-01-20_20-13-48.png
+17,0,Iced Tea,3,Cool and sweet tea served over ice,8.25,0,image_2025-01-20_20-14-38.png
+18,3,Hot Chocolate,3,Creamy hot chocolate topped with marshmallows,9.99,0,image_2025-01-20_20-14-59.png
+19,0,Strawberry Milkshake,3,Fresh strawberry shake topped with whipped cream,3.75,0,image_2025-01-20_20-16-05.png
+20,6,Espresso,3,Strong and bold shot of coffee,10.99,1,image_2025-01-20_20-16-40.png
+21,0,Caesar Salad,6,Romaine lettuce with croutons parmesan and Caesar dressing,4.00,0,image_2025-01-20_20-18-06.png
+12,3,Greek Salad,6,Cucumbers tomatoes feta cheese and olives drizzled with olive oil,4.50,0,image_2025-01-20_20-18-24.png
+16,10,Cobb Salad,6,Mixed greens topped with chicken avocado bacon and blue cheese,13.50,1,image_2025-01-20_20-18-45.png
+13,47,Taco Salad,6,Mixed greens with seasoned ground beef cheese and tortilla strips,14.99,1,image_2025-01-20_20-19-02.png
+8,1,Pasta Salad,6,Rotini pasta with bell peppers cherry tomatoes and Italian dressing,9.50,0,image_2025-01-20_20-20-53.png
+22,11,Cheesecake,4,Creamy cheesecake served with a strawberry glaze,8.98,1,image_2025-01-20_20-43-54.png
+23,10,Brownie Sundae,4,Warm brownie topped with vanilla ice cream and hot fudge,8.98,1,image_2025-01-20_20-44-08.png
+24,5,Apple Pie,4,Classic apple pie served with a scoop of vanilla ice cream,8.98,1,image_2025-01-20_20-44-22.png
+25,20,Tiramisu,4,Layers of coffee soaked ladyfingers with mascarpone cream,8.98,1,image_2025-01-20_20-44-39.png
+26,17,Cupcakes,4,Moist cupcakes topped with colorful buttercream frosting,8.98,1,image_2025-01-20_20-45-26.png
+27,0,Grilled Chicken Sandwich,1,Served with lettuce tomato and fries,8.98,1,image_2025-01-20_20-46-19.png
+33,20,Beef Burger,1,Juicy beef patty with melted cheese,8.98,1,image_2025-01-20_20-46-33.png
+34,5,BBQ Ribs,1,Tender pork ribs glazed with barbecue sauce served with coleslaw,8.98,1,image_2025-01-20_20-46-48.png
+35,8,Turkey Club Sandwich,1,JTriple-layer sandwich with turkey bacon and mayo,8.98,1,image_2025-01-20_20-47-02.png
+36,1,Shrimp Scampi,1,Sautéed shrimp with garlic butter and linguine,8.98,1,image_2025-01-20_20-47-17.png
+37,6,Coleslaw,7,Shredded cabbage mixed with tangy mayo dressing,5.3,0,image_2025-01-20_20-47-52.png
+38,6,Steamed Broccoli,7,Fresh broccoli lightly steamed,5.3,0,image_2025-01-20_20-48-10.png
+39,6,Onion Rings,7,Crispy fried onion rings served with dipping sauce,5.3,0,image_2025-01-20_20-48-26.png
+40,6,Coleslaw,7,Shredded cabbage mixed with tangy mayo dressing,5.3,0,image_2025-01-20_20-47-52.png
