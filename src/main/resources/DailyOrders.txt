@@ -1,1 +1,14 @@
 2025-01-20
+Order Details:
+Order ID: 34
+Order Date: 2025-01-20
+Order Type: delivery
+Address: rjh
+Total Price: $29.98
+Tip: $4.0
+Order Status: ARRIVED
+User: User{userName='Bishr', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=13, quantity=2}
+
+--------------------------------------------------
