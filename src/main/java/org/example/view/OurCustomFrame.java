@@ -85,9 +85,5 @@ public class OurCustomFrame extends JFrame {
             }
         });
     }
-
-    public static void main(String[] args) {
-        new OurCustomFrame("hello");
-    }
 }
 
