@@ -21,8 +21,8 @@
 38,6,Steamed Broccoli,7,Fresh broccoli lightly steamed,5.3,0,image_2025-01-20_20-48-10.png
 39,6,Onion Rings,7,Crispy fried onion rings served with dipping sauce,5.3,0,image_2025-01-20_20-48-26.png
 40,6,Coleslaw,7,Shredded cabbage mixed with tangy mayo dressing,5.3,0,image_2025-01-20_20-47-52.png
-27,2,Grilled Chicken Sandwich,1,Served with lettuce tomato and fries,8.98,0,image_2025-01-20_20-46-19.png
 34,7,BBQ Ribs,1,Tender pork ribs glazed with barbecue sauce served with coleslaw,8.98,0,image_2025-01-20_20-46-48.png
 33,21,Beef Burger,1,Juicy beef patty with melted cheese,8.98,1,image_2025-01-20_20-46-33.png
 35,9,Turkey Club Sandwich,1,JTriple-layer sandwich with turkey bacon and mayo,8.98,0,image_2025-01-20_20-47-02.png
 36,2,Shrimp Scampi,1,Sautéed shrimp with garlic butter and linguine,8.98,0,image_2025-01-20_20-47-17.png
+27,12,Grilled Chicken Sandwich,1,Served with lettuce tomato and fries,8.98,0,image_2025-01-20_20-46-19.png

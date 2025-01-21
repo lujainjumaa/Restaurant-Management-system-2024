@@ -64,3 +64,16 @@ Order Items:
  - OrderItem{itemID=36, quantity=1}
 
 --------------------------------------------------
+Order Details:
+Order ID: 44
+Order Date: 2025-01-21
+Order Type: dineIn
+Address: 
+Total Price: $89.80000000000001
+Tip: $0.0
+Order Status: CANCELED
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=27, quantity=10}
+
+--------------------------------------------------
