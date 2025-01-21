@@ -77,3 +77,42 @@ Order Items:
  - OrderItem{itemID=27, quantity=10}
 
 --------------------------------------------------
+Order Details:
+Order ID: 45
+Order Date: 2025-01-21
+Order Type: dineIn
+Address: 
+Total Price: $8.98
+Tip: $0.0
+Order Status: CANCELED
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=34, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 46
+Order Date: 2025-01-21
+Order Type: dineIn
+Address: 
+Total Price: $8.98
+Tip: $0.0
+Order Status: DONE
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=33, quantity=1}
+
+--------------------------------------------------
+Order Details:
+Order ID: 47
+Order Date: 2025-01-21
+Order Type: delivery
+Address: j
+Total Price: $8.98
+Tip: $0.0
+Order Status: CANCELED
+User: User{userName='Hasan', userType=CLIENT}
+Order Items:
+ - OrderItem{itemID=35, quantity=1}
+
+--------------------------------------------------
