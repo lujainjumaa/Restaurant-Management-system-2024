@@ -277,7 +277,9 @@ public class OrderController {
     }
     public static boolean cancelOrder(Order order){
         if(order.getOrderStatus().equals(OrderStatus.PENDING)){
-            deleteOrderById(order.getID());
+//            deleteOrderById(order.getID());
+            order.setOrderStatus(OrderStatus.CANCELED);
+            updateOrderStatus(order.getID(), String.valueOf(OrderStatus.CANCELED));
             return true;
         }
         return false;

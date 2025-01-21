@@ -68,7 +68,10 @@ MenuFrame mf;
 
                 if (order.getOrderStatus().equals(OrderStatus.DONE) || order.getOrderStatus().equals(OrderStatus.ARRIVED)) {
                     statusLabel.setForeground(Color.GREEN);
-                } else {
+                } else if(OrderStatus.CANCELED.equals(order.getOrderStatus())){
+                    statusLabel.setForeground(Color.red);
+                }
+                else{
                     statusLabel.setForeground(Color.BLACK);
                 }
 
